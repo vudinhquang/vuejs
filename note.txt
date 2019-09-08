@@ -12,3 +12,14 @@ Cài đặt nodeJs. Khi cài đặt nodeJs thì sẽ có sẵn npm
 Trước khi cài đặt thì kiểm tra xem nodeJs đã được cài đặt hay chưa bằng cách dùng câu lệnh node -v, npm -v
 	trên PowerShell
 Git -> Để Deploy mã nguồn lên server(sử dụng các hosting free)
+
+========================================== Vuejs cơ bản ==========================================
+Tìm hiểu về Vue Instance:
+  Nghiên cứu cách tích hợp Vuejs vào trong 1 phần dự án đã tồn 
+  Tích hợp Vuejs
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.min.js"></script>
+  Vue Instance là 1 thực thể Vue hay đối tượng Vue dùng để quản lý một thành phần trong trang web
+  Khi tạo 1 Instance thì cần truyền vào 1 đối tượng để khai báo các thông tin liên quan như là: Đối tượng Instance
+    đó quản lý thành phần nào
+  Data and Methods:
+    Data: Dữ liệu giành cho thành phần mà nó quản lý
