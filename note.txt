@@ -23,3 +23,13 @@ Tìm hiểu về Vue Instance:
     đó quản lý thành phần nào
   Data and Methods:
     Data: Dữ liệu giành cho thành phần mà nó quản lý
+  
+Ràng buộc dữ liệu một chiều với Data Binding:
+  Keywords: Template Syntax
+  Đối với js khi sử dụng trong Vuejs sẽ có 1 số chú ý khi viết dấu {{}} đó là chỉ sử dụng được các biểu thức đơn giản
+    như cộng trừ nhân chia, toán tử 3 ngôi thay thế cho biểu thức điều kiện, hay là sủ dụng các Methods của js cung
+    cấp sẵn;
+    {{ number + 1 }}
+    {{ ok ? 'YES' : 'NO' }}
+    {{ message.split('').reverse().join('') }}
+  Không sử dụng được trong các trường hợp như là khai báo biến, hay sử dụng các câu lệnh điều kiện if-else
