@@ -33,3 +33,6 @@ Ràng buộc dữ liệu một chiều với Data Binding:
     {{ ok ? 'YES' : 'NO' }}
     {{ message.split('').reverse().join('') }}
   Không sử dụng được trong các trường hợp như là khai báo biến, hay sử dụng các câu lệnh điều kiện if-else
+
+Sử dụng v on xử lí sự kiện người dùng: Cách sử dụng và cách khai báo Event trong Vuejs
+  
