@@ -35,4 +35,19 @@ Ràng buộc dữ liệu một chiều với Data Binding:
   Không sử dụng được trong các trường hợp như là khai báo biến, hay sử dụng các câu lệnh điều kiện if-else
 
 Sử dụng v on xử lí sự kiện người dùng: Cách sử dụng và cách khai báo Event trong Vuejs
-  
+
+Cách sử dụng Event Modifiers:
+  stop và prevent
+  Có thể viết bằng Javascript thông thường, tuy nhiên thì nếu sử dụng Event Modifiers thì sẽ giảm được 1 số đoạn code 
+    thường lặp đi lặp lại trong quá trình sử lý
+  Khi làm ứng dụng 1 trang Single Application thì Form cần phải được xử lý riêng, khi người dùng nhấn nút submit thì
+    không cho trang chuyển hướng đến trang khác mà sẽ tạm dừng ở đó, sử lý dữ liệu trực tiếp bằng js sau đó sử dụng các
+    công cụ khác để tương tác với server và gửi dữ liệu sang server.
+  Để khi submit form mà nó không chuyển trang đi thì ở trong js có 1 khác niệm rất quen thuộc đó là preventdefault
+  stopPropagation: Ngăn chặn sự kiện của phần tử con lan tỏa ra phần tử cha
+Key Modifiers: Thường sử dụng với các ô input
+  Chẳng hạn như trong form có input submit, thì trong trường hợp này khi mình nhập vào form rồi nhấn Enter thì nó sẽ chạy
+  Thay cho việc dùng keycode để kiểm tra nhấn nút Enter thì có thể viết:
+    <input v-on:keyup.enter="submit">
+  Cũng kiểm tra tương tự thì có thể kiểm tra việc nhấn 
+  enter, tab, delete (captures both “Delete” and “Backspace” keys), esc, space, up, down, left, right...
