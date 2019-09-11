@@ -72,3 +72,11 @@ Tìm hiểu về Computed:
       thực thi khi mà dữ liệu trong hàm đó có sự thay đổi
   => method thì sử dụng khi tính toán dữ liệu nó không dành riêng cho data, computed được dùng dựa trên dữ liệu của đối
     tượng Vue
+Ràng buộc dữ liệu 2 chiều:
+  <div id="app">
+      <h1>FirstName = {{ firstName }}</h1>
+      <input v-on:keyup="handleKeyUp" type="text" placeholder="Nhap firstName">
+  </div>
+  Dàng buộc dữ liệu 2 chiều được thể hiện ở chỗ dàng buộc biến trong data của mình vào trong ô input và đồng thời ô input
+    nó sẽ dàng buộc ngược lại dữ liệu của mình khi người dùng nhập vào
+  Vue cung cấp 1 chỉ thị để có thể làm việc này nhanh hơn đó là v-model

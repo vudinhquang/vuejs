@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Two Way Binding and Class and Style</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>FirstName = {{ firstName }}</h1>
+        <p>{{ about }}</p>
+        <!-- <input v-on:keyup="handleKeyUp" type="text" placeholder="Nhap firstName"> -->
+        <input v-model="firstName" type="text" placeholder="Nhap firstName">
+        <br>
+        <textarea v-model="about" cols="30" rows="10"></textarea>
+    </div>
+</body>
+    <script>
+        var app = new Vue({
+            el  : '#app',
+            data: {
+                firstName: 'Nguyen',
+                about    : 'About me'
+            },
+            methods: {
+                handleKeyUp(e) {
+                    this.firstName = e.target.value;
+                }
+            }
+        });
+    </script>
+</html>
