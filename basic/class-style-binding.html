@@ -16,6 +16,11 @@
         <input v-model="firstName" type="text" placeholder="Nhap firstName">
         <br>
         <textarea v-model="about" cols="30" rows="10"></textarea>
+        <div v-bind:class="'demo-' + textClass"></div>
+        <div class="demo" v-bind:class="{'active': isActive, 'error': isError }"></div>
+        <button v-on:click="changeActive">Change Active</button>
+        <button v-on:click="changeError">Change Error</button>
+        <div class="demo" v-bind:class="objClass"></div>
     </div>
 </body>
     <script>
@@ -23,11 +28,27 @@
             el  : '#app',
             data: {
                 firstName: 'Nguyen',
-                about    : 'About me'
+                about    : 'About me',
+                textClass: 'active',
+                isActive : true,
+                isError  : false
             },
             methods: {
                 handleKeyUp(e) {
                     this.firstName = e.target.value;
+                },
+                changeActive() {
+                    this.isActive = !this.isActive;
+                },
+                changeError() {
+                    this.isError = !this.isError;
+                }
+            },
+            computed: {
+                objClass() {
+                    return {'active': this.isActive, 
+                            'error': this.isError 
+                        };
                 }
             }
         });

@@ -80,3 +80,9 @@ Ràng buộc dữ liệu 2 chiều:
   Dàng buộc dữ liệu 2 chiều được thể hiện ở chỗ dàng buộc biến trong data của mình vào trong ô input và đồng thời ô input
     nó sẽ dàng buộc ngược lại dữ liệu của mình khi người dùng nhập vào
   Vue cung cấp 1 chỉ thị để có thể làm việc này nhanh hơn đó là v-model
+
+Ràng buộc Class bằng VueJs:
+  Một phần thường xuyên xuất hiện trong các yêu cầu khi sử dụng Javascript thuần tương tác với cấu trúc Dom đó là việc thay
+    đổi Class và thay đổi Style của 1 phần tử
+  Class hay Style thì bản chất nó cũng là 1 Attribute, nó là thuộc tính của phần tử Html
+  Đối với 1 phần tử thì có thể có nhiều Class, Trong VueJs thì dùng 1 đối tượng để quản lý các class
