@@ -86,3 +86,7 @@ Ràng buộc Class bằng VueJs:
     đổi Class và thay đổi Style của 1 phần tử
   Class hay Style thì bản chất nó cũng là 1 Attribute, nó là thuộc tính của phần tử Html
   Đối với 1 phần tử thì có thể có nhiều Class, Trong VueJs thì dùng 1 đối tượng để quản lý các class
+
+Ràng buộc Style cho phần tử:
+  Đối với style thì có 1 số lưu ý riêng khi tương tác với 1 số phần tử đặc biệt như:
+    <div style="background-image: url('https://cdn.pixabay.com/photo/2017/03/02/08/58/background-texture-2110724__340.jpg')">

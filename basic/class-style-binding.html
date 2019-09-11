@@ -10,17 +10,27 @@
 </head>
 <body>
     <div id="app">
-        <h1>FirstName = {{ firstName }}</h1>
-        <p>{{ about }}</p>
-        <!-- <input v-on:keyup="handleKeyUp" type="text" placeholder="Nhap firstName"> -->
-        <input v-model="firstName" type="text" placeholder="Nhap firstName">
-        <br>
-        <textarea v-model="about" cols="30" rows="10"></textarea>
-        <div v-bind:class="'demo-' + textClass"></div>
-        <div class="demo" v-bind:class="{'active': isActive, 'error': isError }"></div>
-        <button v-on:click="changeActive">Change Active</button>
-        <button v-on:click="changeError">Change Error</button>
-        <div class="demo" v-bind:class="objClass"></div>
+        <!-- <div style="background-image: url('https://cdn.pixabay.com/photo/2017/03/02/08/58/background-texture-2110724__340.jpg')"> -->
+        <!-- <div v-bind:style="{backgroundImage: 'url(' + bg + ')'}"> -->
+        <!-- <div v-bind:style="{backgroundImage: background}"> -->
+        <div v-bind:style="objStyle">
+            <h1>FirstName = {{ firstName }}</h1>
+            <p>{{ about }}</p>
+            <!-- <input v-on:keyup="handleKeyUp" type="text" placeholder="Nhap firstName"> -->
+            <input v-model="firstName" type="text" placeholder="Nhap firstName">
+            <br>
+            <textarea v-model="about" cols="30" rows="10"></textarea>
+            <div v-bind:class="'demo-' + textClass"></div>
+            <div class="demo" v-bind:class="{'active': isActive, 'error': isError }"></div>
+            <button v-on:click="changeActive">Change Active</button>
+            <button v-on:click="changeError">Change Error</button>
+            <div class="demo" v-bind:class="objClass"></div>
+    
+            <hr>
+            <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px', marginTop: '20px' }">
+                Test Style Binding
+            </div>
+        </div>
     </div>
 </body>
     <script>
@@ -31,7 +41,12 @@
                 about    : 'About me',
                 textClass: 'active',
                 isActive : true,
-                isError  : false
+                isError  : false,
+
+                activeColor: 'red',
+                fontSize: 20,
+                
+                bg : 'https://cdn.pixabay.com/photo/2017/03/02/08/58/background-texture-2110724__340.jpg'
             },
             methods: {
                 handleKeyUp(e) {
@@ -48,6 +63,16 @@
                 objClass() {
                     return {'active': this.isActive, 
                             'error': this.isError 
+                        };
+                },
+                background() {
+                    return 'url(' + this.bg + ')';
+                },
+                objStyle() {
+                    return {
+                            backgroundImage: 'url(' + this.bg + ')',
+                            margin: '10px',
+                            paddingLeft: '30px'
                         };
                 }
             }
