@@ -51,3 +51,24 @@ Key Modifiers: Thường sử dụng với các ô input
     <input v-on:keyup.enter="submit">
   Cũng kiểm tra tương tự thì có thể kiểm tra việc nhấn 
   enter, tab, delete (captures both “Delete” and “Backspace” keys), esc, space, up, down, left, right...
+Tìm hiểu về Computed:
+  Đối với Template của Vuejs {{}} thì sử dụng khá thuận lợi, tuy nhiên chỉ nên dùng trong các trường hợp mà biểu thức
+    của mình là đơn giản, đối với các trường hợp mà biểu thức phức tạp thì không nên đặt ở phía Template mà nên sử dụng các
+    thuộc tính hay method để thực hiện các logic
+  computed là 1 thuộc tính trong object truyền vào đối tượng Vue. Computed có nhiều thuộc tính bên trong mà mỗi 1 thuộc
+    tính là 1 function, các function này được tính toán dựa vào các dữ liệu có sẵn
+    Ở đây thì nếu dùng method thì khi gọi đến ở Template thì cần phải có lời gọi hàm đi cùng nghĩa là cần có dấu ()
+  Sự khác của method so với computed đó là khi sử dụng method thì phát sinh ra vấn đề đó là sô s lượng method sẽ được run 
+    không mong muốn, có nghĩa là sẽ chạy bị thừa. Nếu mà khi thao tác với dữ liệu lớn thì sẽ làm giảm tốc độ chương trình.
+    Do đó trong trường hợp này sẽ sử dụng computed
+    <button v-on:click="a++"> A=A+1 </button>
+    <button v-on:click="b++"> B=B+1 </button>
+    <p>Number + A = {{ addA() }}</p>
+    <p>Number + B = {{ addB() }}</p>
+  Giải thích:
+    Khi sử dụng method thì trong Template sẽ dùng lời gọi hàm, khi có bất kỳ 1 sự thay đổi nào thì Vuejs nó sẽ render lại
+      Template do đó khi gặp lời gọi hàm nào thì nó sẽ luôn luôn chạy hàm đó.
+    Đối với computed thì tuy khai báo giống như 1 hàm tuy nhiên thì nó sẽ được lưu vào đối tượng Vue, và hàm này chỉ được
+      thực thi khi mà dữ liệu trong hàm đó có sự thay đổi
+  => method thì sử dụng khi tính toán dữ liệu nó không dành riêng cho data, computed được dùng dựa trên dữ liệu của đối
+    tượng Vue
