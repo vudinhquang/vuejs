@@ -102,3 +102,7 @@ Render Template dùng vòng lặp trong VueJs:
     với nhau để phục vụ các logic như sắp xếp các phần tử, sort, filter... thì dùng đến 1 thuôc tính đó là key
 
 Lưu ý về Loop và Condition trong VueJS: Tìm hiểu độ ưu tiên của v-for so với v-if khi sử dụng chúng chung với nhau
+  Xét về độ ưu tiên thì vòng v-for có độ ưu tiên cao hơn v-if
+    <div class="user" v-for="user in arrUser" v-if="user.isActive">{{ user.email }}</div>
+  Đối với trường hợp này nên tạo ra 1 computed được tính toán dựa trên thông số isActive để lọc ra những user nào có trạng thái là
+    active
