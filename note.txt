@@ -106,3 +106,36 @@ Lưu ý về Loop và Condition trong VueJS: Tìm hiểu độ ưu tiên của v
     <div class="user" v-for="user in arrUser" v-if="user.isActive">{{ user.email }}</div>
   Đối với trường hợp này nên tạo ra 1 computed được tính toán dựa trên thông số isActive để lọc ra những user nào có trạng thái là
     active
+
+Lưu ý quan trọng về Array và Object trong VueJs: Vấn đề quan trọng và nó thường gây ra lỗi khi ta tương tác với VueJS thông qua object
+  và array
+  Đối với 1 số hàm có sãn của array như: push(), pop(), shift(), unshift(), splice(), sort(), reverse()
+    -> Khi sử dụng hàm này để thêm, sửa, xóa các phần tử ở trong thì hệ thống phản ứng sẽ hoạt động và render lại. Nếu không thực hiện
+    bằng cách sử dụng các phương thức này mà gán theo các cách thông thường thì các giá trị thay đổi không được render lại trên view
+  Muốn thực hiện thay đổi theo cách thông thường như vậy thì dùng 1 hàm có sẵn của VueJs đó là $set()
+    app;
+      Vue {_uid: 0, _isVue: true, $options: {…}, _renderProxy: Proxy, _self: Vue, …}
+    app.arrNumber;  
+      (6) [1, 2, 3, 4, 5, 6, __ob__: Observer]
+    app.arrNumber.push(7);
+      7
+    app.arrNumber
+      (7) [1, 2, 3, 4, 5, 6, 7, __ob__: Observer]
+    app.arrNumber[7]
+      undefined
+    app.arrNumber[7]=2000;
+      2000
+    app.arrNumber[0]=2000;
+      2000
+    app.$set(app.arrNumber, 0, 3000);
+      3000
+  Trong trường hợp thay đổi thành 1 object mới thì ok bởi vì địa chỉ cũng thay đổi, thì lúc này hệ thống phản ứng sẽ giám sát địa chỉ đó
+    app.objScore;
+    {__ob__: Observer}math: 7.5__ob__: Observerdep: Dep {id: 4, subs: Array(1)}value: {__ob__: Observer}vmCount: 0__proto__: Objectget math: ƒ reactiveGetter()set math: ƒ reactiveSetter(newVal)__proto__: Object
+    app.objScore.english=10;
+    10
+    app.objScore = {math: 7, english:8}
+    {__ob__: Observer}
+  Thêm 1 phần tử bằng cách dùng $set -> sẽ được hệ thống phản ứng giám sát sự thay đổi
+    app.$set(app.objScore, 'physics', 8);
+      8
