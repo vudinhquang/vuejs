@@ -90,3 +90,10 @@ Ràng buộc Class bằng VueJs:
 Ràng buộc Style cho phần tử:
   Đối với style thì có 1 số lưu ý riêng khi tương tác với 1 số phần tử đặc biệt như:
     <div style="background-image: url('https://cdn.pixabay.com/photo/2017/03/02/08/58/background-texture-2110724__340.jpg')">
+
+Render Template dùng biểu thức điều kiện:
+  Dùng để render ra các phần tử Html nào đó theo điều kiện nhất định. Điều kiện chính là biểu thức của Javascript nó có thể theo
+    biến lưu trong data hoặc biến được tính toán trong computed
+  Bên cạnh việc sử dụng v-if, v-else thì có thể dùng v-show
+  Khi dùng v-show thì các phần tử Html đều tồn tại trong cấu trúc DOM nó chỉ ẩn đi bằng style display:none Còn đối với v-if và v-else 
+    thì nó sẽ remove luôn đi phần tử Html
