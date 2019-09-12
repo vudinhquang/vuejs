@@ -97,3 +97,8 @@ Render Template dùng biểu thức điều kiện:
   Bên cạnh việc sử dụng v-if, v-else thì có thể dùng v-show
   Khi dùng v-show thì các phần tử Html đều tồn tại trong cấu trúc DOM nó chỉ ẩn đi bằng style display:none Còn đối với v-if và v-else 
     thì nó sẽ remove luôn đi phần tử Html
+Render Template dùng vòng lặp trong VueJs:
+  Đối với vòng lặp để quản lý tốt được vị trí và thứ tự của các phần tử thì nên cung cấp cho VueJs 1 key để để phân biệt các phần tử 
+    với nhau để phục vụ các logic như sắp xếp các phần tử, sort, filter... thì dùng đến 1 thuôc tính đó là key
+
+Lưu ý về Loop và Condition trong VueJS: Tìm hiểu độ ưu tiên của v-for so với v-if khi sử dụng chúng chung với nhau
