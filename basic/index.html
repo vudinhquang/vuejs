@@ -21,7 +21,7 @@
                 qui.</p>
         </div>
         <div id="app">
-            <div class="cart">Giỏ hàng</div>
+            <div class="cart">Giỏ hàng ({{ cardNumber }})</div>
             <div class="product">
                 <div class="product-image">
                     <div class="image">
@@ -58,20 +58,22 @@
                             </ul>
                         </div>
                     </div>
-                    <button class="add-to-cart">Add to cart</button>
+                    <button 
+                        v-on:click="handleAddToCart"
+                        class="add-to-cart">Add to cart</button>
                 </div>
                 
             </div>
             <div class="description">
                 <ul class="extra-info">
-                    <li>Thoát mồ hôi tốt</li>
-                    <li>Áo thun cổ tròn thể thao Hiye chuyên được may từ chất liệu nilon thoáng mát</li>
+                    <li v-for="item in listDesc">{{ item }}</li>
+                    <!-- <li>Áo thun cổ tròn thể thao Hiye chuyên được may từ chất liệu nilon thoáng mát</li>
                     <li>Kết hợp thêm sợi thun tạo độ co giãn giúp người tiêu dùng thoải mái khi mặc</li>
-                    <li>Chất liệu: polyester và thun</li>
+                    <li>Chất liệu: polyester và thun</li> -->
                 </ul>
                 <h2>Chất liệu bền chặt&nbsp;</h2>
                 <!-- v-html -->
-                <!-- <div v-html="description"></div> -->
+                <div v-html="description"></div>
             </div>
                 
         </div>

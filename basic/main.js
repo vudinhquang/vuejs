@@ -7,7 +7,8 @@ var vueInstance = new Vue({
         price : '20000',
         // check : true
         sale: 0.1,
-        selectedProduct: 0,
+        selectedProduct: 2,
+        cardNumber: 1, 
         listProductDetail: [
             {
                 image: './images/red.jpg',
@@ -24,7 +25,20 @@ var vueInstance = new Vue({
                 quantity: 2,
                 textColor: 'Màu Đen'
             }
-        ]
+        ],
+        listDesc: [
+            'Chất liệu: polyester và thun',
+            'Thoát mồ hôi tốt',
+            'Áo thun cổ tròn thể thao Hiye chuyên được may từ chất liệu nilon thoáng mát',
+            'Kết hợp thêm sợi thun tạo độ co giãn giúp người tiêu dùng thoải mái khi mặc',
+            'Chất liệu: polyester và thun'
+        ],
+        description: `<p>M&ocirc; tả: &Aacute;o thun cổ tr&ograve;n thể thao Hiye chuy&ecirc;n được 
+                        may từ chất liệu nilon tho&aacute;ng m&aacute;t v&agrave; tho&aacute;t mồ h&ocirc;i 
+                        tốt, kết hợp th&ecirc;m sợi thun tạo độ co gi&atilde;n gi&uacute;p người ti&ecirc;u d&ugrave;ng 
+                        thoải m&aacute;i khi mặc</p>`,
+        testDescription: `<p>Test hjskhfk h</p>
+                        <p><strong><span style="background-color:#8e44ad">fhsdjkfhsk&nbsp; hsdjkfk&nbsp;</span></strong></p>`
     },
     methods: {
         handleClickColor(e, index) {
@@ -33,6 +47,13 @@ var vueInstance = new Vue({
         classActive(index) {
             return {
                 active: this.selectedProduct === index
+            }
+        },
+        handleAddToCart() {
+            if(this.cardNumber+1 > this.getProduct.quantity) {
+                alert('So luong khong du');
+            } else {
+                this.cardNumber = this.cardNumber + 1;
             }
         }
     },

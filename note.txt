@@ -147,3 +147,6 @@ Phân tích data và Xử lí Price
 Xử lý Change Color
   Xử lý sự kiện khi người dùng Click vào màu sắc nhất định
   Thường thì khi sử dụng vòng lặp for thì sẽ dùng đến key gắn vào cho các phần tử Html
+Sử dụng v html trong Vue
+  Render ra Html danh sách đặc tính của sản phẩm
+  Render ra được mã nguồn Html trong 1 đoạn text
