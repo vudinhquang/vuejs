@@ -144,3 +144,6 @@ Lưu ý quan trọng về Array và Object trong VueJs: Vấn đề quan trọng
                                               Demo bài tập thực hành tổng hợp số 01
 
 Phân tích data và Xử lí Price
+Xử lý Change Color
+  Xử lý sự kiện khi người dùng Click vào màu sắc nhất định
+  Thường thì khi sử dụng vòng lặp for thì sẽ dùng đến key gắn vào cho các phần tử Html

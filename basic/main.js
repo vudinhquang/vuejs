@@ -10,6 +10,11 @@ var vueInstance = new Vue({
         selectedProduct: 0,
         listProductDetail: [
             {
+                image: './images/red.jpg',
+                quantity: 2,
+                textColor: 'Màu Đỏ'
+            },
+            {
                 image: './images/blue.jpg',
                 quantity: 8,
                 textColor: 'Màu Xanh'
@@ -18,16 +23,18 @@ var vueInstance = new Vue({
                 image: './images/black.jpg',
                 quantity: 2,
                 textColor: 'Màu Đen'
-            },
-            {
-                image: './images/red.jpg',
-                quantity: 0,
-                textColor: 'Màu Đỏ'
-            },
+            }
         ]
     },
     methods: {
-
+        handleClickColor(e, index) {
+            this.selectedProduct = index;
+        },
+        classActive(index) {
+            return {
+                active: this.selectedProduct === index
+            }
+        }
     },
     computed: {
         formatOriginalPrice() {
@@ -39,6 +46,10 @@ var vueInstance = new Vue({
             var number = this.price - this.sale * this.price;
 
             return new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'VND' }).format(number);
+        },
+        getProduct() {
+            let index = this.selectedProduct;
+            return this.listProductDetail[index];
         }
     }
 });
