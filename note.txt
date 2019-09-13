@@ -139,3 +139,8 @@ Lưu ý quan trọng về Array và Object trong VueJs: Vấn đề quan trọng
   Thêm 1 phần tử bằng cách dùng $set -> sẽ được hệ thống phản ứng giám sát sự thay đổi
     app.$set(app.objScore, 'physics', 8);
       8
+
+                                =======================================================================
+                                              Demo bài tập thực hành tổng hợp số 01
+
+Phân tích data và Xử lí Price

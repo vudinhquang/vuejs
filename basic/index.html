@@ -32,18 +32,19 @@
                     <h3 class="title">
                     <a v-bind:href="url" v-bind:target="target">{{ title }}</a>
                     </h3>
-                    {{ check ? 'Vế bên trái' : 'Vế bên phải' }}
+                    <!-- {{ check ? 'Vế bên trái' : 'Vế bên phải' }} -->
                     <p class="brand">Thương hiệu: No brand</p>
                     <div class="wrapper-price">
-                        <div class="final-price">{{ formatPrice() }}</div>
-                        <div class="origin-price">20.000</div>
-                        <div class="sale-price">-50%</div>
+                        <div class="final-price">{{ formatFinalPrice }}</div>
+                        <div class="origin-price">{{ formatOriginalPrice }}</div>
+                        <div class="sale-price">-{{ sale * 100 }}%</div>
                     </div>
                     <div class="wrapper-color">
                         <div class="text">Màu sắc</div>
                         <div class="list-color">
                             <p class="color-text"></p>
                             <ul>
+                                <li><img src="./images/black.jpg" alt="color"></li>
                                 <li><img src="./images/blue.jpg" alt="color"></li>
                                 <li><img src="./images/red.jpg" alt="color"></li>
                             </ul>
