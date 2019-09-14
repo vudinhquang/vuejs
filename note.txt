@@ -150,3 +150,38 @@ Xử lý Change Color
 Sử dụng v html trong Vue
   Render ra Html danh sách đặc tính của sản phẩm
   Render ra được mã nguồn Html trong 1 đoạn text
+
+                                =======================================================================
+Giới thiệu và cài đặt Vue CLI
+  Cách cài đặt 1 cấu trúc thư mục cơ bản để xây dựng 1 dự án theo mô hình Single Page Application
+  Dùng để xây dựng nhanh 1 cấu trúc thư mục để quản lý mã nguồn
+  CLI: Command Line Interface
+  Keywords: vuejs Template webpack -> https://github.com/vuejs-templates/webpack
+  Để chạy các câu lệnh để có thể cài đặt thì cần phải đảm bảo đã cài đặt nodeJs và npm
+    $ npm install -g vue-cli: -g là chữ viết tắt của global, cài đặt vue-cli ở trong tầm vực global, mình ó thể sử 
+      dụng nó ở bất kỳ nơi nào trong máy tính để tạo ra 1 cấu truc thư mục mẫu
+    $ vue init webpack my-project: my-project chính là tên của dự án
+      $ vue init webpack-simple helloVueJs
+      ? Project name (helloVueJs) hello
+      ? Project name hello
+      ? Project description (A Vue.js project)
+      ? Project description A Vue.js project
+      ? Author (vudinhquang <vudinhquangk53@gmail.com>)
+      ? Author vudinhquang <vudinhquangk53@gmail.com>
+      ? License (MIT)
+      ? License MIT
+      ? Use sass? (y/N) n
+      ? Use sass? No
+        vue-cli · Generated "helloVueJs".
+        To get started:
+          cd helloVueJs
+          npm install
+            Cài đặt các thư viện khác mà nó sử dụng trong VueJS. Coi trong package.json, nó khai báo 
+              tất cả các thư viện phụ thuộc vào bên ngoài
+            Sau khi chạy câu lệnh này xong thì trong thư mục của mình có thêm thư mục là node_modules trong đó
+              chứa tất cả các thư viện mà chúng ta có sử dụng
+          npm run dev
+            Câu lệnh này sẽ sinh ra 1 server ảo: http://localhost:8081/
+    $ cd my-project
+    $ npm install
+    $ npm run dev
