@@ -185,3 +185,46 @@ Giới thiệu và cài đặt Vue CLI
     $ cd my-project
     $ npm install
     $ npm run dev
+Cấu trúc Project, tìm hiểu Webpack và Babel
+  Tìm hiểu về 1 số thành phần được tạo ra sau khi cài đặt cấu trúc thư mục
+    package.json: Là nơi khai báo các thư viện, module ở bên ngoài mà mình sử dụng trong project
+  Có 2 môi trường:
+    Development: Là môi trường dành cho lập trình viên
+      "devDependencies": {
+        "babel-core": "^6.26.0",
+        "babel-loader": "^7.1.2",
+        "babel-preset-env": "^1.6.0",
+        "babel-preset-stage-3": "^6.24.1",
+        "cross-env": "^5.0.5",
+        "css-loader": "^0.28.7",
+        "file-loader": "^1.1.4",
+        "vue-loader": "^13.0.5",
+        "vue-template-compiler": "^2.4.4",
+        "webpack": "^3.6.0",
+        "webpack-dev-server": "^2.9.1"
+      }
+      -> Dùng trong quá trình lập trình
+        Babel là 1 trình biên dịch của Javascript
+        ES6:
+          let name = 'join';
+          const age = 28;
+          let str = `My name is ${name}`;
+          class Person {
+            constructor(name = '', age = 28) {
+              this.name = name;
+              this.age = age;
+            }
+          }
+          var arr1 = [1, 2, 3];
+          var arr2 = ['abc', 'def'];
+          arr = [...arr1, ...arr2];
+    Production: Public ra cho user sử dụng
+      "dependencies": {
+        "vue": "^2.5.11"
+      }
+      -> Dùng xuyên suốt trong quá trình user dùng trang web của mình
+  Webpack: Công cụ giúp đóng gói code, đóng gói mã nguồn
+    Khi đẩy code ở dạng môi trường Production thì sẽ build ra bằng câu lệnh: npm run build lúc này sẽ sinh ra 1 
+      thư mục nữa chính là thư mục chứa file Javascript cuối cùng đã được đóng gói. Để đóng gói được thì cần phải có
+      webpack
+    Lệnh: $ npm run build
