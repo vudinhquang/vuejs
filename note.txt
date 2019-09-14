@@ -228,3 +228,62 @@ Cấu trúc Project, tìm hiểu Webpack và Babel
       thư mục nữa chính là thư mục chứa file Javascript cuối cùng đã được đóng gói. Để đóng gói được thì cần phải có
       webpack
     Lệnh: $ npm run build
+
+Cấu trúc Project và Cấu hình cơ bản Webpack: Cấu hình lại thông tin cơ bản để phục vụ quá trình lập trình
+  https://webpack.js.org: Xem hướng dẫn cách config
+  index.html là file được chạy đầu tiên, trong đó có 1 đối tượng <div id="app"></div>, đối tượng Vue để quản lý app đó
+    là nằm trong main.js thuộc folder src
+  import Vue from 'vue' thực hiện import thư viện vue từ bên ngoài vào, thư viện này được khai báo ở trong package.json
+    "dependencies": {
+      "vue": "^2.5.11"
+    },
+   App from './App.vue'
+    Trong đây là nơi khai báo toàn bộ mã nguồn, có 3 thành phần chính: template, script(Javascript), style để viết Css
+    script:
+      export default {
+        name: 'app',
+        data () {
+          return {
+            msg: 'Welcome to Your Vue.js App'
+          }
+        }
+      }
+    -> main.js là nơi sẽ import
+    Mỗi thành phần trong Web tương ứng với mỗi component -> Tương ứng với 1 file *.vue
+  Extension: 
+    Keywords: Vue -> Vetur, khi cài đặt xong thì sẽ xem được cú pháp của App.vue dễ nhìn hơn
+  Webpack là công cụ để đóng gói, do đó khi build thì có thể cấu hình lại nó chẳng hạn như vị trí index.html, tên thư mục
+    có để đổi từ dist sang tên khác, hay vị trí của file ảnh logo.png cũng vậy
+    -> webpack.config.js Là nơi để cấu hình webpack, để khai báo các thông tin liên quan đến trang web
+    entry: './src/main.js', main.js là file nó sẽ chạy lần đầu tiên
+    output: {
+      path: path.resolve(__dirname, './dist'),
+      publicPath: '/dist/',
+      filename: 'build.js'
+    },
+      -> Đóng gói sẽ xuất ra ở đâu
+      publicPath: '/dist/' là đường dẫn sẽ đóng gói ra bên ngoài
+  
+  Sau khi config xong thì gõ lệnh: npm run build, chạy xong câu lệnh này thì sẽ sinh ra được thư mục mới(dist), có thể thay
+    đổi tên tùy ý
+  loader: 'file-loader', là công cụ dùng để quản lý hình ảnh và đóng gói hình ảnh
+    "devDependencies": {
+      "babel-core": "^6.26.0",
+      "babel-loader": "^7.1.2",
+      "babel-preset-env": "^1.6.0",
+      "babel-preset-stage-3": "^6.24.1",
+      "cross-env": "^5.0.5",
+      "css-loader": "^0.28.7",
+      "file-loader": "^1.1.4",
+      "vue-loader": "^13.0.5",            -> Để thông báo vue.js là file hợp nệ
+      "vue-template-compiler": "^2.4.4",
+      "webpack": "^3.6.0",
+      "webpack-dev-server": "^2.9.1"
+    }
+    https://webpack.js.org/loaders/file-loader/#root
+    options:
+      name: '[name].[ext]?[hash]'
+        ->
+        name: function(file) {
+          return '/images/[contenthash].[ext]';
+        }
