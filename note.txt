@@ -333,3 +333,70 @@ Tìm hiểu Props Down trong Vue
           Trong ListUser Component nhận được mảng giá trị ListUser truyền từ App sẽ tiếp duyệt từng user và truyền
             vào User Component
     -> Toàn bộ dữ liệu được quản lý ở App Component
+
+Tìm hiểu Event Up trong Vue:
+  Tìm hiểu cách truyền 1 thông điệp từ component con ra component cha để gửi thông báo muốn thay đổi dữ liệu từ component 
+    cha
+  Keywords: Custom Event trong Vuejs
+  Tìm cách tương tác với dữ liệu
+  Demo: 
+    App.vue:
+      <template>
+        <div id="app">
+          <!-- <CompHeader></CompHeader>
+          <CompHeader /> -->
+          <!-- <comp-header v-bind:titleHeader="title"/> -->
+          <div class="container">
+            <button v-on:click="title = 'Học lập trình Vuejs'">Thay đổi title từ Component App.vue</button>
+            <comp-header v-bind:title="title"/>
+            <list-user v-bind:listUser="listUser"/>
+            <comp-footer v-bind:title="title"/>
+          </div>
+          <!-- <comp-footer/> -->
+        </div>
+      </template>
+    Tại App.vue thì khi nhấn vào buttom thì thực hiện thay đổi title -> Khi đó thì hệ thống phản ứng sẽ hoạt động
+    -> Component Header và Component Footer đều nhận được sự thay đổi đó
+    Phần thực hiện này nó liên quan đến Props Down. Props là dữ liệu của cha truyền vào nên nó truyền xuống tất cả các 
+      component con bên trong có sử dụng -> tự động phản ứng lại, render lại giao diện bất kỳ khi nào component cha(quản
+      lý title) thực hiện thay đổi title.
+  Trong thực tế có thể có nhu cầu phức tạp hơn đó là việc click thay đổi title ở trong Header Component. Trong trường
+    hợp này thì không được phép thay đổi props trực tiếp từ trong component con. Về nguyên tắc thì props được truyền 
+    từ component cha nên chỉ component mới có thể thay đổi
+  Đây là 1 phần rất quan trọng bởi vì khi làm các dự án lớn thì sẽ lồng rất nhiều component lại với nhau, để tương tác giữa
+    các component đó thì phải biết cách Event Up và Props Down
+  Props Down -> Dùng để truyền dữ liệu từ cha vào con -> Thằng con chỉ được dùng thôi chứ không được thay đổi trực tiếp
+    Component nào nắm giữ data thì chỉ có component đó có thể thay đổi thôi. title đang do App.vue nắm giữ nên chỉ App.vue
+      mới có thể thay đổi thôi
+  Event Up -> Truyền thông điệp(sự kiện) để thông báo cho component cha biết là nó muốn thay đổi dữ liệu -> Nhiệm vụ 
+    của component cha là nhận được thông điệp và tiến hành thay đổi data.
+    Việc gửi thông báo đó nó là mình sẽ tạo ra 1 sự kiện
+    -> Phần này liên quan đến Custom Event trong Vuejs
+
+    click -> Là sự kiện có sẵn trong VueJs, để khai báo click thì sử dụng từ khóa v-on:click="changeTitle"
+      -> Phân dã ra làm nhiều thành phần nhỏ:
+        'click' -> Tên của sự kiện
+        'changeTitle' -> Hàm xử lý khi sự kiện được kích hoạt, có nhiều dạng sự kiện khác nhau. Đối với sự kiện click thì
+          nó sẽ được kích hoạt khi người dùng click
+  Tự tạo ra 1 sự kiện mới và tự đặt tên cho sự kiện đó, và định nghĩa khi nào nó được kíck hoạt, ở đây nó được kích hoạt
+    thông qua những đoạn code(các sự kiện có sãn trong Vuejs thì nó được kích hoạt thông qua sự tương tác của người dùng)
+    -> Để kích hoạt được thì dùng từ khóa là $emit -> gọi ở trong component con
+  Khi dùng các sự kiện mặc định như click... thì nó đã truyền sẵn cho mình 1 biến $event, tuy nhiên khi tự tạo ra 1 sự kiện
+    mới thì dữ liệu đó sẽ truyền vào tham số thứ 2 của $emit(); và e này là 1 đối tượng mình tự tạo ra(các sự kiện như
+    click thì là do Javascript tạo)
+  Demo Xóa user: Tạo thêm nút nhấn cho các user có chức năng xóa user
+    Khi click vào nút nhấn delete thì cần phải truyền thông điệp ra ngoài App để nó có thể xóa được 1 phần tử nhất định
+    Trong trường hợp này thì cấp độ nâng cao hơn trường hợp thay đổi title tại vì user không phải được gọi trực tiếp từ App
+      Mà User component lại được gọi từ ListUser component
+    Xét về mô hình truyền event:
+      App -> truyền arrUser vào cho ListUser, tại đây ListUser component sẽ chạy vòng for để render ra từng user -> truyền 
+        vào User component.
+      Như vậy thì tại User component truyền event thông báo ra cho ListUser, bởi vì ListUser không phải component nắm giữ
+        arrUser mà do App component nắm giữ. Do đó ListUser này cũng không được quyền thay đổi arrUser -> Tiếp tục truyền 
+        tiếp event thêm 1 lần nữa ra ngoài App component, công việc truyền này chỉ thực hiện khi nó nhận được thông báo từ
+        User component -> Thực hiện xóa tại App component
+      splice(): Dùng để xóa đi 1 phần tử trong mảng
+        array.splice(index, howmany, item1, ....., itemX)
+          index: Vị trí xóa từ phần tử nào
+          howmany: Xóa bao nhiêu phần tử
+        Trả về danh sách đã xóa 

@@ -4,6 +4,7 @@
             v-for="user in listUser"
             v-bind:key="user.id"
             v-bind:user="user"
+            v-on:deleteUser="deleteUser"
         />
         <!-- <user />
         <user />
@@ -28,10 +29,26 @@ export default {
     },
     components: {
         User
+    },
+    methods: {
+        deleteUser(data) {
+            // console.log('deleteUser ListUser.vue', data);
+            this.$emit('deleteUserEvent', data);
+        }
     }
 }
 </script>
 
 <style>
-
+    .list-user {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between
+    }
+    .list-user .user {
+        padding: 30px;
+        margin-bottom: 30px;
+        border: 1px solid #333;
+        width: calc(25% - 20px)
+    }
 </style>
