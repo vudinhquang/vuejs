@@ -400,3 +400,14 @@ Tìm hiểu Event Up trong Vue:
           index: Vị trí xóa từ phần tử nào
           howmany: Xóa bao nhiêu phần tử
         Trả về danh sách đã xóa 
+
+Sử dụng Ref trong Vue(Reference)
+  Reference là 1 biến dùng để tham chiếu đến các phần tử html mà mình muốn sử dụng nó cho 1 mục đích của Javascript
+  <input type="file"> -> Rất khó để có thể thay đổi được giao diện của nó, nên thông thường ở trong Javascript thuần người
+    ta thường tạo ra 1 bản sao của nó bằng 1 html(buttom) khác dễ code hơn, dễ viết css hơn, dễ làm cho giao diện hơn, khi người ta
+    bắt sự kiện click để có thể chọn 1 file từ máy tính thì người ta sẽ bắt sự kiện click thông qua nút(buttom) nhấn đó, thực ra nút 
+    input type="file" này thực sự đã ẩn bên cạnh rồi
+  Để chọn được avatar thông qua nút mà mình đã tạo bằng html(buttom) thì lúc này sẽ sử dụng Reference
+  handleClickInputFile() có chức năng gọi sự kiện click vào ô input, thay vì người dùng trực click vào nút này thì mình sẽ click nó
+    bằng code, truy cập vào input type="file" thông qua biến toàn cục refs của ô input đó.
+    Do đó lúc này khi click vào buttom thì mình có thể chọn được avatar mặc dù đã ẩn input type="file"
