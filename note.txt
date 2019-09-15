@@ -311,3 +311,9 @@ Tìm hiểu Component và cách tạo trong Vue: Cách xây dựng 1 component m
         components: {
           OtherComponent
         }
+
+Cài đặt mã nguồn và tổ chức Component lồng nhau
+  Khi chia sẻ các source code giữa các máy tính với nhau thì sẽ không chia sẻ tập tin node_modules mà thư mục
+    này chỉ được sinh ra trong nội bộ máy tính của mình mà thôi.
+    npm install -> node_modules
+    public/  -> Đóng gói khi đẩy code lên môi trường Product để cho người dùng sử dụng
