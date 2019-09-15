@@ -317,3 +317,19 @@ Cài đặt mã nguồn và tổ chức Component lồng nhau
     này chỉ được sinh ra trong nội bộ máy tính của mình mà thôi.
     npm install -> node_modules
     public/  -> Đóng gói khi đẩy code lên môi trường Product để cho người dùng sử dụng
+
+Tìm hiểu Props Down trong Vue
+  Keywords: props
+  Cách để truyền dữ liệu giữa các component với nhau
+  props Là những Data, những dữ liệu mà mình sẽ truyền từ component cha vào component con
+    -> Sử dụng cú pháp giống với thuộc tính, thuộc tính này là thuộc tính mà mình tự đặt ra -> Ràng buộc thuộc
+      tính -> Sử dụng chỉ thị v-bind để ràng buộc dữ liệu vào trong thuộc tính này
+  Khi khai báo sử dụng props rồi thì sử dụng nó giống như 1 data thông thường
+  Đối với props khi không quy định gì cả thì có nghĩa là có thể truyền vào hoặc không và khi đó cần phải định 
+    nghĩa dữ liệu mặc định
+  Giả sử không truyền props thì cũng ko
+  Demo: App chứa các thông tin: title, listArray[]
+        title truyền vào cho CompHeader và CompFooter, truyền listUser vào cho ListUser
+          Trong ListUser Component nhận được mảng giá trị ListUser truyền từ App sẽ tiếp duyệt từng user và truyền
+            vào User Component
+    -> Toàn bộ dữ liệu được quản lý ở App Component
