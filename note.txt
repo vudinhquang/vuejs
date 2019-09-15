@@ -287,3 +287,27 @@ Cấu trúc Project và Cấu hình cơ bản Webpack: Cấu hình lại thông 
         name: function(file) {
           return '/images/[contenthash].[ext]';
         }
+
+Tìm hiểu Component và cách tạo trong Vue: Cách xây dựng 1 component mới kết nối các component lại với nhau để tạo ra một 
+  trang web hoàn chỉnh
+  Mỗi component chứa đựng 1 thành phần trong trang web, mỗi component được quản lý bởi 1 file *.vue, do đó thì khi mà mình
+    muốn tạo ra bao nhiêu component thì tạo ra bấy nhiêu file *.vue
+  Cách xây dựng component thì nó sẽ có cấu trúc giống như cấu trúc html
+    App
+      Header 
+      ListProduct
+        Product
+        Product
+        Product
+        Product
+      Footer
+  Mỗi Component có cấu trúc 3 phần
+    template: Để viết mã nguồn html
+    script: export default ra 1 object, object này giống với đối tượng Vue
+    style: Nếu như component có CSS riêng thì sẽ viết ở đây
+  Khi muốn sử dụng 1 component ở trong 1 component khác thì ngoài việc phải import vào thì cần phải đăng ký 
+    trong component mà nó sử dụng
+      Keywords: Single File Components
+        components: {
+          OtherComponent
+        }
