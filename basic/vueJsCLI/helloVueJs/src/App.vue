@@ -79,6 +79,34 @@ export default {
       // console.log('IndexDelete sau khi chạy vòng for', indexDelete);
       // console.log('handleDeleteUser trong App.vue', data);
     }
+  },
+  beforeCreate() {
+    console.log('beforeCreate', this.title, document.querySelector('.container'));
+  },
+  created() {
+    // Gọi API, Call Ajax
+    console.log('created', this.title, document.querySelector('.container'));
+  },
+  beforeMount() {
+    console.log('beforeMount', this.title, document.querySelector('.container'));
+  },
+  mounted() {
+    // Nếu muốn sử dụng jQuery -> chỉ truy xuất DOM được trong mounted() -> có thể sử
+    // dụng được jQuery
+    console.log('mounted', this.title, document.querySelector('.container').classList);
+  },
+  beforeUpdate() {
+    console.log('beforeUpdate', this.title);
+  },
+  updated() {
+    console.log('updated', this.title);
+  },
+  beforeDestroy() {
+    console.log('beforeDestroy');
+  },
+  destroyed() {
+    // Thường dùng để destroy các thư viện của bên thứ 3
+    console.log('destroyed');
   }
 }
 </script>

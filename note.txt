@@ -428,3 +428,30 @@ Tìm hiểu Slot và bài tập ứng dụng: Cách sử dụng slot trong VueJs
       đang show tab nào
     Xử lý sự kiện click, khi click vào tab nào thì sẽ hiển thị tab tương ứng
     Khi tab nào được active thì tab đó có thêm class là active -> dàng buộc dữ liệu vào class
+  
+Tìm hiểu về Life Cycle: Vòng đời của 1 đối tượng Vue kể từ khi nó được khởi tạo cho đến khi nó được remove khỏi cấu trúc DOM
+  https://vuejs.org/v2/guide/instance.html#Lifecycle-Diagram
+  VueJs đã tạo sẵn 1 số function như: beforeCreate(), created(), beforeMount(), mounted(), beforeUpdate(), updated(), 
+    beforeDestroy(), destroyed()
+  Các function này VueJs tạo sẵn cho ta chèn vào giữa quá trình hoạt động của nó để có thể sinh ra các mã code trong đó xen
+    giữa vào quá trình hoạt động từ trên xuống dưới của 1 đối tượng Vue
+  Thứ tự run của các hàm này:
+    beforeCreate() -> created() -> beforeMount() -> mounted
+  beforeCreate(): Được chạy khi đối tượng Vue được khởi tạo và bắt đầu khởi tạo ra được vòng đời, Trước khi hệ thống phản
+    ứng hoạt động
+    Do đó tại function này thì khi truy xuất vào các data của component thì sẽ trả về là undefined bởi vì ngay tại thời điểm
+      đó đối tượng Vue chưa xây dựng hệ thống phản ứng mà kể từ hàm created() trở đi thì có thể truy xuất được vào tất cả các
+      data của component
+  created(): Khi đối tượng Vue đã xây dựng xong hệ thống phản ứng, lúc đó toàn bộ dữ liệu có thể truy xuất được rồi thì sẽ
+    thực thi hàm created()
+    Là nơi thường truyền các đoạn code như gọi API, Call Ajax để lấy dữ liệu từ server về
+  Việc compile(biên dịch) template html ra cấu trúc DOM, cho đến hàm mounted() thì toàn bộ cấu trúc DOM mới hiển thị ra Html
+    Do đó thì cho đến đi vào hàm mounted() thì mới có thể truy xuất được vào cấu trúc DOM
+    Do đó thì chỉ trong hàm mounted() trở đi mình mới có thể dùng các thư viện liên quan đến jQuery, Javascript thông thường
+      để truy xuất DOM để thực hiện hành động nào đó tương tác với cấu trúc DOM
+  beforeDestroy() và destroyed() được chạy khi đối tượng Vue bị hủy bỏ
+  beforeUpdate() và updated() được chạy khi có bất kỳ 1 sự thay đổi nào đó về dữ liệu. Hàm beforeUpdate() được chạy trước, rồi
+    sau đó mới chạy updated()
+    Được dùng để bắt việc có sự thay đổi dữ liệu, có thể ứng dụng viết sử lý cho việc sau khi thay đổi dữ liệu xong thì 
+    sẽ làm gì tiếp...
+  -> Hàm hay được sử dụng đó là created() và mounted()
