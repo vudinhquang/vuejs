@@ -411,3 +411,20 @@ Sử dụng Ref trong Vue(Reference)
   handleClickInputFile() có chức năng gọi sự kiện click vào ô input, thay vì người dùng trực click vào nút này thì mình sẽ click nó
     bằng code, truy cập vào input type="file" thông qua biến toàn cục refs của ô input đó.
     Do đó lúc này khi click vào buttom thì mình có thể chọn được avatar mặc dù đã ẩn input type="file"
+
+Tìm hiểu Slot và bài tập ứng dụng: Cách sử dụng slot trong VueJs thông qua các ứng dụng thực tế
+  Đối với props thì nó chỉ truyền vào cho component con những giá trị với kiểu dữ liệu cơ bản như string, number, array, object
+  Khi muốn truyền 1 cấu trúc html vào cho component con thì việc này Slot có thể làm được
+  Slot được sử dụng trong trường hợp mình muốn kế thừa 1 phần nào đó của component
+  Demo: Ứng dụng các slot trong thực tế dùng để kế thừa lại và tăng tính sử dụng lại của 1 component
+    Xây dựng 1 component để hiện thực 1 tab, phía trên là tiêu đề của tab nhận string của component cha truyền vào và 1 
+      icon -> tiêu đề này thì có thể dùng props để truyền dữ liệu từ component cha sang component con
+      Trong component con thì nội dung được kế thừa từ component cha được đặt ở vị trí của cặp thẻ <slot></slot>
+    Phần dưới là phần dành cho tab gồm có danh sách nhiều tab, phía dưới là nội dung của tab đó. Khi click vào tab nào thì nội
+      dung của tab đó sẽ được hiển thị
+    Icon: ionicons
+      https://ionicons.com/usage
+    Tùy vào trường hợp mà sẽ hiển thị lên nội dung của tab tương ứng -> do đó cần có 1 biến nào đó để nhận diện hiện tại nó
+      đang show tab nào
+    Xử lý sự kiện click, khi click vào tab nào thì sẽ hiển thị tab tương ứng
+    Khi tab nào được active thì tab đó có thêm class là active -> dàng buộc dữ liệu vào class
