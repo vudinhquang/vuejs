@@ -455,3 +455,36 @@ Tìm hiểu về Life Cycle: Vòng đời của 1 đối tượng Vue kể từ 
     Được dùng để bắt việc có sự thay đổi dữ liệu, có thể ứng dụng viết sử lý cho việc sau khi thay đổi dữ liệu xong thì 
     sẽ làm gì tiếp...
   -> Hàm hay được sử dụng đó là created() và mounted()
+
+========================================== Xây dựng Game đổ xúc xắc ==========================================
+
+Phân tích kĩ thuật và dữ liệu
+  <div class="spinner dice-3"> Dùng để thay đổi xúc xắc bằng cách thay đổi số, đối với vấn đề này thì có thể sử dụng việc dàng
+    buộc class trong VueJs -> Ramdom ra 1 con số rồi truyền vào class trên dice-*
+  Active: Khi đến lượt người nào chơi thì người đó sẽ được active(được thêm class là active), đến khi có 1 người nào chiến thắng
+    thì class active sẽ được thay bằng class winner và tên người chơi cũng được sửa lại là Winner
+  Các hành động: Có các hành động đó là new game, rolldice, hold
+  Các dữ liệu cần lưu: Lưu thông tin điểm chính thức, điểm tạm thời. Điểm tạm thời là điểm được cộng dồn mỗi lần người dùng đó
+    xoay xúc xắc. Khi người dùng nhấn vào nút lấy điểm(hold) thì lúc đó điểm tạm thời đó mới được cộng vào trong điểm chính thức.
+    Khi xoay xúc xắc thì phải có các con số để đại diện cho nó.
+    Ngoài ra thì cần phải bắt thêm 1 sự kiện nữa đó là khi nào thì người ta bắt đầu chơi -> cần có 1 biến để nhận diện, khi chưa 
+      click vào nút New Game thì có giá trị false và click vào nút New Game thì có giá trị là true
+    Nhận diện xem người đã đã bắt bắt đầu chơi hay chưa(khi fresh lại trang là chưa bắt đầu chơi), nếu chưa bắt đầu chơi thì cần 
+      hiện thị ra câu thông báo đó là "Vui lòng nhấn New Game"
+    Khi nhấn vào New Game thì cho hiện lên modal(popup) để hiển thị luật chơi -> cần có 1 biến để nhận diện khi nào thì popup này được 
+      hiển thị
+    Phải nhận diện được ai là người đang chơi activePlayer khi có giá trị 1 thì có nghĩa là người thứ nhất đang chơi, có giá trị 2 có
+      nghĩa là người thứ 2 đnag chơi
+    -> Các dữ liệu: score, currentScore, dice1, dice2, isPlaying, activePlayer
+  Khi nhấn vào nút New Game:
+    1. Show popup
+    2. Reset lại Data
+    3. Xây dựng popup
+  Khi click vào nút Roll Dice để xoay xúc xắc
+    1. Random dữ liệu 2 con xúc xắc
+    2. Kiểm tra xem người dùng có quay trúng con số 1 hay không?
+      Nếu xoay chúng số 1 -> đổi lượt chơi -> Reset điểm tạm thời
+      Nếu xoay ok -> Cộng dồn vào điểm tạm thời cho người chơi đó  
+  Hold -> lấy Điểm
+    So sánh xem điểm cuối cùng có lơn hơn FinalScore hay không? nếu lớn hơn thì người đó chiến thắng
+    Chưa đủ điểm -> Cộng dồn điểm chính thức -> Đổi lượt chơi
