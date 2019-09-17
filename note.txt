@@ -488,3 +488,32 @@ Phân tích kĩ thuật và dữ liệu
   Hold -> lấy Điểm
     So sánh xem điểm cuối cùng có lơn hơn FinalScore hay không? nếu lớn hơn thì người đó chiến thắng
     Chưa đủ điểm -> Cộng dồn điểm chính thức -> Đổi lượt chơi
+
+Tích hợp giao diện vào Vue
+  Từ thư mục gốc ban đầu đó là HelloVueJs tạo thêm folder mới đó là DiceGame_Vue
+  Gõ lệnh npm install để cài đặt các gói hỗ trợ
+  npm run dev
+  Xóa đi các component không cần thiết mà ban đầu mình đã copy từ HelloVueJs
+  Khi tích hợp giao diện vào Vue thì các hình ảnh mình sẽ lưu vào trong thư mục assets và assets này được tính
+    từ public
+    output: {
+      path: path.resolve(__dirname, './public'),
+      publicPath: '/public/',
+      filename: 'build.js'
+    },
+    {
+      test: /\.(png|jpg|gif|svg)$/,
+      loader: 'file-loader',
+      options: {
+        // name: '[name].[ext]?[hash]'
+        name: function(file) {
+          return 'assets/[name].[ext]?[hash]';
+        }
+      }
+    }
+    -> Định dạng url cho các file hình ảnh url('/public/assets/back.jpg');
+    Các tấm hình này thì minhf sử dụng luôn nên ko cần để trong thư mục src/assets, các tấm hình ở trong src/assets
+      thường sẽ là import hoặc là khai báo trực tiếp ở trong html. 
+    Khi gõ lệnh npm run build thì các tài nguyên js và các tài nguyên nằm trong public/assets do đó trong phần CSS
+      trong App.vue cần trỏ đến public/assets bởi vì đoạn CSS này khi hiển thị lên Vue thì sẽ được khai báo trong thẻ
+      style của index
