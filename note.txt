@@ -517,3 +517,9 @@ Tích hợp giao diện vào Vue
     Khi gõ lệnh npm run build thì các tài nguyên js và các tài nguyên nằm trong public/assets do đó trong phần CSS
       trong App.vue cần trỏ đến public/assets bởi vì đoạn CSS này khi hiển thị lên Vue thì sẽ được khai báo trong thẻ
       style của index
+
+Xây dựng các Component cần thiết: 
+  Tiến hành tách ra thành các component nhỏ hơn: Người chơi, các nút control, cục xúc xắc
+  Khi tiến hành tách components thì cũng tiến hành tách luôn CSS
+  Players Component: Trong trường hợp này thì chỉ có 2 player nên ko cần tách ra thành các player components, trong 
+    trường hợp có 1 danh sách các players thì nên tách
