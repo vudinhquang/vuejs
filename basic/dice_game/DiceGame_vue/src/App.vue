@@ -8,10 +8,18 @@
                 v-bind:scoresPlayer="scoresPlayer"
             />
 
-            <controls />
+            <controls 
+                v-on:handleNewGame="handleNewGame"
+            />
             
-            <dices />
+            <dices 
+                v-bind:dices="dices"
+            />
 
+            <popup-rule 
+                v-on:handleConfirm="handleConfirm"
+                v-bind:isOpenPopup="isOpenPopup"
+            />
         </div>
 	</div>
 </template>
@@ -20,21 +28,41 @@
 import Players from './components/Players';
 import Controls from './components/Controls';
 import Dices from './components/Dices';
+import PopupRule from './components/PopupRule';
 export default {
 	name: 'app',
 	data () {
 		return {
             isPlaying: false,
+            isOpenPopup: false,
             activePlayer: 0, // Để nhận diện xem ai là người chơi hiện tại
             scoresPlayer: [10, 20],
+            dices: [2, 5],
             currentScore: 30
 		}
 	},
 	components: {
         Players,
         Controls,
-        Dices
-	}
+        Dices,
+        PopupRule
+    },
+    methods: {
+        handleConfirm() {
+            console.log('handleConfirm App.vue');
+            this.isPlaying = true;
+            this.isOpenPopup = false;
+            this.activePlayer = 0;
+            this.dices = [1, 1];
+            this.scoresPlayer = [0, 0];
+            this.currentScore = 0;
+        },
+        handleNewGame() {
+            console.log('handleNewGame App.vue');
+            // Hiển thị Popup -> show luật chơi
+            this.isOpenPopup = true;
+        }
+    }
 }
 </script>
 

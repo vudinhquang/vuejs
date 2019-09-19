@@ -537,3 +537,20 @@ Xây dựng Logic dữ liệu cơ bản
     v-bind:class Khi dàng buộc dữ liệu vào trong class thì truyền vào 1 Object, key là tên class, value là điều kiện để 
       xảy ra class đó
     isPlaying: Kiểm tra xem có đang chơi game hay không
+
+Chức năng New Game:
+  Button New Game thì được đặt trong Control Component, tuy nhiên thì về việc xử lý thì phải xử lý trong App Component
+   -> Áp dụng việc truyền dữ liệu từ Component con ra Component cha
+  Hiển thị Popup để show luật chơi
+  Kết hợp CSS3 với VueJS để xây dựng hiệu ứng - Zoom in - Zoom out -> Sử dụng hiệu ứng transform là scale
+    Khi ở trạng thái đầu sẽ Zoom to popup, khi bật popup lên thì sẽ Zoom nhỏ lại, dùng transition để tạo hiệu ứng thay 
+      đổi dần dần
+  open-popup: Khi nó có class này thì popup được hiển thị lên và chạy hiệu ứng, để kết hợp với VueJs thì chỉ cần dàng 
+    buộc class vào là được
+  isOpenPopup: Xác định là khi nào thì sẽ hiển thị popup
+    Popup được hiển thị khi người dùng click vào nút New Game. Khi click vào nút New Game thì đầu tiên Control.vue được chạy
+      sau đó nó sẽ gọi hàm handleNewGame trong App.vue, tại đây thực hiện thay đổi isOpenPopup = true
+    Khi click vào nút Đã hiểu nằm trên Popup thì sẽ bắt đầu cuộc chơi, Khi click vào nút Đã hiểu thì có nghĩa là người chơi
+      đã đọc luật chơi rồi -> ẩn popup đi và Reset lại các thông tin đồng thời các con xúc xắc cũng reset về con số 1
+  Đối với class trong VueJs thì có thể truyền vào 1 chuỗi cũng được:
+    <div class="spinner" v-bind:class="'dice-1'">

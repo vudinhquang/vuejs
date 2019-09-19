@@ -1,6 +1,8 @@
 <template>
     <div class="wrapper-controls">
-        <button class="control btn-new"><i class="ion-ios-plus-outline"></i>New game</button>
+        <button 
+            v-on:click="newGame"
+            class="control btn-new"><i class="ion-ios-plus-outline"></i>New game</button>
         <button class="control btn-roll"><i class="ion-ios-loop"></i>Roll dice</button>
         <button class="control btn-hold"><i class="ion-ios-download-outline"></i>Hold</button>
         
@@ -14,6 +16,13 @@ export default {
     data() {
         return {
 
+        }
+    },
+    methods: {
+        newGame() {
+            console.log('New Game Control.vue');
+            // Kích hoạt sự kiện handleNewGame của App truyền vào
+            this.$emit('handleNewGame');
         }
     }
 }
