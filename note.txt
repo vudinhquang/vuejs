@@ -523,3 +523,17 @@ Xây dựng các Component cần thiết:
   Khi tiến hành tách components thì cũng tiến hành tách luôn CSS
   Players Component: Trong trường hợp này thì chỉ có 2 player nên ko cần tách ra thành các player components, trong 
     trường hợp có 1 danh sách các players thì nên tách
+
+Xây dựng Logic dữ liệu cơ bản
+  Các thông tin cần lưu: 
+    Điểm của người chơi: Có 2 người chơi nên có thể lưu vào 1 mảng có 2 phần tử tương ứng với điểm của từng người chơi
+      -> Truyền điểm vào Players Component thông qua props
+    Điểm tạm thời: Điểm tạm thời này có sự luân phiên qua lại với nhau, khi lượt chơi thuộc về người nào thì người đó
+      có điểm tạm thời, lúc này điểm tạm thời của người kia bằng 0 -> Không cần lưu bằng mảng mà có thể lưu bằng 1 biến
+      đơn
+    activePlayer: Dùng để nhận diện ai là người chơi hiện tại, người nào đang chơi thì người đó được active
+      0: Người thứ nhất là người chơi hiện tại
+      1: Người thứ 2 là người chơi hiện tại
+    v-bind:class Khi dàng buộc dữ liệu vào trong class thì truyền vào 1 Object, key là tên class, value là điều kiện để 
+      xảy ra class đó
+    isPlaying: Kiểm tra xem có đang chơi game hay không

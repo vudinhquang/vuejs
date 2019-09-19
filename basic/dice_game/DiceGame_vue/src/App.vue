@@ -2,7 +2,11 @@
 	<div id="app">
         <div class="wrapper clearfix">
 
-            <players />
+            <players 
+                v-bind:activePlayer="activePlayer"
+                v-bind:currentScore="currentScore"
+                v-bind:scoresPlayer="scoresPlayer"
+            />
 
             <controls />
             
@@ -20,7 +24,10 @@ export default {
 	name: 'app',
 	data () {
 		return {
-
+            isPlaying: false,
+            activePlayer: 0, // Để nhận diện xem ai là người chơi hiện tại
+            scoresPlayer: [10, 20],
+            currentScore: 30
 		}
 	},
 	components: {
