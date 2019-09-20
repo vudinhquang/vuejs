@@ -11,19 +11,36 @@
             v-on:click="$emit('handleHoldScore')"
             class="control btn-hold"><i class="ion-ios-download-outline"></i>Hold</button>
         
-        <input type="number" placeholder="Final score" class="final-score">
+        <!-- <input 
+            v-model="valueDemo"
+            type="number" placeholder="Final score" class="final-score"> -->
+        <input 
+            v-bind:disabled="isPlaying"
+            v-bind:value="finalScore"
+            v-on:change="$emit('handleChangeFinalScore', $event)"
+            type="number" placeholder="Final score" class="final-score">
     </div>
 </template>
 
 <script>
 export default {
     name: 'controls',
+    props: {
+        finalScore: {
+            type: [Number, String],
+            default: 100
+        },
+        isPlaying: { type: Boolean, default: false }
+    },
     data() {
         return {
-
+            valueDemo: 100
         }
     },
     methods: {
+        // handleInput(e) {
+        //     this.valueDemo = e.target.value;
+        // },
         newGame() {
             console.log('New Game Control.vue');
             // Kích hoạt sự kiện handleNewGame của App truyền vào

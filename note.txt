@@ -578,3 +578,40 @@ Xây dựng chức năng Hold Score: Chức năng lấy điểm
     Keywords: Caveats
     -> Clone lại dữ liệu(spread operator)
   Khi đã cộng dồn xong thì cần phải đổi lượt chơi
+
+Kiểm tra thắng cuộc:
+  Việc đầu tiên là phải thu thập dữ liệu từ người dùng nhập vào trong ô input là Final Score, ai đạt được điểm này thì người đó
+    là người chiến thắng
+  Dùng đến việc ràng buộc dữ liệu 2 chiều
+    Có 2 loại dàng buộc:
+      1. Ràng buộc dữ liệu(thường dùng trong các thuộc tính html) -> v-bind. Ở đây thì mình chỉ ràng buộc ở bước đầu tiên thôi, khi
+        load lại trang hoặc là khi nó Render html ra thì giá trị trong data sẽ được gán vào trong value và sau đó nếu như mà có bất
+        kỳ sự thay đổi nào liên quan đến dữ liệu thì nó không có gán trực tiếp vào biến trong data
+        -> Chỉ có 1 chiều từ data -> input thôi chứ ko có chiều ngược lại 
+      2. Ràng buộc dữ liệu 2 chiều -> v-model
+        1 chiều từ data -> input
+        1 chiều từ input -> data
+      Nếu như nó không phải là data trực tiếp của Component Controls -> Nó không được phép thay đổi
+  Các dữ liệu mà mình thu thập từ 1 ô input thì nó đều ở dạng chuỗi(string)
+  Về nguyên tắc thì props không được phép thay đổi trực tiếp ở trong Component con
+  Thay thế v-model bằng v-bind kết hợp với v-on mà trong đó sự kiện ở v-on sẽ thực hiện việc thay đổi giá trị của data
+    -> Sự kiện lắng nghe sự thay đổi dữ liệu
+      v-on:input="$emit('handleChangeFinalScore', $event)"
+      v-on:change="$emit('handleChangeFinalScore', $event)"
+  Sau khi tiến hành việc truyền sự kiện thành công từ Component Control sang Component App thì tiến hành lấy dữ liệu Final Score 
+    để gán vào cho data. Ở đây thì tất cả các dữ liệu lấy ở trong ô input ra đều là dạng chuỗi do đó cần phải ép kiểu về dạng số
+    trước khi gán cho Final Score.
+    Khi tiến hành ép kiểu 1 dạng chuỗi sang số mà bản chất nó ko phải là số thì nó sẽ ra giá trị NaN
+  Warning: Invalid prop: type check failed for prop "finalScore". Expected Number with value 0, got String with value ""
+    Đối với kiểu dữ liệu của 1 props mình truyền vào mình có quyền khai báo thành nhiều kiểu dữ liệu, thay vì nó là 1 kiểu giá trị
+      thì mình có quyền khai báo là 1 mảng
+  Khi click vào nút New Game để tiến hành chơi thì không cho người chơi sửa Final Score nữa
+  Cuối cùng là tiến hành kiểm tra người chơi nào là người thắng cuộc thông qua việc so sánh điểm chính thức của họ với điểm Final
+    Score mà mình đã thiết lập, khi có 1 người chiến thắng thì sẽ thay thế class active của người đó bằng class là winner đồng thời
+    thay tên người trời thành WINNER -> sử dụng computed
+  computed -> function đó sẽ tự động được chạy bất kể khi nào mà dữ liệu bên trong đó có sự thay đổi
+  Dựa vào giá trị activePlayer thì có thể biết được ai là người chiến thắng ở thời điểm đó
+  Khi có người chiến thắng thì dừng cuộc chơi
+  Khi cộng điểm vào cho mỗi người chơi thì cần phải xác định xem có ai là người thắng cuộc hay không? Nếu có thì dừng cuộc chơi và
+    không chơi được nữa nếu ko thì chuyển người chơi
+  Khi khi có người chiến thắng thì bỏ class="active" của người đó đi và thay vào là class="winner" cho người chơi đó

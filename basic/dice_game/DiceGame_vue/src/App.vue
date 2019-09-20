@@ -3,12 +3,16 @@
         <div class="wrapper clearfix">
 
             <players 
+                v-bind:isWinner="isWinner"
                 v-bind:activePlayer="activePlayer"
                 v-bind:currentScore="currentScore"
                 v-bind:scoresPlayer="scoresPlayer"
             />
 
             <controls
+                v-bind:isPlaying="isPlaying"
+                v-bind:finalScore="finalScore"
+                v-on:handleChangeFinalScore="handleChangeFinalScore"
                 v-on:handleHoldScore="handleHoldScore"
                 v-on:handleNewGame="handleNewGame"
                 v-on:handleRollDice="handleRollDice"
@@ -38,9 +42,10 @@ export default {
             isPlaying: false,
             isOpenPopup: false,
             activePlayer: 0, // Để nhận diện xem ai là người chơi hiện tại
-            scoresPlayer: [10, 20],
+            scoresPlayer: [0, 0],
             dices: [2, 5],
-            currentScore: 30
+            currentScore: 0,
+            finalScore: 10
 		}
 	},
 	components: {
@@ -49,7 +54,28 @@ export default {
         Dices,
         PopupRule
     },
+    computed: {
+        isWinner() {
+            let { scoresPlayer, finalScore } = this;
+
+            if (scoresPlayer[0] >= finalScore || scoresPlayer[1] >= finalScore) {
+                // Dừng cuộc chơi
+                this.isPlaying = false;
+                return true;
+            }
+
+            return false;
+        }
+    },
     methods: {
+        handleChangeFinalScore(e) {
+            var number = parseInt(e.target.value);
+            if (isNaN(number)) {
+                this.finalScore = '';
+            } else {
+                this.finalScore = number;
+            }
+        },
         handleHoldScore() {
             if (this.isPlaying) {
                 // console.log('handleHoldScore App.vue');
@@ -62,7 +88,9 @@ export default {
                 // this.scoresPlayer = cloneScorePlayer;
 
                 this.$set(this.scoresPlayer, activePlayer, scoreOld + currentScore);
-                this.nextPlayer();
+                if (!this.isWinner) {
+                    this.nextPlayer();
+                }
             } else {
                 alert('Vui lòng nhấn vào nút NewGame');
             }
