@@ -10,6 +10,7 @@
 
             <controls 
                 v-on:handleNewGame="handleNewGame"
+                v-on:handleRollDice="handleRollDice"
             />
             
             <dices 
@@ -48,6 +49,37 @@ export default {
         PopupRule
     },
     methods: {
+        nextPlayer() {
+            // scoresPlayer = 0 -> Đổi lại thành 1 và người lại
+            this.activePlayer = this.activePlayer === 0 ? 1 : 0;
+            this.currentScore = 0;
+
+        },
+        handleRollDice() {
+            console.log('handleRollDice App.vue');
+            if (this.isPlaying) {
+                // Xoay xúc xắc
+                // Math.random():0 -> 1( 0 < x < 1)
+                var dice1 = Math.ceil(Math.random() * 6);
+                var dice2 = Math.ceil(Math.random() * 6);
+                this.dices = [dice1, dice2];
+                console.log(dice1, dice2);
+                if (dice1 === 1 || dice2 === 1) {
+                    // Đổi lượt chơi
+                    // Reset điểm tạm thời về 0
+                    // let activePlayer = this.activePlayer;
+                    setTimeout(() => {
+                        alert(`Người chơi Player ${this.activePlayer + 1} đã quay trúng số 1. Rất tiếc`)
+                    }, 10);
+                    this.nextPlayer();
+                } else {
+                    // Cộng dồn vào điểm tạm thời cho người đang chơi
+                    this.currentScore = this.currentScore + dice1 + dice2;
+                }
+            } else {
+                alert('Vui lòng nhấn vào nút NewGame');
+            }
+        },
         handleConfirm() {
             console.log('handleConfirm App.vue');
             this.isPlaying = true;

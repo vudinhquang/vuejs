@@ -554,3 +554,14 @@ Chức năng New Game:
       đã đọc luật chơi rồi -> ẩn popup đi và Reset lại các thông tin đồng thời các con xúc xắc cũng reset về con số 1
   Đối với class trong VueJs thì có thể truyền vào 1 chuỗi cũng được:
     <div class="spinner" v-bind:class="'dice-1'">
+
+Xây dựng chức năng Roll Dice: Chức năng xoay xúc xắc
+  TH1: Khi người dùng chưa nhấn vào nút New Game mà nhấn vào nút RollDice
+  TH2: Khi người dùng đã nhấn vào nút New Game
+  -> Kiểm tra giá trị của biến isPlaying nếu là false tức là người ta chưa bắt đầu chơi, nếu là true thì mới chơi
+  Mỗi con xúc xắc có giá trị từ 1 -> 6 do đó dùng hàm Math.random() để random dữ liệu rồi gán vào cho mảng dices
+  Sau mỗi lần quay xúc xắc mà người chơi quay đúng phải 1 hoặc 2 con xúc xắc có giá trị là 1 thì dừng người chơi của người đó và 
+    chuyển lượt chơi qua người còn lại và đồng thời điểm tạm thời của người chơi đó cũng phải Reset về 0 không thì thì tiến hành 
+    cộng dồn điểm vào điểm tạm thời của người chơi đó
+  Khi hiển thị ra thông báo người dùng đã quay trúng vào số 1 thì các con sắc phải được đảo xoay và chuyển đổi người chơi rồi
+    -> setTimeout()
