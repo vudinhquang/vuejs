@@ -565,3 +565,16 @@ Xây dựng chức năng Roll Dice: Chức năng xoay xúc xắc
     cộng dồn điểm vào điểm tạm thời của người chơi đó
   Khi hiển thị ra thông báo người dùng đã quay trúng vào số 1 thì các con sắc phải được đảo xoay và chuyển đổi người chơi rồi
     -> setTimeout()
+
+Xây dựng chức năng Hold Score: Chức năng lấy điểm
+  Xét về mặt luật chơi thì người dùng có thể lấy điểm bất kỳ lúc nào sau khi mà xoay xúc xắc xong
+  Kiểm tra xem ai là chơi hiện tại để cộng điểm tạm thời vào điểm chơi chính thức cho người đó
+  activePlayer có giá trị là 0 và 1
+  scorePlayer là 1 mảng lưu điểm của 2 phần tử -> có thể dùng trực tiếp activePlayer làm chỉ số để lưu điểm tương ứng của player
+    đang chơi, nếu thực hiện theo kiểu gán thông thường this.scoresPlayer[this.activePlayer] += this.currentScore; thì giao diện
+    nó không phản ứng lại cho mình
+  Lưu ý: Khi tuownng tác vơi Array và Object thì cần phải cẩn thận ko nên thay đổi trực tiếp 1 phần tử nào đó của Array mà thay 
+    đổi lại luôn địa chỉ của mảng bằng cách tạo lại 1 array mới hoàn toàn và Coppy dữ liệu từ Array cũ
+    Keywords: Caveats
+    -> Clone lại dữ liệu(spread operator)
+  Khi đã cộng dồn xong thì cần phải đổi lượt chơi

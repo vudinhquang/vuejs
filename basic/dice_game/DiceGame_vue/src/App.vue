@@ -8,7 +8,8 @@
                 v-bind:scoresPlayer="scoresPlayer"
             />
 
-            <controls 
+            <controls
+                v-on:handleHoldScore="handleHoldScore"
                 v-on:handleNewGame="handleNewGame"
                 v-on:handleRollDice="handleRollDice"
             />
@@ -49,6 +50,23 @@ export default {
         PopupRule
     },
     methods: {
+        handleHoldScore() {
+            if (this.isPlaying) {
+                // console.log('handleHoldScore App.vue');
+                // activePlayer = 0 -> Người chơi 1 đang chơi
+                // activePlayer = 1 -> Người chơi 2 đang chơi
+                let { scoresPlayer, activePlayer, currentScore } = this;
+                let scoreOld = scoresPlayer[activePlayer];
+                // let cloneScorePlayer = [...scoresPlayer];
+                //     cloneScorePlayer[activePlayer] = scoreOld + currentScore;
+                // this.scoresPlayer = cloneScorePlayer;
+
+                this.$set(this.scoresPlayer, activePlayer, scoreOld + currentScore);
+                this.nextPlayer();
+            } else {
+                alert('Vui lòng nhấn vào nút NewGame');
+            }
+        },
         nextPlayer() {
             // scoresPlayer = 0 -> Đổi lại thành 1 và người lại
             this.activePlayer = this.activePlayer === 0 ? 1 : 0;
