@@ -678,3 +678,15 @@ Tích hợp giao diện và phân chia Component
     Không phải là chỉ các phần tử liên quan đến Javascript thì mới được dùng các Component BootstrapVue mà các phần tử bình thường cũng có thể
       dùng được như row, col...
       Keywords: Grid system
+  3. Component: Tách Component App ra thành nhiều Component nhỏ hơn
+    Tất cả các Component mình tạo ra thì khi đặt tên nên đặt từ 2 từ trở lên.
+      Ví dụ như Component cho 1 phần là title thì ko nên đặt đơn là Title vì nó dễ bị trùng với 1 từ khóa/thẻ khác trong html
+        -> Nên đặt từ 2 từ trở lên
+    TodoListTable.vue
+      https://getbootstrap.com/docs/4.3/migration/#panels
+      panel là 1 class của Bootstrap 3 sang Bootstrap 4 nó được chuyển đổi thành card
+    <div class="container"> Thay thế bằng b-container
+    <div class="row"> 
+      Thay thế bằng b-row
+    <div class="col-12 col-lg-6">
+      Thay thế bằng <b-col cols="12" lg="6">
