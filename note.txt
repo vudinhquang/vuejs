@@ -663,3 +663,18 @@ Tích hợp giao diện và phân chia Component
       Đối với các ứng dụng Single Application thì khi khai báo jQuery trong các file html rất nguy hiểm, có lúc chạy bị sai vì nó liên quan 
         đến thứ tự load Component. Trong trường hợp script jquery được load trước, sau đó Component mới được sinh ra -> dẫn đến vấn đề động
         độ về time -> Hạn chế sử dụng jquery theo kiểu khai báo script
+  2. Bootstrap Vue
+    Tổ chức lại cấu trúc thư mục.
+    Trong các dự án thực tế thì phải khai báo nhiều plugin do đó mình nên tách ra thành 1 thư mục khác cho dễ quản lý
+      -> Tạo thêm thư mục mới là plugins
+    Mô hình quản lý:
+      main.js -> import file index.js, file index.js này nằm trong thư mục là plugins. File main chỉ cần quản lý 1 mình file  này
+      index.js -> Gọi toàn bộ các plugin khác bên ngoài
+      bootstrap.js -> import các thư viện liên quan đến bootstrap
+    Tính năng Sort by, mình khai báo nó là dropdown, để dropdown này chạy được thì nó có sự cam thiệp của Javascript hay nói cách khác là mình
+      phải import jQuery vào thì nó mới chạy
+      Do đó những Component nào liên quan đến bootstrap mà có sử dụng, có ứng dụng tới Javascript thì cần sử dụng các Component được tạo sẵn
+        của BootstrapVue
+    Không phải là chỉ các phần tử liên quan đến Javascript thì mới được dùng các Component BootstrapVue mà các phần tử bình thường cũng có thể
+      dùng được như row, col...
+      Keywords: Grid system
