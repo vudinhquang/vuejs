@@ -615,3 +615,51 @@ Kiểm tra thắng cuộc:
   Khi cộng điểm vào cho mỗi người chơi thì cần phải xác định xem có ai là người thắng cuộc hay không? Nếu có thì dừng cuộc chơi và
     không chơi được nữa nếu ko thì chuyển người chơi
   Khi khi có người chiến thắng thì bỏ class="active" của người đó đi và thay vào là class="winner" cho người chơi đó
+
+========================================== Xây dựng Project Todolist =========================================
+
+Chức năng là quản lý các công việc cần phải làm hằng ngày theo mức độ ưu tiên
+Có các chức năng cơ bản như thêm, sửa, xóa, tìm kiếm, sắp xếp, Clear từ khóa tìm kiếm
+
+Tích hợp giao diện và phân chia Component
+  Sử dụng thư mục gốc là HelloVueJs rồi chạy câu lệnh npm install để cài đặt các gói thư viện rồi chạy câu lệnh npm run
+    dev để chạy server ảo. Trong trường hợp này thay vì dùng câu lệnh npm install thì mình có thể dùng câu lệnh yarn install.
+    Để có thể dùng câu lệnh này thì trước tiên mình có thể cài đặt bằng câu lệnh npm install -g yarn
+    Nếu dùng yarn install thì quá trình cài đặt sẽ được tiến hành nhan hơn bởi vì nó được cài đặt dựa trên cơ chế song song
+    còn npm install thì dựa trên cơ chế tuần tự
+  1. Tích hợp giao diện Bootstrap
+    Khi thực hiện các dự án theo kiểu Single Application thì không nên import các thư viện thô kiểu như: 	<link rel="stylesheet" href="css/bootstrap.min.css">
+      mà thay vào đó là sử dụng node_modules để sau này khi build sản phẩm cuối cùng nó sẽ đóng gói lại cho mình 1 mã nguồn tốt hơn
+    Ngoài ra thì có sử dụng jQuery <script src="js/jquery.min.js"></script> nên đây cũng là 1 lý do mình không nên import trực tiếp 
+      tại vì cơ chế render của Single Application khác với cơ chế thông thường. Khi mình mở 1 web tĩnh, khi tải lên thì toàn bộ html
+      đã được tải lên xong rồi. Còn đối với Single Application thì mình khai báo theo hướng Component cho nên sẽ có lúc các Component
+      chưa load kịp cho nên sẽ có trường hợp các jQuery mình sử dụng sẽ bị lỗi cho nên phần Bootstrap 4 mình sẽ import thông qua npm
+      chứ không dùng các câu lệnh script trong html
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <script src="js/jquery.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+    Keywords: Bootstrap vue
+    Site: https://bootstrap-vue.js.org/
+      -> Using module bundlers
+      yarn add vue bootstrap-vue bootstrap: Để cài đặt các các phiên bản mới nhất của Vue.js, BootstrapVue and Bootstrap v4:
+        bootstrap: Tải về các file css hỗ trợ về mặt giao diện
+        bootstrap-vue: Tạo sẵn cho mình các Component theo kiểu Vue được sử dụng dựa trên Bootstrap != Với việc sử dụng thuần html
+        vue: Đã được mình cài đặt rồi nhưng version là version 2.5.11
+        Sau quá trình cài đặt này thì vue cũng được nâng cấp lên phiên bản mới nhất
+      Để có thể cài đặt Bootstrap theo kiểu VueJs thì tiến hành đăng ký các thư viện ở cấp toàn cục trong main.js để có thể sử dụng trong
+        mọi Component con
+        Vue.use(BootstrapVue): Để mình đăng ký plugin BootstrapVue đối với VueJs được sử dụng ở cấp toàn cục để có thể sử dụng mọi nơi
+          trong các Component
+      Import vào các file Css:
+        import 'bootstrap/dist/css/bootstrap.css'
+        import 'bootstrap-vue/dist/bootstrap-vue.css'
+    -> Biết các cài đặt Vue, biết cách sử dụng thư viện của bên thứ 3, cách import bootstrap vào ứng dụng Single Application theo kiểu là 
+      VueJs mà không import theo kiểu thông thường bằng thẻ <script> mà sử dụng công cụ BootstrapVue. Khi dùng theo cách thông thông thường 
+        thì khi mình đóng gói public sản phẩm ra thì các mã nguồn khai báo ở file html nó sẽ không được đóng gói lại -> chức năng của 
+        webpack không phát huy tác dụng. 
+      Cần đóng gói lại code để quản lý tốt về thứ tự khai báo, thứ tự chạy plugin đồng thời do được đóng gói code nên ứng dụng của mình sẽ
+        chạy nhanh hơn.
+      Đối với các ứng dụng Single Application thì khi khai báo jQuery trong các file html rất nguy hiểm, có lúc chạy bị sai vì nó liên quan 
+        đến thứ tự load Component. Trong trường hợp script jquery được load trước, sau đó Component mới được sinh ra -> dẫn đến vấn đề động
+        độ về time -> Hạn chế sử dụng jquery theo kiểu khai báo script
