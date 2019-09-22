@@ -3,7 +3,10 @@
 		<b-container>
 			<comp-title />
 			<b-row>
-				<comp-control />
+				<comp-control 
+					v-bind:strSearch="strSearch"
+					v-on:handleSearch="handleSearch"
+				/>
 				<comp-form 
 					v-bind:isShowForm="isShowForm"
 					v-on:toggleForm="toggleForm"
@@ -37,10 +40,15 @@ export default {
 	data () {
 		return {
 			listTask: listTask,
-			isShowForm: false
+			isShowForm: false,
+			strSearch: 'ABC'
 		}
 	},
 	methods: {
+		handleSearch(data) {
+			this.strSearch = data;
+			console.log('handleSearch App.vue', data);
+		},
 		toggleForm() {
 			console.log('toggleForm App.vue');
 			this.isShowForm = !this.isShowForm;

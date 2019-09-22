@@ -2,7 +2,10 @@
     <div class="col-12 col-lg-6">
         <div class="row">
             <control-sort />
-            <control-search />
+            <control-search 
+                v-on:handleSearch="handleSearch"
+                v-bind:strSearch="strSearch"
+            />
         </div>
     </div>
 </template>
@@ -15,10 +18,19 @@ export default {
 	components: {
 		ControlSort,
 		ControlSearch
-	}, 
+    },
+    props: {
+        strSearch: { type: String, default: '' }
+    },
     data() {
         return {
 
+        }
+    },
+    methods: {
+        handleSearch(data) {
+            console.log('handleSearch Compcontrol.vue', data);
+            this.$emit('handleSearch', data);
         }
     }
 }

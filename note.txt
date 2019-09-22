@@ -731,3 +731,9 @@ Chức năng Form Toggle
     hạn như là Close Form
   Khi nhấn vào nút Cancel thì cũng hủy luôn Form -> Ẩn Form
     <button v-on:click="$emit('toggleForm')" type="button" class="btn btn-secondary">Cancel</button>
+
+Xây dựng chức năng Search
+  Thực hiện gõ tới đâu thì Search tới đó luôn
+  Str Search: Ràng buộc dữ liệu 2 chiều từ việc thu thập dữ liệu từ người dùng
+    Chuyển đổi dạng v-model thành mô hình v-bind kết hợp với v-on:input/change
+    App -> CompControl -> ControlSearch
