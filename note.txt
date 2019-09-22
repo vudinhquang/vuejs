@@ -759,3 +759,5 @@ Xây dựng chức năng Sort
       .order {
           text-transform: uppercase
       }
+  Event Up
+    Sau khi nhận được sự kiện Click và lấy được tham số tương ứng thì tiếp tục sử dụng Event up để truyền sự kiện từ Component con ra Component cha

@@ -27,7 +27,9 @@ export default {
     },
     methods: {
        handleSort(orderBy, orderDir) {
-           console.log(orderBy, ' - ', orderDir);
+           let data = { orderBy, orderDir };
+           console.log('handleSort ControlSort.vue: ', orderBy, ' - ', orderDir);
+           this.$emit('handleSort', data);
        } 
     }
 }

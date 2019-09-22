@@ -7,6 +7,7 @@
 					v-bind:orderBy="orderBy"
 					v-bind:orderDir="orderDir"
 					v-bind:strSearch="strSearch"
+					v-on:handleSort="handleSort"
 					v-on:handleSearch="handleSearch"
 				/>
 				<comp-form 
@@ -67,6 +68,11 @@ export default {
 		}
 	},
 	methods: {
+		handleSort(data) {
+			this.orderBy = data.orderBy;
+			this.orderDir = data.orderDir;
+			console.log('handleSort App.vue: ', data);
+		},
 		handleSearch(data) {
 			this.strSearch = data;
 			console.log('handleSearch App.vue', data);

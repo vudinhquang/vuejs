@@ -4,6 +4,7 @@
             <control-sort 
                 v-bind:orderBy="orderBy"
                 v-bind:orderDir="orderDir"
+                v-on:handleSort="handleSort"
             />
             <control-search 
                 v-on:handleSearch="handleSearch"
@@ -36,6 +37,10 @@ export default {
         handleSearch(data) {
             console.log('handleSearch Compcontrol.vue', data);
             this.$emit('handleSearch', data);
+        },
+        handleSort(data) {
+            console.log('handleSearch CompControl.Vue: ', data);
+            this.$emit('handleSort', data);
         }
     }
 }
