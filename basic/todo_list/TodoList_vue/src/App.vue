@@ -3,7 +3,9 @@
 		<b-container>
 			<comp-title />
 			<b-row>
-				<comp-control 
+				<comp-control
+					v-bind:orderBy="orderBy"
+					v-bind:orderDir="orderDir"
 					v-bind:strSearch="strSearch"
 					v-on:handleSearch="handleSearch"
 				/>
@@ -41,7 +43,9 @@ export default {
 		return {
 			listTask: listTask,
 			isShowForm: false,
-			strSearch: ''
+			strSearch: '',
+			orderBy: 'name',
+			orderDir: 'asc'
 		}
 	},
 	computed: {

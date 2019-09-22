@@ -751,3 +751,11 @@ Xây dựng chức năng Search
       <td colspan="4">List Empty</td> 
   Optimize Code:
     Sử dụng filter() thay cho foreach khi thực hiện tìm kiếm
+
+Xây dựng chức năng Sort
+  Có 4 cách sắp xếp: Name asc, Name desc, Level asc, Level desc
+  Props Sort
+    Dùng Css để hiển thị text bằng chữ in hoa
+      .order {
+          text-transform: uppercase
+      }
