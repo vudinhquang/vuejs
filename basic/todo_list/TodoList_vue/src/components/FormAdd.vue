@@ -1,6 +1,13 @@
 <template>
     <div class="form-group add-task">
-        <button type="button" class="btn btn-info btn-block">Add Task</button>
+        <button
+            v-if="!isShowForm"
+            v-on:click="onClickAddTask"
+            type="button" class="btn btn-info btn-block">Add Task</button>
+        <button
+            v-if="isShowForm"
+            v-on:click="onClickAddTask"
+            type="button" class="btn btn-primary btn-block">Close Form</button>
     </div>
 </template>
 
@@ -10,6 +17,15 @@ export default {
     data() {
         return {
 
+        }
+    },
+    props: {
+        isShowForm: { type: Boolean, default: false }
+    },
+    methods: {
+        onClickAddTask() {
+            console.log('onClickAddTask FormAdd.vue');
+            this.$emit('handleAddTask');
         }
     }
 }

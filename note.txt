@@ -712,3 +712,22 @@ Hiển thị danh sách Task Items (Mock data, uuid)
     }
     return this.mapLevel[this.task.level].class;
     Lúc này computed classLevel trả về class là 1 chuỗi, cũng không nhất thiết phải là 1 object
+
+Chức năng Form Toggle
+  Đối với Form nhập liệu thì mình sẽ cho ẩn đi, khi mà người dùng load lại trang lần đầu tiên hoặc là truy cập vào ứng 
+    dụng lần đầu tiên thì Form được ẩn đi
+  Trước khi thực hiện logic liên quan đến sự kiện thì mình tạo ra dữ liệu giúp nhận diện khi nào Form đó được ẩn và khi
+    nào thì được hiện
+  Form chỉ có 2 trạng thái hoặc là ẩn hoặc là hiển nên có thể sử dụng 1 biến Boolean có giá trị là true/false để quy định 
+    việc này
+  Bắt sự kiện click vào Add Task, sau khi click thì thay đổi data để ẩn hoặc hiện Form
+  App
+    CompForm
+      FormAdd -> Click 
+          -> Run onClickAddTask() 
+          -> Kích hoạt Event handleAddTask 
+          -> Kích hoạt tiếp toggleForm -> Tiến hành thay đổi giá trị isShowForm để ẩn hiện Form
+  Khi Form đang được ẩn đi thì tiến nút hiện lên là Add Task, khi Form hiện lên thì thay thế nút này thành 1 nút khác chẳng 
+    hạn như là Close Form
+  Khi nhấn vào nút Cancel thì cũng hủy luôn Form -> Ẩn Form
+    <button v-on:click="$emit('toggleForm')" type="button" class="btn btn-secondary">Cancel</button>

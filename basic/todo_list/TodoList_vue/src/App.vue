@@ -4,7 +4,10 @@
 			<comp-title />
 			<b-row>
 				<comp-control />
-				<comp-form />
+				<comp-form 
+					v-bind:isShowForm="isShowForm"
+					v-on:toggleForm="toggleForm"
+				/>
 			</b-row>
 			<todo-list-table 
 				v-bind:listTask="listTask"
@@ -33,7 +36,14 @@ export default {
 	},
 	data () {
 		return {
-			listTask: listTask
+			listTask: listTask,
+			isShowForm: false
+		}
+	},
+	methods: {
+		toggleForm() {
+			console.log('toggleForm App.vue');
+			this.isShowForm = !this.isShowForm;
 		}
 	}
 }
