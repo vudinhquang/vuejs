@@ -13,7 +13,7 @@
 				/>
 			</b-row>
 			<todo-list-table 
-				v-bind:listTask="listTask"
+				v-bind:listTask="listTaskSearch"
 			/>
 		</b-container>
 	</div>
@@ -41,7 +41,21 @@ export default {
 		return {
 			listTask: listTask,
 			isShowForm: false,
-			strSearch: 'ABC'
+			strSearch: ''
+		}
+	},
+	computed: {
+		listTaskSearch() {
+			// Tìm kiếm - Logic search
+			const { strSearch } = this;
+			var newItems = [];
+			this.listTask.forEach((item, index) => {
+				if (item.name.includes(strSearch)) {
+					newItems.push(item);
+				}
+			});
+
+			return newItems;
 		}
 	},
 	methods: {

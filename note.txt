@@ -738,3 +738,9 @@ Xây dựng chức năng Search
     Chuyển đổi dạng v-model thành mô hình v-bind kết hợp với v-on:input/change
     App -> CompControl -> ControlSearch
   Clear Search: Sau khi nhập vào ô input tìm kiếm rồi sau đó nhấn vào nút clear thì sẽ thay đổi giá trị strSearch thành giá trị rỗng
+  Logic Search: Sau khi đã lấy được dữ liệu thu thập từ người dùng, dùng giá trị đó để thực hiện logic tính toán
+    Đối Vuejs thì chỉ cần tập trung vào phần logic của method xử lý thôi, không cần quan tấm đến cấu trúc DOM nữa bởi vì hệ thống phản
+      ứng sẽ tự động Render lại
+    Tạo 1 computed thực hiện tính toán lại theo logic tìm kiếm của mình rồi sau đó truyền vào TodoListTable giá trị sau khi mình đã lọc
+    Tiến hành tìm kiếm bằng cách tìm xem strSearch có tồn tại trong bất kỳ item nào hay không
+    Keywords: how to Search string in another string Javascript
