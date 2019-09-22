@@ -6,7 +6,9 @@
                 v-on:input="handleSearch"
                 type="text" class="form-control" placeholder="Search for..." />
             <span class="input-group-append">
-                <button class="btn btn-info" type="button">Clear!</button>
+                <button 
+                    v-on:click="handleClear"
+                    class="btn btn-info" type="button">Clear!</button>
             </span>
         </div>
     </div>
@@ -24,6 +26,10 @@ export default {
         }
     },
     methods: {
+        handleClear() {
+            // Thay đổi giá trị strSearch về rỗng
+            this.$emit('handleSearch', '');
+        },
         handleSearch(e) {
             console.log('handleSearch ControlSearch.vue');
             this.$emit('handleSearch', e.target.value);

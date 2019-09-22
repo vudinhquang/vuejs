@@ -737,3 +737,4 @@ Xây dựng chức năng Search
   Str Search: Ràng buộc dữ liệu 2 chiều từ việc thu thập dữ liệu từ người dùng
     Chuyển đổi dạng v-model thành mô hình v-bind kết hợp với v-on:input/change
     App -> CompControl -> ControlSearch
+  Clear Search: Sau khi nhập vào ô input tìm kiếm rồi sau đó nhấn vào nút clear thì sẽ thay đổi giá trị strSearch thành giá trị rỗng
