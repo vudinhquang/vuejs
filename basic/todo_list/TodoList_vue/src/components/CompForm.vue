@@ -20,7 +20,7 @@
             </div>
 
             <button type="button" class="btn btn-primary">Submit</button>
-            <button v-on:click="handleCancel" type="button" class="btn btn-secondary">Cancel</button><button v-on:click="$emit('toggleForm')" type="button" class="btn btn-secondary">Cancel</button>
+            <button v-on:click="handleCancel" type="button" class="btn btn-secondary">Cancel</button>
         </form>
     </b-col>
 </template>

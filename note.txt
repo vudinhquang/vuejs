@@ -744,8 +744,10 @@ Xây dựng chức năng Search
     Tạo 1 computed thực hiện tính toán lại theo logic tìm kiếm của mình rồi sau đó truyền vào TodoListTable giá trị sau khi mình đã lọc
     Tiến hành tìm kiếm bằng cách tìm xem strSearch có tồn tại trong bất kỳ item nào hay không
     Keywords: how to Search string in another string Javascript
-   Search Lowercase: Giải quyết vấn đề không tìm kiếm được các dạng chữ hoa, chữ thường
+   Search Lowercase: Giải quyết vấn đề không tìm kiếm được các dạng chữ hoa, chữ thườngSearch Lowercase: Giải quyết vấn đề không tìm kiếm được các dạng chữ hoa, chữ thường
     Chuyển đổi hết về chữ thường 
     Keywords: Lowercase Javascript
     Khi thực hiện tìm kiếm mà không có kết quả trả về thì hiển thị lên 1 dòng chữ là List Empty, dùng colspan để merge các col thành 1
       <td colspan="4">List Empty</td> 
+  Optimize Code:
+    Sử dụng filter() thay cho foreach khi thực hiện tìm kiếm
