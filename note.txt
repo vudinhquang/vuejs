@@ -690,3 +690,25 @@ Tích hợp giao diện và phân chia Component
       Thay thế bằng b-row
     <div class="col-12 col-lg-6">
       Thay thế bằng <b-col cols="12" lg="6">
+  
+Hiển thị danh sách Task Items (Mock data, uuid)
+  Mock data trong App Component rồi sử dụng props để truyền vào các Component bên trong đó là TodoListTable
+  Khi hiển thị level thì ngoài vấn đề liên quan đến đoạn text thì còn có liên quan đến class mỗi level sẽ có 1 màu khác nhau
+    Keywords: bootstrap 4 -> badge
+  Hiện tại thì không cần quan tâm đến việc lưu dữ liệu -> Tạo mock data các data này thì mình tạo ra các file mới để cho dễ quản lý, ở đây thì
+    các file mock này mình quản lý trong thư mục mocks
+    Dùng các kiến thức của ES6 để tách file thông qua các từ khóa như import, export
+  Sử dụng các thư viện hỗ trợ để sinh ra các id ngẫu nhiên
+    Đây là 1 thư viện của nodeJs
+    Keywords: uuid npm
+    https://www.npmjs.com/package/uuid
+    Cài đặt: npm i uuid
+      const uuidv4 = require('uuid/v4');
+      uuidv4(); // ⇨ '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed'
+  Tạo dữ liệu mock cho level
+    { 
+        name: 'Small',
+        class: 'badge-info'
+    }
+    return this.mapLevel[this.task.level].class;
+    Lúc này computed classLevel trả về class là 1 chuỗi, cũng không nhất thiết phải là 1 object

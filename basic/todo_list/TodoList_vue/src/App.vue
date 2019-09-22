@@ -6,17 +6,23 @@
 				<comp-control />
 				<comp-form />
 			</b-row>
-			<todo-list-table />
+			<todo-list-table 
+				v-bind:listTask="listTask"
+			/>
 		</b-container>
 	</div>
 </template>
 
 <script>
-
+// Import các Component
 import TodoListTable from './components/TodoListTable'
 import CompTitle from './components/CompTitle'
 import CompControl from './components/CompControl'
 import CompForm from './components/CompForm'
+
+// Import data
+import listTask from "./mocks/tasks";
+
 export default {
 	name: 'app',
 	components: {
@@ -27,7 +33,7 @@ export default {
 	},
 	data () {
 		return {
-
+			listTask: listTask
 		}
 	}
 }
