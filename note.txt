@@ -760,4 +760,30 @@ Xây dựng chức năng Sort
           text-transform: uppercase
       }
   Event Up
-    Sau khi nhận được sự kiện Click và lấy được tham số tương ứng thì tiếp tục sử dụng Event up để truyền sự kiện từ Component con ra Component cha
+    Sau khi nhận được sự kiện Click và lấy được tham số tương ứng thì tiếp tục sử dụng Event up để truyền sự kiện từ Component con ra 
+      Component cha
+  Method Sort: Thực hiện logic liên quan đến sắp xếp(Sắp xếp array)
+    Keywords: sort Javascript
+    https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+    Đối với phương thức sort() thì khi không truyền gì cả thì mặc định nó sẽ hiểu là so sánh chuỗi
+      Khi sort đối với number
+        function compareNumbers(a, b) {
+          return a - b;
+        }
+      Khi sort đối với string -> Phải sử dụng if-else
+        function compare(a, b) {
+          if (a is less than b by some ordering criterion) {
+            return -1;
+          }
+          if (a is greater than b by the ordering criterion) {
+            return 1;
+          }
+          // a must be equal to b
+          return 0;
+        }
+  Handle Sort: Áp dụng hàm sort của array để giải quyết bài toán
+    Có 2 yếu tố cần sắp xếp đó là name và level, tương ứng với 2 yếu tố này thì cần có 2 hàm compare dành cho name và level
+    compareName(): Việc sắp xếp theo tên thì việc return -1 hay 1 còn phụ thuộc vào asc hay desc
+    listTaskSort(): Cần xác định là khi nào là sort theo level và khi nào là sort theo name
+    Thực hiện kết nối Sort và Search: Thực hiện Search trước rồi mới Sort tức là thay vì Sort dựa trên mảng gốc thì mình sẽ sắp xếp
+      dựa trên giá trị mà người dùng đã Search

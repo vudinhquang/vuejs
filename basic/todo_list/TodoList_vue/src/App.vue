@@ -16,7 +16,7 @@
 				/>
 			</b-row>
 			<todo-list-table 
-				v-bind:listTask="listTaskSearch"
+				v-bind:listTask="listTaskSort"
 			/>
 		</b-container>
 	</div>
@@ -65,9 +65,44 @@ export default {
 			// });
 
 			return newItems;
+		},
+		listTaskSort() {
+			// List Task => listTaskSearch => Sort trên cái mà user đã Search
+			var listTask = [...this.listTaskSearch];
+			if (this.orderBy === 'name') {
+				listTask.sort(this.compareName);	
+			} else if(this.orderBy === 'level') {
+				listTask.sort(this.compareLevel);
+			}
+
+			return listTask;
 		}
 	},
 	methods: {
+		compareName(a, b) {
+			var numberSort = this.orderDir === 'asc' ? -1 : 1;
+			var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+			var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+			if (nameA < nameB) {
+				return numberSort;
+			}
+			if (nameA > nameB) {
+				return -1 * numberSort;
+			}
+
+			return 0;
+		},
+		compareLevel(a, b) {
+			var numberSort = this.orderDir === 'asc' ? -1 : 1;
+			if (a.level < b.level) {
+				return numberSort;
+			}
+			if (a.level > b.level) {
+				return -1 * numberSort;
+			}
+
+			return 0;
+		},
 		handleSort(data) {
 			this.orderBy = data.orderBy;
 			this.orderDir = data.orderDir;
