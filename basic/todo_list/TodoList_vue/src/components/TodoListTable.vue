@@ -23,7 +23,7 @@
 
             <tbody v-else>
                 <tr>
-                    <td colspan="4">List Empty</td><td colspan="4"><h3>List Empty</h3></td>
+                    <td colspan="4">List Empty</td>
                 </tr>
             </tbody>
         </table>

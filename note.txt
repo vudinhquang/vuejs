@@ -793,3 +793,9 @@ Xây dựng chức năng Delete: Xây dụng chức năng xóa 1 phần tử b�
   Handle Event:
     Trước khi thực hiện delete thì cho hiển thị lên 1 câu thông báo để tránh xảy ra việc người dùng xóa nhầm -> Trước khi thực hiện 
       kích hoạt sự kiện ra bên ngoài ở TodoList thì gọi ra 1 câu thông báo
+  Methods Delete: Tìm hiểu việc xóa 1 phần tử từ trong Array theo 1 điều kiện nào đó
+    Keywords: remove element from array JavaScript, splice JavaScript
+    splice - removes from a specific Array index -> Để thực hiện được thì cần biết được index của phần tử -> return về phần tử sau 
+      khi xóa, làm thay đổi luôn mảng gốc
+    filter - allows you to programatically remove elements from an Array ->return về mảng sau khi xóa, không làm thay đổi mảng gốc
+  Handle Delete: Tiến hành delete dữ liệu thông qua hàm filter

@@ -76,6 +76,8 @@ export default {
 	},
 	methods: {
 		handleDelete(taskDelete) {
+			this.listTask = this.listTask.filter(item => item.id !== taskDelete.id);
+
 			console.log('handleDelete App.vue', taskDelete);
 		},
 		compareSort(a, b) {
