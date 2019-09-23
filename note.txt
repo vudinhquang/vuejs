@@ -788,3 +788,8 @@ Xây dựng chức năng Sort
     Thực hiện kết nối Sort và Search: Thực hiện Search trước rồi mới Sort tức là thay vì Sort dựa trên mảng gốc thì mình sẽ sắp xếp
       dựa trên giá trị mà người dùng đã Search
   Optimize Code: Tối ưu hóa mã nguồn phần sort theo name và level
+
+Xây dựng chức năng Delete: Xây dụng chức năng xóa 1 phần tử bất kỳ trong List Items
+  Handle Event:
+    Trước khi thực hiện delete thì cho hiển thị lên 1 câu thông báo để tránh xảy ra việc người dùng xóa nhầm -> Trước khi thực hiện 
+      kích hoạt sự kiện ra bên ngoài ở TodoList thì gọi ra 1 câu thông báo

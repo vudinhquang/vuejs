@@ -5,7 +5,9 @@
         <td class="text-center"><span class="badge" v-bind:class="classLevel">{{ getLevelName }}</span></td>
         <td>
             <button type="button" class="btn btn-warning">Edit</button>
-            <button type="button" class="btn btn-danger">Delete</button>
+            <button
+                v-on:click="handleDelete"
+                type="button" class="btn btn-danger">Delete</button>
         </td>
     </tr>
 </template>
@@ -32,6 +34,13 @@ export default {
     data() {
         return {
             mapLevel: mapLevel
+        }
+    },
+    methods: {
+        handleDelete() {
+            if (confirm('Bạn có muốn xóa task có tên là ' + this.task.name)) {
+                this.$emit('handleDelete', this.task);
+            }
         }
     }
 }

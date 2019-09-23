@@ -17,6 +17,7 @@
 			</b-row>
 			<todo-list-table 
 				v-bind:listTask="listTaskSort"
+				v-on:handleDelete="handleDelete"
 			/>
 		</b-container>
 	</div>
@@ -74,6 +75,9 @@ export default {
 		}
 	},
 	methods: {
+		handleDelete(taskDelete) {
+			console.log('handleDelete App.vue', taskDelete);
+		},
 		compareSort(a, b) {
 			var numberSort = this.orderDir === 'asc' ? -1 : 1;
 

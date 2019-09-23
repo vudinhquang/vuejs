@@ -17,6 +17,7 @@
                     v-bind:key="task.id" 
                     v-bind:task="task"
                     v-bind:index="index + 1"
+                    v-on:handleDelete="handleDelete"
                 />
             </tbody>
 
@@ -43,6 +44,12 @@ export default {
     data() {
         return {
 
+        }
+    },
+    methods: {
+        handleDelete(taskDelete) {
+            console.log('handleDelete ListTable.vue', taskDelete);
+            this.$emit('handleDelete', taskDelete);
         }
     }
 }
