@@ -824,3 +824,9 @@ Xây dựng chức năng Edit
       beforeUpdate
       beforeUpdate và updated sẽ tự động được chạy bất kể khi nào dữ liệu có sự thay đổi
       Khi nhấn vào Add hoặc Edit thì isShowForm có sự thay đổi true <-> false -> beforeUpdate() được kích hoạt
+  Watchers
+    Hiện tại thì mình đang đặt việc xử lý ở trong beforeUpdate() nó sẽ chạy bất kể khi nào data có sự thay đổi. Trong trường hợp này là isShowForm
+      taskSelected, taskname, level -> Có 4 dữ liệu có sự thay đổi. Mục đích của mình là chỉ muốn lắng nghe sự thay đổi của taskSelected thôi.
+      beforeUpdate() là 1 method để theo dõi toàn cục
+    -> Computed Properties and Watchers: Watchers có chức năng là lắng nghe sự thay đổi dữ liệu của riêng từng phần tử dữ liệu
+      Tên function là trùng với tên phần tử dữ liệu cần theo dõi, tham số truyền vào là dữ liệu mới và dữ liệu cũ của phần tử dữ liệu đó

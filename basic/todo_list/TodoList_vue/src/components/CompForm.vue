@@ -45,13 +45,19 @@ export default {
             level: 0
         }
     },
-    beforeUpdate() {
-        if (this.taskSelected) {
-            // Người dùng có click vào button Edit
-            this.taskname = this.taskSelected.name;
-            this.level = this.taskSelected.level;
+    watch: {
+        taskSelected(newData, oldData) {
+            if (newData) {
+                // Người dùng có click vào button Edit
+                this.taskname = newData.name;
+                this.level = newData.level;
+            }
+         
+            console.log('watcher taskSelected', newData, oldData);
         }
-        console.log('beforeUpdate', this.taskSelected);
+    },
+    beforeUpdate() {
+
     },
     methods: {
         handleAddNew() {
