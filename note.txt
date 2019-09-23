@@ -830,3 +830,23 @@ Xây dựng chức năng Edit
       beforeUpdate() là 1 method để theo dõi toàn cục
     -> Computed Properties and Watchers: Watchers có chức năng là lắng nghe sự thay đổi dữ liệu của riêng từng phần tử dữ liệu
       Tên function là trùng với tên phần tử dữ liệu cần theo dõi, tham số truyền vào là dữ liệu mới và dữ liệu cũ của phần tử dữ liệu đó
+  Handle Edit:
+    Vấn đề chỉnh sửa 1 phần tử trong Array dựa vào id của nó
+      Cấu trúc dữ liệu là 1 array có nhiều phần tử, mỗi 1 phần tử là 1 object chứa các thông tin(id, name và level)
+      Khi click vào Edit thì đã xác định được id của phần tử muốn sửa -> tìm được phần tử đó ở đâu, vị trí nào trong mảng
+      Vấn đề liên quan đến hệ thống phản ứng khi thay đổi array hay object: Array Change Detection
+        https://vuejs.org/v2/guide/list.html#Array-Change-Detection
+      * Các hàm khi thực hiện thì địa chỉ không thay đôi nhưng có tích hợp sẵn hệ thống phản ứng: push(), pop(), shift(), unshift(), splice(), 
+        sort(), reverse()
+      * Đối với các hàm như filter(), concat() and slice() thì nó không tích hợp sẵn hệ thống phản ứng nên mà nó hoạt động theo nguyên tắc là luôn
+        luôn trả về 1 mảng mới có địa chỉ hoàn toàn khác -> gán lại giá trị của mảng mới này vào data 
+        this.listTask = this.listTask.filter(item => item.id !== taskDelete.id); lúc này thì địa chỉ thay đổi nên sẽ được render lại
+      * Thêm mới hay xóa 1 phần tử 
+        Vue.set(vm.items, indexOfItem, newValue)
+        vm.items.splice(indexOfItem, 1, newValue)
+          splice() ngoài việc xóa đi 1 phần tử ở 1 vị trí nào đó, thì còn thêm mới phần tử khác vào vị trí tương ứng
+      -> Sử dụng splice() để giải quyết vấn đề chỉnh sửa 1 phần tử trong Array cho việc Edit task
+    Keywords: findIndex JavaScript
+    https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex
+      -> Tìm kiếm với điều kiện nào đó và return về index, nếu không tìm thấy thì trả về -1
+    Bấm nút Update để Edit xong thì ẩn Form đi và xóa data trong Form đi

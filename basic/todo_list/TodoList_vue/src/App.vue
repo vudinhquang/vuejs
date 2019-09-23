@@ -15,6 +15,7 @@
 					v-bind:taskSelected="taskSelected"
 					v-on:toggleForm="toggleForm"
 					v-on:handleAddNewTask="handleAddNewTask"
+					v-on:handleEditTaskById="handleEditTaskById"
 				/>
 			</b-row>
 			<todo-list-table 
@@ -79,6 +80,14 @@ export default {
 		}
 	},
 	methods: {
+		handleEditTaskById(taskEdit) {
+			let index = this.listTask.findIndex(item => item.id === taskEdit.id);
+
+			if (index !== -1) {
+				this.listTask.splice(index, 1, taskEdit);	
+				this.toggleForm();
+			}
+		},
 		handleAddNewTask(task) {
 			this.listTask.push(task);
 			console.log('handleAddNewTask App.vue', task);

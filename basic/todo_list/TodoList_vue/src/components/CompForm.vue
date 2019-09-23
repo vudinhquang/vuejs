@@ -20,8 +20,13 @@
             </div>
 
             <button
+                v-if="!taskSelected"
                 v-on:click="handleAddNew" 
                 type="button" class="btn btn-primary">Submit</button>
+            <button
+                v-else
+                v-on:click="handleEditTask" 
+                type="button" class="btn btn-primary">Update</button>
             <button v-on:click="handleCancel" type="button" class="btn btn-secondary">Cancel</button>
         </form>
     </b-col>
@@ -60,6 +65,16 @@ export default {
 
     },
     methods: {
+        handleEditTask() {
+            let objTaskEdit = {
+                id: this.taskSelected.id,
+                name: this.taskname,
+                level: parseInt(this.level)
+            };
+            this.$emit('handleEditTaskById', objTaskEdit);
+            this.handleResetData();
+            // console.log('handleEditTask Form.vue', this.taskSelected);
+        },
         handleAddNew() {
             let objTask = {
                 id: uuidv4(),
