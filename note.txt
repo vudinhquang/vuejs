@@ -799,3 +799,8 @@ Xây dựng chức năng Delete: Xây dụng chức năng xóa 1 phần tử b�
       khi xóa, làm thay đổi luôn mảng gốc
     filter - allows you to programatically remove elements from an Array ->return về mảng sau khi xóa, không làm thay đổi mảng gốc
   Handle Delete: Tiến hành delete dữ liệu thông qua hàm filter
+
+Xây dựng chức năng Add New Task: Thêm mới 1 phần tử vào trong task
+  Cần lấy được data mà người dùng nhập vào Form, Khi người dùng nhấn vào nút Submit thì lấy dữ liệu mà người dùng vừa nhập truyền ra
+    bên ngoài và tiến hành thêm mới vào array
+  Khi nhấn vào nút Submit xong thì ẩn Form đi, Reset lại dữ liệu

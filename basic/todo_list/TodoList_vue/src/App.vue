@@ -13,6 +13,7 @@
 				<comp-form 
 					v-bind:isShowForm="isShowForm"
 					v-on:toggleForm="toggleForm"
+					v-on:handleAddNewTask="handleAddNewTask"
 				/>
 			</b-row>
 			<todo-list-table 
@@ -75,6 +76,10 @@ export default {
 		}
 	},
 	methods: {
+		handleAddNewTask(task) {
+			this.listTask.push(task);
+			console.log('handleAddNewTask App.vue', task);
+		},
 		handleDelete(taskDelete) {
 			this.listTask = this.listTask.filter(item => item.id !== taskDelete.id);
 
