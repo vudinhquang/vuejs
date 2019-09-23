@@ -812,3 +812,15 @@ Xây dựng chức năng Edit
       dùng Click vào Edit thì cần lấy được dữ liệu của task đó truyền lên Form để show ra Form cho người dùng -> Them data mới là taskSelected
     Form cần nhận diện được khi nào Add và khi nào là Edit
     taskSelected khác null thì có nghĩa là người dùng đang tiến hành Edit, bằng null thì là Add
+  Form Edit:
+    Sau khi lấy được thông tin của phần tử cần sửa -> tiến hành thực hiện logic liên quan đến Form
+      - Click Edit => Object(taskSelected)
+      - Open Form
+      - Lấy data của taskSelected điền ra form để người dùng chỉnh sửa
+    Khi thực hiện Close Form bằng cách nhấn vào nút Cancel/Close thì Reset taskSelected về null
+    Khi người dùng chưa Click vào nút Edit thì taskSelected có giá trị null, khi người dùng click vào nút Edit thì taskSelected là 1 object
+      có giá trị, lúc này sẽ truyền dữ liệu lên form -> Xử lý khi taskSelected có sự thay đổi
+      Lifecycle Diagram
+      beforeUpdate
+      beforeUpdate và updated sẽ tự động được chạy bất kể khi nào dữ liệu có sự thay đổi
+      Khi nhấn vào Add hoặc Edit thì isShowForm có sự thay đổi true <-> false -> beforeUpdate() được kích hoạt

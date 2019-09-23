@@ -36,13 +36,22 @@ export default {
         FormAdd
     },
     props: {
-        isShowForm: { type: Boolean, default: false }
+        isShowForm: { type: Boolean, default: false },
+        taskSelected : { type: Object, default: null }
     },
     data() {
         return {
             taskname: '',
             level: 0
         }
+    },
+    beforeUpdate() {
+        if (this.taskSelected) {
+            // Người dùng có click vào button Edit
+            this.taskname = this.taskSelected.name;
+            this.level = this.taskSelected.level;
+        }
+        console.log('beforeUpdate', this.taskSelected);
     },
     methods: {
         handleAddNew() {
