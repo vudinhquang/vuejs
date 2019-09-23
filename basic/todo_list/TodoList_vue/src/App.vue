@@ -67,22 +67,24 @@ export default {
 			return newItems;
 		},
 		listTaskSort() {
-			// List Task => listTaskSearch => Sort trên cái mà user đã Search
 			var listTask = [...this.listTaskSearch];
-			if (this.orderBy === 'name') {
-				listTask.sort(this.compareName);	
-			} else if(this.orderBy === 'level') {
-				listTask.sort(this.compareLevel);
-			}
+			listTask.sort(this.compareSort);
 
 			return listTask;
 		}
 	},
 	methods: {
-		compareName(a, b) {
+		compareSort(a, b) {
 			var numberSort = this.orderDir === 'asc' ? -1 : 1;
-			var nameA = a.name.toUpperCase(); // ignore upper and lowercase
-			var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+
+			if (this.orderBy === 'name') {
+				var nameA = a[this.orderBy].toUpperCase(); // ignore upper and lowercase
+				var nameB = b[this.orderBy].toUpperCase(); // ignore upper and lowercase
+			} else {
+				var nameA = a[this.orderBy];
+				var nameB = b[this.orderBy];
+			}
+
 			if (nameA < nameB) {
 				return numberSort;
 			}
@@ -91,18 +93,8 @@ export default {
 			}
 
 			return 0;
-		},
-		compareLevel(a, b) {
-			var numberSort = this.orderDir === 'asc' ? -1 : 1;
-			if (a.level < b.level) {
-				return numberSort;
-			}
-			if (a.level > b.level) {
-				return -1 * numberSort;
-			}
+		},	
 
-			return 0;
-		},
 		handleSort(data) {
 			this.orderBy = data.orderBy;
 			this.orderDir = data.orderDir;
