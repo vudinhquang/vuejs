@@ -18,6 +18,7 @@
 			</b-row>
 			<todo-list-table 
 				v-bind:listTask="listTaskSort"
+				v-on:handleEdit="handleEdit"
 				v-on:handleDelete="handleDelete"
 			/>
 		</b-container>
@@ -48,7 +49,8 @@ export default {
 			isShowForm: false,
 			strSearch: '',
 			orderBy: 'name',
-			orderDir: 'asc'
+			orderDir: 'asc',
+			taskSelected: null
 		}
 	},
 	computed: {
@@ -79,6 +81,11 @@ export default {
 		handleAddNewTask(task) {
 			this.listTask.push(task);
 			console.log('handleAddNewTask App.vue', task);
+		},
+		handleEdit(taskEdit) {
+			this.taskSelected = taskEdit;
+			console.log('handleEdit App.vue', taskEdit);
+			console.log(this);
 		},
 		handleDelete(taskDelete) {
 			this.listTask = this.listTask.filter(item => item.id !== taskDelete.id);

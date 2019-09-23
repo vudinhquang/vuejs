@@ -804,3 +804,11 @@ Xây dựng chức năng Add New Task: Thêm mới 1 phần tử vào trong task
   Cần lấy được data mà người dùng nhập vào Form, Khi người dùng nhấn vào nút Submit thì lấy dữ liệu mà người dùng vừa nhập truyền ra
     bên ngoài và tiến hành thêm mới vào array
   Khi nhấn vào nút Submit xong thì ẩn Form đi, Reset lại dữ liệu
+
+Xây dựng chức năng Edit
+  Event Up:
+    Khi nhấn vào nút Edit thì cần truyền được task ra bên ngoài để App có thể nhận diện được mình Edit task nào
+    Có sự tương tác giữa 2 Component khác nhau, không chỉ đơn thuần là truyền ra App mà mình cũng cần phải truyền qua Form vì khi Người
+      dùng Click vào Edit thì cần lấy được dữ liệu của task đó truyền lên Form để show ra Form cho người dùng -> Them data mới là taskSelected
+    Form cần nhận diện được khi nào Add và khi nào là Edit
+    taskSelected khác null thì có nghĩa là người dùng đang tiến hành Edit, bằng null thì là Add
