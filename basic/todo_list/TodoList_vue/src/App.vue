@@ -36,6 +36,7 @@ import CompForm from './components/CompForm'
 
 // Import data
 import listTask from "./mocks/tasks";
+import tasks from './mocks/tasks'
 
 export default {
 	name: 'app',
@@ -47,7 +48,7 @@ export default {
 	},
 	data () {
 		return {
-			listTask: listTask,
+			listTask: null,
 			isShowForm: false,
 			strSearch: '',
 			orderBy: 'name',
@@ -55,6 +56,12 @@ export default {
 			taskSelected: null
 		}
 	},
+    watch: {
+        listTask(newTasks) {
+			var tasksString = JSON.stringify(newTasks);
+			localStorage.setItem('tasks', tasksString);
+        }
+    },
 	computed: {
 		listTaskSearch() {
 			// Tìm kiếm - Logic search
@@ -77,6 +84,15 @@ export default {
 			listTask.sort(this.compareSort);
 
 			return listTask;
+		}
+	},
+	created() {
+		// Lấy ListTask từ trong LocalStorage
+		let tasks = localStorage.getItem('tasks');
+		if (tasks) {
+			this.listTask = JSON.parse(tasks);
+		} else {
+			this.listTask = [];
 		}
 	},
 	methods: {

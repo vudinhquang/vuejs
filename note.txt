@@ -850,3 +850,18 @@ Xây dựng chức năng Edit
     https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex
       -> Tìm kiếm với điều kiện nào đó và return về index, nếu không tìm thấy thì trả về -1
     Bấm nút Update để Edit xong thì ẩn Form đi và xóa data trong Form đi
+
+  Sử dụng LocalStorage
+    LocalStorage:
+      Hiện tại ứng dụng chưa kết nối với bất kỳ Server nào cả -> Lưu trữ cục bộ ở trong trình duyệt giống như COOKIE, các dữ liệu này sẽ lưu theo Domain
+        -> Mỗi đường dẫn(Domain) sẽ có 1 dữ liệu riêng
+      Keywords: LocalStorage JavaScript
+      Console: LocalStorage -> có thể biết được các phương thức của LocalStorage
+        clear, getItem, key, removeItem, setItem ...
+      Tất cả dữ liệu lưu ở LocalStorage được lưu ở dạng String do đó nếu muốn lưu ở dạng Array hay Object thì dùng json stringify để format lại object/array
+        theo dạng chuỗi -> Lưu vào trong Application. Khi lấy ra chỉ cần lấy ra và mã hóa lại bằng JSON.parse()
+      -> Chọn thời điểm thích hợp để lưu dữ liệu vào trong LocalStorage và chọn thời điểm thích hợp để lấy dữ liệu để render ra view
+    Ứng dụng: Lấy dữ liệu trong LocalStorage tại thời điểm chưa render rồi render ra -> Liên quan đến vòng đời của Component
+      -> Thời điểm thích hợp để lấy dữ liệu về đó là created() tại vì lúc đó toàn bộ data, toàn bộ hệ thống phản ứng đã được hình thành rồi
+      Dữ liệu trong LocalStorage là null khi người dùng chưa bao giờ sử dụng ứng dụng của mình hoặc là người dùng xóa dữ liệu của trình duyệt
+      Lưu dữ liệu vào trong trình duyệt khi listTask có sự thay đổi dữ liệu -> watch
