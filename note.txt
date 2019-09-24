@@ -926,3 +926,50 @@ Xây dựng chức năng Edit
 
       Khi có file index.php thì nó sẽ nhận diện server là server php phiên bản 7.3.9
         -> Truy cập vào https://todo-list-vuejs-training.herokuapp.com/ để vào trang web
+
+========================================== Sử dụng VueX với Project TodoList =========================================
+
+Tìm hiểu VueX
+  Why VueX
+    Data:
+      listTask: null,
+      isShowForm: false,
+      strSearch: '',
+      orderBy: 'name',
+      orderDir: 'asc',
+      taskSelected: null
+    Theo cấu trúc Component:
+      App
+        CompControl
+          ControlSort
+          ControlSearch -> CompControl -> App
+            ABC
+              XYZ
+        CompForm
+          FormAdd
+            DEF
+        ListTable
+          TodoListItem
+    Thực hiện các Component và tiến hành các chức năng, tất cả các phần xử lý thì mình đều thực hiện trong App, tuy nhiên thì các phần
+      giao diện thì nó lại nằm ở trong các Component nhỏ hơn. Cho nên khi thực hiện 1 chức năng nào đó thì mình phải dùng đến Props Down
+      và Event up
+    Trong các bài toán phức tạp hơn muốn tương tác(Dùng chung data gì đó) giữa 2 Component là XYZ và DEF
+      Dữ liệu lưu trong Comp App
+      App -> CompControl -> ControlSearch -> ABC -> XYZ(Props Down)
+      App -> CompForm -> FormAdd -> DEF
+      
+      Giả sử có 1 sự kiện thay đổi từ XYZ
+        Event up:
+          XYZ -> ABC -> ControlSearch -> CompControl -> App -> Thay đổi data(rồi kích hoạt hệ thống phản ứng) -> CompForm -> FormAdd -> DEF(nhận
+            được data mới do XYZ thay đổi) 
+
+      Trong các dự án lớn thì cấu trúc Comp lồng nhau nhiều và phức tạp thì như cầu truyền dữ liệu nhiều -> Nếu vẫn làm theo cách cũ thì độ
+        phức tạp sẽ tăng lên -> Khiến cho ứng dụng khó bảo trì vì truyền nhiều, có bao nhiêu cấp thì phải truyền bấy nhiêu cấp
+    => VueX là 1 thư viện, là mô hình quản lý dữ liệu giúp mình tách biệt dữ liệu ra ở một nơi khác. Toàn bộ dư liệu được lưu vào Store
+      Store -> Nơi lưu toàn bộ dữ liệu dùng chung. Lúc này khi muốn sử dụng dữ liệu thì Props không phải truyền lần lượt nữa mà sẽ lấy trực tiếp 
+        từ Store
+        XYZ -> Lấy Data trực tiếp từ Store
+        DEF -> Lấy Data trực tiếp từ Store
+        Khi có bất kể sự thay đổi nào
+          XYZ -> kích hoạt sự kiện thay đổi trong Store(hệ thống phản ứng sẽ hoạt động) -> Truyền ngược vào trong DEF
+    Doc: https://vuex.vuejs.org/
