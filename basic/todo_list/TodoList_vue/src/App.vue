@@ -35,8 +35,7 @@ import CompControl from './components/CompControl'
 import CompForm from './components/CompForm'
 
 // Import data
-import listTask from "./mocks/tasks";
-import tasks from './mocks/tasks'
+// import listTask from "./mocks/tasks";
 
 export default {
 	name: 'app',
@@ -70,13 +69,6 @@ export default {
 				return item.name.toLowerCase().includes(strSearch.toLowerCase());
 			});
 
-			// var newItems = [];
-			// this.listTask.forEach((item, index) => {
-			// 	let lowerName = item.name.toLowerCase();
-			// 	let lowerSubString = strSearch.toLowerCase();
-			// 	if (lowerName.includes(lowerSubString)) newItems.push(item);
-			// });
-
 			return newItems;
 		},
 		listTaskSort() {
@@ -87,7 +79,6 @@ export default {
 		}
 	},
 	created() {
-		// Lấy ListTask từ trong LocalStorage
 		let tasks = localStorage.getItem('tasks');
 		if (tasks) {
 			this.listTask = JSON.parse(tasks);
@@ -106,17 +97,13 @@ export default {
 		},
 		handleAddNewTask(task) {
 			this.listTask.push(task);
-			console.log('handleAddNewTask App.vue', task);
 		},
 		handleEdit(taskEdit) {
 			this.isShowForm = true;
 			this.taskSelected = taskEdit;
-			console.log('handleEdit App.vue', taskEdit);
 		},
 		handleDelete(taskDelete) {
 			this.listTask = this.listTask.filter(item => item.id !== taskDelete.id);
-
-			console.log('handleDelete App.vue', taskDelete);
 		},
 		compareSort(a, b) {
 			var numberSort = this.orderDir === 'asc' ? -1 : 1;
@@ -142,17 +129,12 @@ export default {
 		handleSort(data) {
 			this.orderBy = data.orderBy;
 			this.orderDir = data.orderDir;
-			console.log('handleSort App.vue: ', data);
 		},
 		handleSearch(data) {
 			this.strSearch = data;
-			console.log('handleSearch App.vue', data);
 		},
 		toggleForm() {
 			if (this.isShowForm) this.taskSelected = null;
-			// Nếu Form đang bật -> isShowForm = true -> Thay đổi lại là false
-			// Nếu Form đang ẩn -> isShowForm = false -> Thay đổi lại là true
-			console.log('toggleForm App.vue');
 			this.isShowForm = !this.isShowForm;
 		}
 	}

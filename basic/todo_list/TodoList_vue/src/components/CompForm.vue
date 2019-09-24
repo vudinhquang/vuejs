@@ -57,8 +57,6 @@ export default {
                 this.taskname = newData.name;
                 this.level = newData.level;
             }
-         
-            console.log('watcher taskSelected', newData, oldData);
         }
     },
     beforeUpdate() {
@@ -73,7 +71,6 @@ export default {
             };
             this.$emit('handleEditTaskById', objTaskEdit);
             this.handleResetData();
-            // console.log('handleEditTask Form.vue', this.taskSelected);
         },
         handleAddNew() {
             let objTask = {
@@ -91,13 +88,11 @@ export default {
 
         },
         handleToggleForm() {
-            console.log('handleToggleForm CompForm.vue');
             this.$emit('toggleForm');
         },
         handleCancel() {
             this.$emit('toggleForm');
             this.handleResetData();
-            // Reset Data
         },
         handleResetData() {
             this.taskname = '';

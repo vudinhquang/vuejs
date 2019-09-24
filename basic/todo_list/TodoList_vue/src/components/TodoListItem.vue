@@ -22,9 +22,6 @@ export default {
         task: { type: Object, default: {} },
         index: { type: Number }
     },
-    // created() {
-    //     console.log('TodoListItem mapLevel ', mapLevel);
-    // },
     computed: {
         getLevelName() {
             return this.mapLevel[this.task.level].name;

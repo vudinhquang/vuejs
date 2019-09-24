@@ -865,3 +865,64 @@ Xây dựng chức năng Edit
       -> Thời điểm thích hợp để lấy dữ liệu về đó là created() tại vì lúc đó toàn bộ data, toàn bộ hệ thống phản ứng đã được hình thành rồi
       Dữ liệu trong LocalStorage là null khi người dùng chưa bao giờ sử dụng ứng dụng của mình hoặc là người dùng xóa dữ liệu của trình duyệt
       Lưu dữ liệu vào trong trình duyệt khi listTask có sự thay đổi dữ liệu -> watch
+
+  Publishing ứng dụng
+    npm run build: Publish sản phẩm
+      Sinh ra thư mục public chứa toàn bộ mã nguồn đã được nén
+      Khi public lên server cho người dùng sử dụng thì chỉ cần lấy file index và thư mục public
+    Tạo New App có tên là todo-list-vuejs-training
+    Download Heroku CLI rồi cài
+    $ heroku login
+      heroku: Press any key to open up the browser to login or q to exit:
+      Opening browser to https://cli-auth.heroku.com/auth/browser/9ea478e1-0f0b-4dbe-8a38-c15d29167fdd
+      heroku: Waiting for login...
+      Logging in... done
+      Logged in as vudinhquangk53@gmail.com
+    ctrl + c: Quay trở lại gõ code
+    $ git init
+      Initialized empty Git repository in C:/xampp/htdocs/vuejs/basic/todo_list/TodoList_vue/deploy/.git/
+    $ heroku git:remote -a todo-list-vuejs-training
+      set git remote heroku to https://git.heroku.com/todo-list-vuejs-training.git
+    $ git add .
+      warning: LF will be replaced by CRLF in index.html.
+      The file will have its original line endings in your working directory
+      warning: LF will be replaced by CRLF in public/build.js.
+      The file will have its original line endings in your working directory
+    $ git commit -am "public"
+      [master (root-commit) 79abd4f] public
+      3 files changed, 29 insertions(+)
+      create mode 100644 index.html
+      create mode 100644 public/build.js
+      create mode 100644 public/build.js.map
+    $ git push heroku master
+      remote:  !     Push failed
+      remote: Verifying deploy...
+      Khi đẩy code lên server thì nó không biết code của minh mã nguồn là gì. Server không hiểu file chạy đầu tiên là file nào vì file index
+        mình đang để là index.html
+      Để khắc phục vấn đề này thì mình sẽ tạo file index.php và include include.html vào đó
+      Heroku sẽ tự động chạy file include.php
+    $ git status
+      On branch master
+      Untracked files:
+        (use "git add <file>..." to include in what will be committed)
+              index.php
+      nothing added to commit but untracked files present (use "git add" to track)
+    $ git commit --amend
+      [master bf33bbb] public
+      Date: Wed Sep 25 00:19:42 2019 +0900
+      4 files changed, 31 insertions(+)
+      create mode 100644 index.html
+      create mode 100644 index.php
+      create mode 100644 public/build.js
+      create mode 100644 public/build.js.map
+    $ git push heroku master
+      remote:        NOTICE: No runtime required in composer.lock; using PHP ^7.0.0
+      remote:        - php (7.3.9)
+      remote:        - apache (2.4.41)
+      remote:        - nginx (1.16.0)
+      remote: -----> Compressing...
+      remote:        Done: 16.6M
+      remote:        https://todo-list-vuejs-training.herokuapp.com/ deployed to Heroku
+
+      Khi có file index.php thì nó sẽ nhận diện server là server php phiên bản 7.3.9
+        -> Truy cập vào https://todo-list-vuejs-training.herokuapp.com/ để vào trang web
