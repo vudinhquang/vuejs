@@ -1084,3 +1084,37 @@ Tìm hiểu VueX
         mapGetters() từ trong store, thì có những Component riêng của computed đó nên mình cần phải gộp chung bằng toán tử spread operator '...'
       Cách dùng mapGetters() cũng giống mới mapState()
         mapState() thì có thể bỏ luôn vào trong computed, nếu bỏ luôn vào trong computed thì không nhất thiết phải tạo ra getters()
+
+  Mutations
+    Không nên thay đổi dữ liệu trực tiếp của state trong từng Component đơn mà mình phải để store nó quản lý phần này. Ở các dự án lớn, số lượng 
+      state có rất nhiều nên việc thay đổi nhiều nơi sẽ ảnh hưởng đến vấn đề debug cho nên ở các phần thao tác, thay đổi state sẽ đặt ở trong 
+      phần mutations.
+    Các Component muốn thay đổi state thì nó phải truyền thông điệp đến mutations này
+    Mutations chứa các method để thay đổi giá trị trong state
+    Để kích hoạt được các method trong mutations thì không được phép gọi trực tiếp mà phải gọi thông qua lệnh gọi là commit
+    Đối với mutations thì phải tuân thủ theo quy tắc của hệ thống phản ứng
+      Khởi tạo 1 giá trị mặc định ở trong state ở store
+      Khi thêm 1 thuộc tính mới vào 1 object hoặc là thay đổi giá trị của 1 thuộc tính thì phải đảm bảo sao cho hệ thống phản ứng hoạt động tốt
+        Có thể dùng Vue.set() để thêm 1 giá trị mới cho thuộc tính mới
+        Có thể thay thế 1 obj bằng 1 obj khác có địa chỉ không bằng thằng cũ
+          state.obj = { ...state.obj, newProp: 123 }
+    Sử dụng hằng số để lưu Mutations Types, áp dung cho các dự án lớn. Lúc đó sẽ tách phần tên mutations ra 1 file riêng
+    Vấn đề bất đồng bộ
+      Nếu mà có các câu lệnh gọi api sang 1 server bên ngoài hoặc nếu sử dụng các method bất đồng bộ ở trong mutations thì sẽ gặp vấn đề
+        mutations: {
+          increment(state, number) {
+            setTimeout(() => {
+              console.log('Mutations increment', state);
+              state.count += number;
+            }, 1000);
+          },
+          decrement(state, number) {
+            console.log('Mutations decrement', state);
+            state.count -= number;
+          }
+        }
+        Ở minh họa trên thì khi kích hoạt sự thay đổi thì nó sẽ không thay đổi ngay mà 1s sau nó mới thay đổi. Tương tự trong trường hợp tương
+          tác với server thì server xử lý trong vòng bao lâu mã nguồn ko biết được vì đó là bất đồng bộ -> Khi tăng giá trị của count thì hệ thống
+          phản ứng ko thay đổi -> khó khăn trong việc debug
+      -> Toàn bộ code trong mutations là đồng bộ, (không được phép tương tác, gọi đến server ở trong mutations). Mutations chỉ có chức năng là 
+        thay đổi khi nó nhận dữ liệu từ 1 nơi khác gọi đến chứ bản thân nó không được quyền tương tác với server.

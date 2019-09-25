@@ -20,6 +20,16 @@ const store = new Vuex.Store({
     countDouble: state => {
       return state.count * 2;
     }
+  },
+  mutations: {
+    increment(state, number) {
+      console.log('Mutations increment', state);
+      state.count += number;
+    },
+    decrement(state, number) {
+      console.log('Mutations decrement', state);
+      state.count -= number;
+    }
   }
 })
 
