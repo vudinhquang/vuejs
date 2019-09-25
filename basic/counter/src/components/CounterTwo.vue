@@ -1,12 +1,14 @@
 <template>
     <div>
-        <h1>{{ count }}</h1>
+        <h1>{{ count }} <span>{{ value2 }}</span> </h1>
         <button v-on:click="count++">Plus</button>
         <button v-on:click="count--">Minus</button>
     </div>
 </template>
 
 <script>
+import { mapGetters, mapState } from 'vuex'
+
 export default {
     name: 'counter-two',
     data() {
@@ -15,15 +17,14 @@ export default {
         }
     },
     computed: {
-        count: {
-            get () {
-                return this.$store.state.count
-            },
-            set (newCount) {
-                // Thay đổi state(count trong store)
-                this.$store.state.count = newCount;
-            }
-        } 
+        ...mapGetters([
+                'count',
+                'value',
+                'countDouble'
+        ]),
+        ...mapState([
+                'value2'
+        ])
     }
 }
 </script>

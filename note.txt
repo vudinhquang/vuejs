@@ -1004,6 +1004,7 @@ Tìm hiểu VueX
           Data -> dữ liệu của thực thể Vue đó
         Store
           State -> Giống như data của từng đối tượng Vue(từng Component)
+            mapState()
       Để sử dụng được Store thì khi khởi tạo 1 đối tượng Vue truyền store vào đối tượng Vue đó, store là 1 thuộc tính 
         của đối tượng Vue
       Để có thể truy xuất được vào dữ liệu của store thì mình sẽ truy xuất qua con trỏ this truy cập vào thuộc tính là $store,
@@ -1042,3 +1043,44 @@ Tìm hiểu VueX
     mapGetters(): Việc lấy các giá trị Getters trong store bằng cách thông qua con trỏ this: this.$store.state.count = newCount; thì hơi dài dòng,
       mapGetters() giúp cho việc lấy giá trị Getters đơn giản hơn.
         trong mapGetters() truyền vào các dữ liệu cần lấy
+
+  Note State, Getters: Tiến hành làm rõ 1 số vấn đề 
+    Có nhất thiết phải dùng setter của computed để thay đổi trực tiếp dữ liệu trong state của store?
+      Điều này là không cần thiết bởi vì có thể thực hiện ở trong 1 hàm method
+    Có nên thay đổi trực tiếp state trong từng component hay không. Tương tự như cách cũ là dùng props truyền dữ liệu vào các Component con, từ 
+      đó kích hoạt sự kiện ra ngược bên ngoài, không được thay đổi trực tiếp props. Tương tự thì state cũng vậy, dù đối với store nó cho phép
+      mình thay đổi trực tiếp trong từng component tuy nhiên thì không nên -> Có cơ chế khác để mình thay đổi dữ liệu trong state, việc thay đổi
+      state trong các component thì trong các dự án số lượng component lớn thì sẽ rất khó quản lý -> chỉ thay đổi state trực tiếp ở trong Store
+      mà thôi
+    Theo quy tăc thì có phải luôn luôn lấy dữ liệu ra thông qua getter hay không
+      Không nhất thiết phải dùng getter để lấy dữ liệu mà hoàn toàn có thể truy xuất theo cách thông thường được
+        this.$store.state.count
+      Việc dùng mapGetters() thì việc lấy dữ liệu sẽ nhanh hơn và quản lý tốt mã nguồn
+    Tại sao cú pháp của mapGetters lại có thêm dấu "..." ở phía trước
+      mapGetters() có tham số truyền vào là 1 array hoặc 1 object, trả về là 1 object
+      Đối với computed thì thường nó là 1 object
+        computed: {
+          abc: function() {}
+          def: function() {}
+        }
+      Đối với mapGetters() thì nó trả về 1 object, trong object đó có các method để lấy các value đã khai báo trong store
+        getters: {
+          count: state => {
+            return state.count;
+          },
+          value: state => {
+            return state.value;
+          },
+          countDouble: state => {
+            return state.count * 2;
+          }
+        }
+      "..." là cú pháp của ES6, không nhất thiết phải dùng dấu '...' mà có thể khai báo theo kiểu:
+        computed: mapGetters([
+          'count',
+          'value',
+          'countDouble'
+        ]) mình chỉ khai báo trực tiếp như vậy khi bản thân Component đó không có computed riêng dành cho nó. Còn đây thì ngoài phần
+        mapGetters() từ trong store, thì có những Component riêng của computed đó nên mình cần phải gộp chung bằng toán tử spread operator '...'
+      Cách dùng mapGetters() cũng giống mới mapState()
+        mapState() thì có thể bỏ luôn vào trong computed, nếu bỏ luôn vào trong computed thì không nhất thiết phải tạo ra getters()
