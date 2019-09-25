@@ -1013,3 +1013,32 @@ Tìm hiểu VueX
                 return this.$store.state.count
             }
         }
+
+  Computed, Getters
+    Đối với com thì mình chỉ thường dùng đề lấy dữ liệu ra thôi, mình sẽ tìm hiểu đến việc sử dụng computed như một data thông thường, 
+      nghĩa là ngoài việc render dữ liệu ra html thì mình còn có thể thay đổi dữ liệu trực tiếp
+    Đối với 1 computed thì nếu như khai báo đầy đủ ra thì sẽ có 2 phương thức đó là get() và set(). Nếu như chỉ khai báo như thông thường 
+      thì Vue hiểu đó là 1 phương thức get dữ liệu, mình chưa khai báo phương thức nào liên quan đến set dữ liệu mới
+        count: {
+            get () {
+                return this.$store.state.count
+            },
+            set (newCount) {
+                // Thay đổi state(count trong store)
+                this.$store.state.count = newCount;
+            }
+        }
+    Quy trình hoạt động của computed:
+      get -> Lấy dữ liệu ra render vào template html
+      set -> Thiết lập dữ liệu
+
+      Khi user click vào button tăng computed count lên 1 đơn vị -> set sẽ được chạy
+        -> Thay đổi lại count nằm trong store -> VueJs sẽ kích hoạt hệ thống phản ứng trong Store
+        -> Đẩy dữ liệu về lại các Component có sử dụng 'count'
+    Getters: Cũng giống như computed, mình sử dụng computed để lấy dữ liệu ra, ở trong store hỗ trợ mình Getters, nó giống như computed trong
+      Component. Nó dùng để xử lý dữ liệu trước khi trả về cho các Component
+      Giống với computed mỗi Getters là 1 function được dùng giống như là các biến, các function này nhận vào các state và return về các state
+        tương ứng
+    mapGetters(): Việc lấy các giá trị Getters trong store bằng cách thông qua con trỏ this: this.$store.state.count = newCount; thì hơi dài dòng,
+      mapGetters() giúp cho việc lấy giá trị Getters đơn giản hơn.
+        trong mapGetters() truyền vào các dữ liệu cần lấy

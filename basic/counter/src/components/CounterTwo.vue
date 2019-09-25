@@ -15,9 +15,15 @@ export default {
         }
     },
     computed: {
-        count () {
-            return this.$store.state.count
-        }
+        count: {
+            get () {
+                return this.$store.state.count
+            },
+            set (newCount) {
+                // Thay đổi state(count trong store)
+                this.$store.state.count = newCount;
+            }
+        } 
     }
 }
 </script>
