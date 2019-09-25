@@ -973,3 +973,43 @@ Tìm hiểu VueX
         Khi có bất kể sự thay đổi nào
           XYZ -> kích hoạt sự kiện thay đổi trong Store(hệ thống phản ứng sẽ hoạt động) -> Truyền ngược vào trong DEF
     Doc: https://vuex.vuejs.org/
+
+  Counter: Qua đây tìm hiểu các kiến thức liên quan đến Vuex
+    State:
+      CompCounter và CounterTwo sẽ dùng chung về mặt dữ liệu -> Cài đặt VueX và tạo ra 1 Store để lưu trữ dữ liệu 
+        dùng chung
+      Install: Có 2 cách
+        https://vuex.vuejs.org/installation.html
+        Cách 1 dùng các thẻ script, thường dùng trong các dự án mà mình tích hợp riêng vào trong 1 phần của dự án lớn
+          <script src="/path/to/vue.js"></script>
+          <script src="/path/to/vuex.js"></script>
+        Cách 2: Dùng npm để tích hợp vào toàn bộ dự án thông qua npm
+          npm install vuex --save
+      Khai báo plugin vào main.js
+        import Vuex from 'vuex'
+        Vue.use(Vuex)
+      Để có thể tạo mới được 1 Store(nơi lưu trữ những dữ liệu dùng chung) thì cần tạo thêm 1 đối tượng mới
+        const store = new Vuex.Store({
+          state: {
+            count: 0
+          },
+          mutations: {
+            increment (state) {
+              state.count++
+            }
+          }
+        })
+
+        Vue Instance
+          Data -> dữ liệu của thực thể Vue đó
+        Store
+          State -> Giống như data của từng đối tượng Vue(từng Component)
+      Để sử dụng được Store thì khi khởi tạo 1 đối tượng Vue truyền store vào đối tượng Vue đó, store là 1 thuộc tính 
+        của đối tượng Vue
+      Để có thể truy xuất được vào dữ liệu của store thì mình sẽ truy xuất qua con trỏ this truy cập vào thuộc tính là $store,
+        -> dùng computed, tính toán dựa trên dữ liệu mà mình lưu trong store
+        computed: {
+            count () {
+                return this.$store.state.count
+            }
+        }
