@@ -1147,3 +1147,6 @@ Tìm hiểu VueX
     Cú pháp của map là giống nhau, đều nhận vào array, object và trả về object. Thông thường thì tham số mình hay truyền vào là array,
       lúc này mình lấy trực tiếp tên định nghĩa trong main. Trong trường hợp thì tên mình khai báo trong main trùng với tên của các method
       khác ở trong Component thì lúc này mình có thể khai báo bằng 1 object để định nghĩa lại bằng tên khác
+
+  Split File
+    Tách nhỏ main.js phần store để quản lý các phần liên quan đến store
