@@ -12,7 +12,6 @@
 				/>
 				<comp-form 
 					v-bind:taskSelected="taskSelected"
-					v-on:toggleForm="toggleForm"
 					v-on:handleAddNewTask="handleAddNewTask"
 					v-on:handleEditTaskById="handleEditTaskById"
 				/>
@@ -116,10 +115,6 @@ export default {
 		},
 		handleSearch(data) {
 			this.strSearch = data;
-		},
-		toggleForm() {
-			if (this.isShowForm) this.taskSelected = null;
-			this.isShowForm = !this.isShowForm;
 		}
 	}
 }

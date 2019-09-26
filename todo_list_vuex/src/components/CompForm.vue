@@ -1,6 +1,6 @@
 <template>
     <b-col cols="12" lg="6">
-        <form-add v-on:handleToggleForm="handleToggleForm" />
+        <form-add />
 
         <form v-if="isShowForm" action="" method="POST" class="form-inline justify-content-between">
             <div class="form-group">
@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import FormAdd from "./FormAdd";
 import uuidv4 from "uuid/v4"
 export default {
@@ -61,6 +61,7 @@ export default {
 
     },
     methods: {
+        ...mapActions(['toggleForm']),
         handleEditTask() {
             let objTaskEdit = {
                 id: this.taskSelected.id,
@@ -85,11 +86,8 @@ export default {
             }
 
         },
-        handleToggleForm() {
-            this.$emit('toggleForm');
-        },
         handleCancel() {
-            this.$emit('toggleForm');
+            this.toggleForm();
             this.handleResetData();
         },
         handleResetData() {

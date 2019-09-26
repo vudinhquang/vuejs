@@ -1170,3 +1170,12 @@ Form Toggle với VueX
     -> Chuyển isShowForm lưu vào trong store
     FormAdd, CompForm: Không cần props nhận giá trị của isShowForm từ ngoài truyền vào mà thay thế bằng mapState để lấy giá trị của isShowForm 
       từ store
+  Toggle Form:
+    FormAdd: Có 1 sự kiện click
+    Khi nhấn vào button Add Task thì nó chạy method là onClickAddTask() -> emit sự kiện handleToggleForm ra CompForm, tại đây tiếp tục emit 
+      toggleForm ra App -> đưa toggleForm vào actions của store -> commit đến mutations để thay đổi state isShowForm để toggle Form
+    App không cần các sự kiện và hàm để toggleForm
+    CompForm không cần sự kiện và emit sự kiện để toggleForm ra bên ngoài
+    Tại FormAdd không cần truyền sự kiện ra bên ngoài nữa mà kết nối trực tiếp đến store
+    Cancel nằm trong CompForm, khi click vào nút Cancel thì cũng thực thiện toggleForm -> mapActions toggleForm vào trong CompForm
+    

@@ -58,7 +58,7 @@ export default {
     },
 	created() {
         let tasks = localStorage.getItem('tasks') || '[]';
-        console.log('created TodoListTable.vue', JSON.parse(tasks));
+        // console.log('created TodoListTable.vue', JSON.parse(tasks));
         this.changeTasks(JSON.parse(tasks));
 	},
     methods: {
