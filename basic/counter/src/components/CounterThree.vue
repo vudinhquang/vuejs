@@ -24,11 +24,19 @@ export default {
         plus() {
             // console.log('$store plus = ', this.$store);
             console.log('Plus Method CounterThree.vue');
-            this.$store.commit('increment', 10);
+            // this.$store.commit('increment', 10);
+            let obj = {  
+                number: 10
+            }; 
+            this.$store.dispatch('increment', obj);
         },
         minus() {
             console.log('Minus Method CounterThree.vue');
-            this.$store.commit('decrement', 10);
+            // this.$store.commit('decrement', 10);
+            let obj = {  
+                number: 10
+            }; 
+            this.$store.dispatch('decrement', obj);
         }
     }
 }

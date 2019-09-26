@@ -1118,3 +1118,21 @@ Tìm hiểu VueX
           phản ứng ko thay đổi -> khó khăn trong việc debug
       -> Toàn bộ code trong mutations là đồng bộ, (không được phép tương tác, gọi đến server ở trong mutations). Mutations chỉ có chức năng là 
         thay đổi khi nó nhận dữ liệu từ 1 nơi khác gọi đến chứ bản thân nó không được quyền tương tác với server.
+
+  Actions
+    Gần giống mutations, là các method để xử lý tuy nhiên:
+      Actions không có sự thay đổi dữ liệu, nó chỉ tương tác và gọi sang mutations để mutations thay đổi
+      Trong nội tại của Actions được quyền sử dụng các cơ chế liên quan đến bất đồng bộ, khi cần tương tác với server thì các thao tác đó đặt được 
+        đặt ở Actions, sau khi tương tác xong lấy được dữ liệu rồi thì từ Actions truyền dữ liệu qua mutations để mutations thay đổi state
+    Giống với Mutations thì khi khai báo Actions cũng là 1 function nhưng đối với Mutations thì nó tự động nhận vào state, ngoài ra là các tham
+      số khác mình truyền vào. Đối với Actions thì truyền vào context, tham số này cũng tự động được dàng buộc
+      Trong context có nhiều nội dung ở bên trong như commit, state, getters hay dispatch
+    Thường thì 1 action sẽ gọi đến 1 mutations tương ứng nên tên action để giống với tên mutations
+    Dùng dispatch để kích hoạt action
+    Actions dùng để tương tác với server, xử lý dữ liệu -> Truyền dữ liệu đó vào trong mutations để nó thay đổi state
+    Component có các thao tác các sự kiện để thay đổi dữ liệu -> dispatch 1 action -> commit 1 mutations -> Thay đổi state
+    Lưu ý: Trong 1 action mình có thể kích hoạt 1 action khác thông qua lệnh context.dispatch() với tham số truyền vào là tên action cần kích 
+      hoạt
+    argument destructuring: Có thể phân dã context ra thành nhiều thông tin
+    Tương tự như mutations thì mình có thể truyền vào các thông số khác, bản thân Actions cũng vậy, ngoài giá trị mặc định mà Vuex truyền vào
+      là phần context thì mình có thể truyền thêm các tham số khác
