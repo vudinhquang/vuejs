@@ -11,7 +11,6 @@
 					v-on:handleSearch="handleSearch"
 				/>
 				<comp-form 
-					v-bind:isShowForm="isShowForm"
 					v-bind:taskSelected="taskSelected"
 					v-on:toggleForm="toggleForm"
 					v-on:handleAddNewTask="handleAddNewTask"

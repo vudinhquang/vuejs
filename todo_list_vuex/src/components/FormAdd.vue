@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
     name: 'form-add',
     data() {
@@ -19,9 +20,7 @@ export default {
 
         }
     },
-    props: {
-        isShowForm: { type: Boolean, default: false }
-    },
+    computed: mapState(['isShowForm']),
     methods: {
         onClickAddTask() {
             this.$emit('handleToggleForm');

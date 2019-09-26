@@ -1162,3 +1162,11 @@ Hiển thị danh sách Items với VueX
   Data được tách riêng, không quản lý chung vào trong App mà sẽ quản lý vào trong từng Component, Component nào dùng Data nào thì sẽ lấy trực
     tiếp vào trong Component đó -> không liên quan đến event truyền Component ra App, props truyền data từ App vào Component con như cách thông
     thường nữa
+
+Form Toggle với VueX
+  Show Form:
+    Trong data của isShowForm có 1 biến đó là isShowForm, isShowForm được truyền vào CompForm thông qua props. Khi nó có giá trị true thì hiển 
+      thị form còn false thì không hiển thị. Tại CompForm tiếp tục truyền isShowForm vào FormAdd bằng props
+    -> Chuyển isShowForm lưu vào trong store
+    FormAdd, CompForm: Không cần props nhận giá trị của isShowForm từ ngoài truyền vào mà thay thế bằng mapState để lấy giá trị của isShowForm 
+      từ store
