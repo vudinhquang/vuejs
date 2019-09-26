@@ -1,7 +1,6 @@
 <template>
 	<div id="app">
 		<b-container>
-			{{ count }}
 			<comp-title />
 			<b-row>
 				<comp-control
@@ -20,7 +19,6 @@
 				/>
 			</b-row>
 			<todo-list-table 
-				v-bind:listTask="listTaskSort"
 				v-on:handleEdit="handleEdit"
 				v-on:handleDelete="handleDelete"
 			/>
@@ -49,7 +47,6 @@ export default {
 	},
 	data () {
 		return {
-			listTask: null,
 			isShowForm: false,
 			strSearch: '',
 			orderBy: 'name',
@@ -57,16 +54,7 @@ export default {
 			taskSelected: null
 		}
 	},
-    watch: {
-        listTask(newTasks) {
-			var tasksString = JSON.stringify(newTasks);
-			localStorage.setItem('tasks', tasksString);
-        }
-    },
 	computed: {
-		...mapState([
-			'count'
-		]),
 		listTaskSearch() {
 			// Tìm kiếm - Logic search
 			const { strSearch } = this;
@@ -81,14 +69,6 @@ export default {
 			listTask.sort(this.compareSort);
 
 			return listTask;
-		}
-	},
-	created() {
-		let tasks = localStorage.getItem('tasks');
-		if (tasks) {
-			this.listTask = JSON.parse(tasks);
-		} else {
-			this.listTask = [];
 		}
 	},
 	methods: {

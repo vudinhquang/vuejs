@@ -1,3 +1,5 @@
+import tasks from '../mocks/tasks'
+
 export default {
-    count: 100
+    listTask: tasks
 }

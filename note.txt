@@ -1153,3 +1153,12 @@ Tìm hiểu VueX
 
 Hiển thị danh sách Items với VueX
   Install: yarn add vuex
+  Ban đầu do tạo theo kiểu props nên mọi phần data mình đều quản lý ở trong App.vue, chuyển sang vueX thì component có sử dụng data nào thì
+    chỉ lấy riêng data đó vào trong Component đó, không cần truyền listTask từ App vào TodoListTable bằng props nữa
+  TodoListTable Component không cần nhận props từ bên ngoài truyền vào nữa mà sẽ lấy trực tiếp từ trong store thông qua mapState
+  created(): Khởi tạo giá trị mặc định listTask -> không cần quản lý ở App nữa mà quản lý ở TodoListTable
+    let tasks = localStorage.getItem('tasks') || '[]'; Nếu localStorage mà rỗng thì gán bằng '[]'
+  watch: Bản chất là có thể lắng nghe từ computed chứ không nhất thiết là phải lắng nghe từ data
+  Data được tách riêng, không quản lý chung vào trong App mà sẽ quản lý vào trong từng Component, Component nào dùng Data nào thì sẽ lấy trực
+    tiếp vào trong Component đó -> không liên quan đến event truyền Component ra App, props truyền data từ App vào Component con như cách thông
+    thường nữa
