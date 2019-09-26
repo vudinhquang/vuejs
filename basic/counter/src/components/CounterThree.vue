@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 export default {
     name: 'counter-three',
     data() {
@@ -21,6 +21,14 @@ export default {
         ])
     },
     methods: {
+        // ...mapActions([
+        //     'increment',
+        //     'decrement'
+        // ]),
+        ...mapActions({
+            'abc': 'increment',
+            'def': 'decrement'
+        }),
         plus() {
             // console.log('$store plus = ', this.$store);
             console.log('Plus Method CounterThree.vue');
@@ -28,7 +36,9 @@ export default {
             let obj = {  
                 number: 10
             }; 
-            this.$store.dispatch('increment', obj);
+            // this.$store.dispatch('increment', obj);
+            // this.increment(obj);
+            this.abc(obj);
         },
         minus() {
             console.log('Minus Method CounterThree.vue');
@@ -36,7 +46,9 @@ export default {
             let obj = {  
                 number: 10
             }; 
-            this.$store.dispatch('decrement', obj);
+            // this.$store.dispatch('decrement', obj);
+            // this.decrement(obj);
+            this.def(obj);
         }
     }
 }

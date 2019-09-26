@@ -1136,3 +1136,14 @@ Tìm hiểu VueX
     argument destructuring: Có thể phân dã context ra thành nhiều thông tin
     Tương tự như mutations thì mình có thể truyền vào các thông số khác, bản thân Actions cũng vậy, ngoài giá trị mặc định mà Vuex truyền vào
       là phần context thì mình có thể truyền thêm các tham số khác
+    
+  MapActions
+    Kiến thức liên quan đến map
+      state thì có mapState -> map vào computed
+      getters thì có mapGetters -> map vào computed
+      mutations có mapMutations -> map vào method
+      actions có mapActions -> map vào method
+    Khi dùng mapActions ở các Component thì có thể sử dụng được các action ở các Component giống như dùng các method thông thường
+    Cú pháp của map là giống nhau, đều nhận vào array, object và trả về object. Thông thường thì tham số mình hay truyền vào là array,
+      lúc này mình lấy trực tiếp tên định nghĩa trong main. Trong trường hợp thì tên mình khai báo trong main trùng với tên của các method
+      khác ở trong Component thì lúc này mình có thể khai báo bằng 1 object để định nghĩa lại bằng tên khác
