@@ -1178,4 +1178,19 @@ Form Toggle với VueX
     CompForm không cần sự kiện và emit sự kiện để toggleForm ra bên ngoài
     Tại FormAdd không cần truyền sự kiện ra bên ngoài nữa mà kết nối trực tiếp đến store
     Cancel nằm trong CompForm, khi click vào nút Cancel thì cũng thực thiện toggleForm -> mapActions toggleForm vào trong CompForm
-    
+
+Xây dựng chức năng Search với VueX
+  ControlSearch Component có sự dàng buộc dữ liệu 2 chiều với bên ngoài, tại App có nhiệm vụ thay đổi lại gá trị của strSearch
+    -> Đưa strSearch vào bên trong state
+  Xóa đi các Event liên quan đến handleSearch ở App và CompControl
+  Xóa Props truyền giá trị strSearch từ ngoài vào trong
+  Tại ControlSearch thay vì lấy giá trị của strSearch từ props thì import mapState, khai báo computed để lấy giá trị strSearch từ store ra 
+    ngoài
+    ControlSearch Component Gọi action handleSearch -> commit mutations -> thực hiện thay đổi state bằng giá trị mới nhập vào ô input
+  Sau khi đưa được dữ liệu vào trong strSearch của store -> tiến hành thực hiện chức năng Search
+  Trong TodoListTable là phần hiển thị list task -> cần phải tương tác được với strSearch, tại đây thì thay cho việc hiển thị trực  
+    tiếp listTask ra ngoài thì cần phải có bước kiểm tra xem strSearch có giá trị hay không, nếu có giá trị thì tiến hành logic liên quan đến
+    search và return về danh sách task sau khi đã tìm kiếm -> Sử dụng getters dựa vào strSearch và listTask trong state lọc ra dữ liệu tìm kiếm
+    để hiển thị. Do đó tại TodoListTable Component thì không cần sử dụng đến mapState mà dùng mapGetters bởi vì listTask ko phải là lấy trực tiếp 
+    từ state nữa mà sẽ lấy thông qua mapGetters đã tìm kiếm rồi
+  ControlSearch Component: Khi nhấn vào Clear thì thực hiện tìm kiếm với key là chuỗi rỗng

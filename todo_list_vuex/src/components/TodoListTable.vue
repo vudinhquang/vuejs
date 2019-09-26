@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions, mapGetters } from 'vuex'
 import TodoListItem from './TodoListItem'
 
 export default {
@@ -46,15 +46,15 @@ export default {
         }
     },
     watch: {
-        listTask(newTasks) {
-			var tasksString = JSON.stringify(newTasks);
-			localStorage.setItem('tasks', tasksString);
-        }
+        // listTask(newTasks) {
+		// 	var tasksString = JSON.stringify(newTasks);
+		// 	localStorage.setItem('tasks', tasksString);
+        // }
     },
     computed: {
-        ...mapState([
-            'listTask'
-        ])
+        ...mapGetters({
+            'listTask': 'listTaskSearch' 
+        })
     },
 	created() {
         let tasks = localStorage.getItem('tasks') || '[]';

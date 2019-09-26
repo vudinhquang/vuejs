@@ -6,10 +6,7 @@
                 v-bind:orderDir="orderDir"
                 v-on:handleSort="handleSort"
             />
-            <control-search 
-                v-on:handleSearch="handleSearch"
-                v-bind:strSearch="strSearch"
-            />
+            <control-search />
         </div>
     </div>
 </template>
@@ -24,7 +21,6 @@ export default {
 		ControlSearch
     },
     props: {
-        strSearch: { type: String, default: '' },
         orderBy: { type: String, default: 'name' },
         orderDir: { type: String, default: 'asc' }
     },
@@ -34,9 +30,6 @@ export default {
         }
     },
     methods: {
-        handleSearch(data) {
-            this.$emit('handleSearch', data);
-        },
         handleSort(data) {
             this.$emit('handleSort', data);
         }

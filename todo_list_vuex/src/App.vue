@@ -8,7 +8,6 @@
 					v-bind:orderDir="orderDir"
 					v-bind:strSearch="strSearch"
 					v-on:handleSort="handleSort"
-					v-on:handleSearch="handleSearch"
 				/>
 				<comp-form 
 					v-bind:taskSelected="taskSelected"
@@ -113,9 +112,6 @@ export default {
 			this.orderBy = data.orderBy;
 			this.orderDir = data.orderDir;
 		},
-		handleSearch(data) {
-			this.strSearch = data;
-		}
 	}
 }
 </script>

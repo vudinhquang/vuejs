@@ -3,7 +3,7 @@
         <div class="input-group">
             <input 
                 v-bind:value="strSearch"
-                v-on:input="handleSearch"
+                v-on:input="TriggerHandleSearch"
                 type="text" class="form-control" placeholder="Search for..." />
             <span class="input-group-append">
                 <button 
@@ -15,23 +15,25 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
 export default {
     name: 'control-search',
-    props: {
-        strSearch: { type: String, default: '' }
-    },
+    computed: mapState(['strSearch']),
     data() {
         return {
 
         }
     },
     methods: {
+        ...mapActions(['handleSearch']),
         handleClear() {
             // Thay đổi giá trị strSearch về rỗng
-            this.$emit('handleSearch', '');
+            // this.$emit('handleSearch', '');
+            this.handleSearch('');
         },
-        handleSearch(e) {
-            this.$emit('handleSearch', e.target.value);
+        TriggerHandleSearch(e) {
+            this.handleSearch(e.target.value);
+            // this.$emit('handleSearch', e.target.value);
         }
     }
 }
