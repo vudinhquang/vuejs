@@ -1,6 +1,7 @@
 <template>
 	<div id="app">
 		<b-container>
+			{{ count }}
 			<comp-title />
 			<b-row>
 				<comp-control
@@ -28,6 +29,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 // Import các Component
 import TodoListTable from './components/TodoListTable'
 import CompTitle from './components/CompTitle'
@@ -62,6 +64,9 @@ export default {
         }
     },
 	computed: {
+		...mapState([
+			'count'
+		]),
 		listTaskSearch() {
 			// Tìm kiếm - Logic search
 			const { strSearch } = this;

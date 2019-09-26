@@ -1150,3 +1150,6 @@ Tìm hiểu VueX
 
   Split File
     Tách nhỏ main.js phần store để quản lý các phần liên quan đến store
+
+Hiển thị danh sách Items với VueX
+  Install: yarn add vuex
