@@ -1,11 +1,7 @@
 <template>
     <div class="col-12 col-lg-6">
         <div class="row">
-            <control-sort 
-                v-bind:orderBy="orderBy"
-                v-bind:orderDir="orderDir"
-                v-on:handleSort="handleSort"
-            />
+            <control-sort />
             <control-search />
         </div>
     </div>
@@ -20,19 +16,12 @@ export default {
 		ControlSort,
 		ControlSearch
     },
-    props: {
-        orderBy: { type: String, default: 'name' },
-        orderDir: { type: String, default: 'asc' }
-    },
     data() {
         return {
 
         }
     },
     methods: {
-        handleSort(data) {
-            this.$emit('handleSort', data);
-        }
     }
 }
 </script>

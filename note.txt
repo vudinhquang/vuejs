@@ -1194,3 +1194,19 @@ Xây dựng chức năng Search với VueX
     để hiển thị. Do đó tại TodoListTable Component thì không cần sử dụng đến mapState mà dùng mapGetters bởi vì listTask ko phải là lấy trực tiếp 
     từ state nữa mà sẽ lấy thông qua mapGetters đã tìm kiếm rồi
   ControlSearch Component: Khi nhấn vào Clear thì thực hiện tìm kiếm với key là chuỗi rỗng
+
+Xây dựng chức năng Sort với VueX
+  ControlSort và CompControl nhận prop là orderBy và orderDir từ bên ngoài App vào. Khi thay đổi thì 2 giá trị này được truyền ra ngoài App và App
+    thực hiện lưu lại giá trị thay đổi.
+  Chuyển đổi orderBy và orderDir vào trong state để ControlSort có thể lấy trực tiếp 2 giá trị này ra dùng mà ko cần phải nhận thông qua props
+    và dùng event để chuyển đổi event ngược lại ra bên ngoài App
+  App: Không cần truyền orderBy và orderDir vào Component con nên không cần v-bind orderBy và orderDir, không cần sự kiện kích hoạt handleSort
+  CompControl: Không cần props orderBy và orderDir, đồng thời không cần truyền dữ liệu orderBy và orderDir vào ControlSort, không cần kích hoạt
+    handleSort
+  ControlSort: Không lấy orderBy và orderDir từ props nữa mà dùng mapState để triết xuất dữ liệu từ state ra
+    Khi click chọn select box để thay đổi giá trị sort thì lấy dữ liệu của selected chuyển sang store
+      -> tạo action handleSort -> mutations handleSort, tại đây thực hiện thay đổi orderBy và orderDir ở trong state
+    Khi kích hoạt 1 mutations hay action thì data truyền ko thể truyền 2 tham số được mà thay bằng việc truyền 2 thông số mình có thể truyền 1 obj
+  Thực hiện logic dựa vào giá trị của orderBy và orderDir. Giá trị hiển thị trong TodoListTable là được tính toán từ listTask thông qua giá trị
+    của orderBy và orderDir. Việc này được thực hiện ở trong getters bởi vì getters cũng tương ứng với computed được tính toán dựa trên state có 
+    sẵn. Getters này được tính toán thông qua 2 quá trình đó là Search và Sort
