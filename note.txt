@@ -1220,3 +1220,9 @@ Xây dựng chức năng Delete với VueX
   Trong action thì ngoài commit ra thì còn có state, getters và dispatch
     -> Không cần xử lý vấn đề handleDelete trong App, TodoListTable
   TodoListTable tiến hành gọi action
+
+Xây dựng chức năng Add New Task với VueX
+  Form được đặt trong CompForm
+  Cách làm cũ: Khi click vào nút là Submit thì thực hiện handleAddNew() -> emit event ra ngoài App để thực hiện thêm tasks
+  -> Xây dựng action mới handleAddNewTask -> commit đến mutations
+  CompForm: Không cần emit ra bên ngoài mà sẽ gọi action

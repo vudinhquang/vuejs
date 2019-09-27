@@ -6,7 +6,6 @@
 				<comp-control />
 				<comp-form 
 					v-bind:taskSelected="taskSelected"
-					v-on:handleAddNewTask="handleAddNewTask"
 					v-on:handleEditTaskById="handleEditTaskById"
 				/>
 			</b-row>
@@ -49,9 +48,6 @@ export default {
 				this.listTask.splice(index, 1, taskEdit);	
 				this.toggleForm();
 			}
-		},
-		handleAddNewTask(task) {
-			this.listTask.push(task);
 		},
 		handleEdit(taskEdit) {
 			this.isShowForm = true;

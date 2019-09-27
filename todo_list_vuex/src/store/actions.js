@@ -19,5 +19,8 @@ export default {
         console.log('Action handleDelete', taskDelete);
         let newListTask = state.listTask.filter(item => item.id !== taskDelete.id);
         commit('changeTasks', newListTask);
+    },
+    handleAddNewTask({ commit }, task) {
+        commit('handleAddNewTask', task);
     }
 }

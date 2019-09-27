@@ -61,7 +61,7 @@ export default {
 
     },
     methods: {
-        ...mapActions(['toggleForm']),
+        ...mapActions(['toggleForm', 'handleAddNewTask']),
         handleEditTask() {
             let objTaskEdit = {
                 id: this.taskSelected.id,
@@ -74,17 +74,16 @@ export default {
         handleAddNew() {
             let objTask = {
                 id: uuidv4(),
-                name: this.taskname,
+                name: this.taskname.trim(),
                 level: parseInt(this.level)
             };
             
             if (objTask.name) {
-                this.$emit('handleAddNewTask', objTask);
+                this.handleAddNewTask(objTask);
                 this.handleCancel();
             } else {
-                alert('Không add được task mới mà có tên rỗng')
+                alert('Vui lòng nhập task name')
             }
-
         },
         handleCancel() {
             this.toggleForm();
