@@ -14,5 +14,10 @@ export default {
     handleSort({ commit }, data) {
         // console.log('Action handleSort', data);
         commit('handleSort', data);
+    },
+    handleDelete({ commit, state }, taskDelete) {
+        console.log('Action handleDelete', taskDelete);
+        let newListTask = state.listTask.filter(item => item.id !== taskDelete.id);
+        commit('changeTasks', newListTask);
     }
 }

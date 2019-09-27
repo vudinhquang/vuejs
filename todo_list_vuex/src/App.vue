@@ -12,7 +12,6 @@
 			</b-row>
 			<todo-list-table 
 				v-on:handleEdit="handleEdit"
-				v-on:handleDelete="handleDelete"
 			/>
 		</b-container>
 	</div>
@@ -57,9 +56,6 @@ export default {
 		handleEdit(taskEdit) {
 			this.isShowForm = true;
 			this.taskSelected = taskEdit;
-		},
-		handleDelete(taskDelete) {
-			this.listTask = this.listTask.filter(item => item.id !== taskDelete.id);
 		}
 	}
 }

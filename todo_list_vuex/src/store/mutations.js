@@ -1,7 +1,7 @@
 export default {
     changeTasks(state, newTasks) {
         state.listTask = newTasks;
-        // console.log('Mutations: changeTasks', newTasks);
+        console.log('Mutations: changeTasks', newTasks);
     },
     toggleForm(state) {
         // if (this.isShowForm) this.taskSelected = null;
