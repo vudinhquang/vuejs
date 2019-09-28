@@ -1261,3 +1261,6 @@ Hệ thống kiến thức
         truy cập vào State thay đổi state
 
 ========================================== Sử dụng VueX với Project Shopping Online ==========================================
+
+Cấu trúc ứng dụng và VueX mở rộng
+  
