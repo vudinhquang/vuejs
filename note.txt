@@ -1250,3 +1250,12 @@ LocalStorage
   Do đó watch sự thay đổi của listTask, Mỗi khi add, edit hay xóa thì sẽ có sự thay đổi của listTask
   Đưa listTask vào computed của App.vue bằng mapState. Tại đây dùng watch để lắng nghe sự thay đổi của listTask
   -> App.vue chỉ thực hiện lắng nghe sự thay đổi của listTask, nếu listTask có sự thay đổi thì thực hiện thêm listTask vào localStorage 
+
+Hệ thống kiến thức
+  Một Store có cơ chế giống như 1 Vue Instance 
+    data tương ứng với state
+    computed tương ứng với getters
+    method tương ứng với actions và mutations
+      Không được sử dụng các method, các API bất đồng bộ trong mutations
+      Actions dùng để tương tác với dữ liệu, tương tác với server, sau khi xử lý dữ liệu xong -> đẩy sang mutations. Mutations có chức năng
+        truy cập vào State thay đổi state
