@@ -4,14 +4,9 @@
 			<comp-title />
 			<b-row>
 				<comp-control />
-				<comp-form 
-					v-bind:taskSelected="taskSelected"
-					v-on:handleEditTaskById="handleEditTaskById"
-				/>
+				<comp-form />
 			</b-row>
-			<todo-list-table 
-				v-on:handleEdit="handleEdit"
-			/>
+			<todo-list-table />
 		</b-container>
 	</div>
 </template>
@@ -37,22 +32,11 @@ export default {
 	},
 	data () {
 		return {
-			taskSelected: null
+
 		}
 	},
 	methods: {
-		handleEditTaskById(taskEdit) {
-			let index = this.listTask.findIndex(item => item.id === taskEdit.id);
 
-			if (index !== -1) {
-				this.listTask.splice(index, 1, taskEdit);	
-				this.toggleForm();
-			}
-		},
-		handleEdit(taskEdit) {
-			this.isShowForm = true;
-			this.taskSelected = taskEdit;
-		}
 	}
 }
 </script>

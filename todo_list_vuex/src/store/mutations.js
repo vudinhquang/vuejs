@@ -4,7 +4,7 @@ export default {
         console.log('Mutations: changeTasks', newTasks);
     },
     toggleForm(state) {
-        // if (this.isShowForm) this.taskSelected = null;
+        if (state.isShowForm) state.taskSelected = null;
         // console.log('Mutations toggleForm ');
         state.isShowForm = !state.isShowForm;
     },
@@ -19,5 +19,9 @@ export default {
     },
     handleAddNewTask(state, task) {
         state.listTask.push(task);
+    },
+    handleEdit(state, taskEdit) {
+        state.isShowForm = true;
+        state.taskSelected = taskEdit;
     }
 }

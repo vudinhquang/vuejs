@@ -38,10 +38,7 @@ export default {
     components: {
         FormAdd
     },
-    props: {
-        taskSelected : { type: Object, default: null }
-    },
-    computed: mapState(['isShowForm']),
+    computed: mapState(['isShowForm', 'taskSelected']),
     data() {
         return {
             taskname: '',
@@ -57,18 +54,16 @@ export default {
             }
         }
     },
-    beforeUpdate() {
-
-    },
     methods: {
-        ...mapActions(['toggleForm', 'handleAddNewTask']),
+        ...mapActions(['toggleForm', 'handleAddNewTask', 'handleEditTaskById']),
         handleEditTask() {
             let objTaskEdit = {
                 id: this.taskSelected.id,
                 name: this.taskname,
                 level: parseInt(this.level)
             };
-            this.$emit('handleEditTaskById', objTaskEdit);
+            // this.$emit('handleEditTaskById', objTaskEdit);
+            this.handleEditTaskById(objTaskEdit);
             this.handleResetData();
         },
         handleAddNew() {

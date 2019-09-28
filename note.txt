@@ -1226,3 +1226,19 @@ Xây dựng chức năng Add New Task với VueX
   Cách làm cũ: Khi click vào nút là Submit thì thực hiện handleAddNew() -> emit event ra ngoài App để thực hiện thêm tasks
   -> Xây dựng action mới handleAddNewTask -> commit đến mutations
   CompForm: Không cần emit ra bên ngoài mà sẽ gọi action
+
+Xây dựng chức năng Edit với VueX
+  Đối với Vuex thì các method xử lý thì thường đưa vào trong action, một action trong Vuex tương ứng với 1 method
+  Một getter trong Vuex thì tương ứng với 1 computed
+  Chức năng Edit được đặt ở TodoListItem
+  Khi nhấn vào nút Edit thì không thực hiện theo kiểu emit từ TodoListItem ra bên ngoài nữa mà sẽ gọi dispatch trực tiếp action
+    handleEdit, tại đây thực hiện thay đổi taskSelected thành giá trị mới là giá task mình muốn Edit, đồng thời thực hiện open
+    Form bằng cách gán hía trị isShowForm thành true
+    Lúc này TodoListItem nhận biết được task nào sẽ được sửa -> method actionhandleEdit() thực hiện kích hoạt action handleEdit()
+      -> taskSelected trong state được update giá trị 
+  Đối với 1 method trong Component thường được tách ra làm 2 phần là action và mutations. Action thường xử lý dữ liệu còn mutations
+    thường thay đổi dữ liệu
+  CompForm: Khi nhấn vào Update -> thực hiện handleEditTask() -> action handleEditTaskById() -> mutations handleEditTaskById() để 
+    thực hiện thay đổi listTask dựa vào id của task được sửa và giá trị name, level được nhập/chọn
+    Khi nhấn nút Cancel thì toggleForm() cũng được thực hiện -> lúc này nếu Form đang được open thì giá trị toggleForm cũng được 
+      thay đổi về null và Form chuyển sang trạng thái close
