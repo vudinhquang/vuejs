@@ -1242,3 +1242,11 @@ Xây dựng chức năng Edit với VueX
     thực hiện thay đổi listTask dựa vào id của task được sửa và giá trị name, level được nhập/chọn
     Khi nhấn nút Cancel thì toggleForm() cũng được thực hiện -> lúc này nếu Form đang được open thì giá trị toggleForm cũng được 
       thay đổi về null và Form chuyển sang trạng thái close
+
+LocalStorage
+  watch dùng để lắng nghe sự thay đổi của listTask.
+  Đối với Search và Sort thì nó sẽ tạo bản sao của listTask thông qua getters(cách cũ là tạo bản sao của listTask thông computed)
+    -> Giá trị listTask ở trong state không thay đổi
+  Do đó watch sự thay đổi của listTask, Mỗi khi add, edit hay xóa thì sẽ có sự thay đổi của listTask
+  Đưa listTask vào computed của App.vue bằng mapState. Tại đây dùng watch để lắng nghe sự thay đổi của listTask
+  -> App.vue chỉ thực hiện lắng nghe sự thay đổi của listTask, nếu listTask có sự thay đổi thì thực hiện thêm listTask vào localStorage 

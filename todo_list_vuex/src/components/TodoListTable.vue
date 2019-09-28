@@ -44,12 +44,6 @@ export default {
 
         }
     },
-    watch: {
-        // listTask(newTasks) {
-		// 	var tasksString = JSON.stringify(newTasks);
-		// 	localStorage.setItem('tasks', tasksString);
-        // }
-    },
     computed: {
         ...mapGetters({
             'listTask': 'listTaskSearchSort' 

@@ -35,6 +35,13 @@ export default {
 
 		}
 	},
+	computed: mapState(['listTask']),
+    watch: {
+        listTask(newTasks) {
+			var tasksString = JSON.stringify(newTasks);
+			localStorage.setItem('tasks', tasksString);
+        }
+    },
 	methods: {
 
 	}
