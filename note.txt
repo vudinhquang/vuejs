@@ -1259,3 +1259,5 @@ Hệ thống kiến thức
       Không được sử dụng các method, các API bất đồng bộ trong mutations
       Actions dùng để tương tác với dữ liệu, tương tác với server, sau khi xử lý dữ liệu xong -> đẩy sang mutations. Mutations có chức năng
         truy cập vào State thay đổi state
+
+========================================== Sử dụng VueX với Project Shopping Online ==========================================
