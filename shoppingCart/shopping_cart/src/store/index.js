@@ -9,6 +9,16 @@ import mutations from './mutations'
 import moduleCart from './cart'
 import moduleProduct from './product'
 
+const myPlugin = store => {
+    // called when the store is initialized
+    console.log('myPlugin run', store);
+    store.subscribe((mutation, state) => {
+        // called after every mutation.
+        console.log('subscribe run - ', mutation, '-', state);
+        // The mutation comes in the format of `{ type, payload }`.
+    })
+}
+
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
@@ -21,9 +31,11 @@ const store = new Vuex.Store({
     modules: {
         cart: moduleCart,
         product: moduleProduct
-    }
+    },
+    plugins: [myPlugin]
 })
 
 store.commit('product/increment')
+store.commit('product/increment', 30)
 
 export default store

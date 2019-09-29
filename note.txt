@@ -1321,3 +1321,12 @@ Cấu trúc ứng dụng và VueX mở rộng
               this.$store.state.product.count++; 
           }
       }
+
+  Plugins:
+    Plugins là 1 function, function này nhận vào 1 tham số là store
+    subscribe là 1 method của store
+    Cơ chế:
+      Plugins được chạy khi store được khởi tạo
+      subscribe() được gọi lại sau khi mutations làm thay đổi state -> giống như Watchers dùng để lắng nghe sự thay đổi 
+        của state
+        -> Có thể dùng nó để tương tác với LocalStorage. Khi nào dữ liệu thay đổi thì lưu vào trong LocalStorage
