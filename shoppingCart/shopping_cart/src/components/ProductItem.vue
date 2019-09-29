@@ -10,16 +10,16 @@
             <p>{{ product.summary }}</p>
             <template v-if="product.canBuy">
                 <input name="quantity-product-1" type="number" value="1" min="1">
-                <a data-product="1" href="#" class="price"> 12 USD </a>
+                <a data-product="1" href="#" class="price">{{ formatPrice }}</a>
             </template>
 
-            <span v-else class="price"> 12 USD</span>
+            <span v-else class="price">{{ formatPrice }}</span>
         </div>
     </div>
 </template>
 
 <script>
-
+import { toCurrency } from '../helpers'
 export default {
     name: 'product-item',
     props: {
@@ -28,6 +28,9 @@ export default {
     computed: {
         urlImage() {
             return '/dist/images/' + this.product.image;
+        },
+        formatPrice() {
+            return toCurrency(this.product.price, 'USD', 'right');
         }
     }
 }

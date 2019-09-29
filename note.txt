@@ -1343,3 +1343,8 @@ Xây dựng chức năng hiển thị sản phẩm
       v-bind:key="item.id" -> :key="item.id"
       v-on:click="plus" -> @click="plus"
     template: Thẻ này có thể dùng để gom nhóm biểu thức điều kiện lại với nhau
+
+  Display Price
+    Để hiển thị Price thì mình tách ra thành 1 hàm hỗ trợ riêng vì có thể Custom được như đơn vị đặt ở phía trước, thay đổi đơn vị
+      tiền...
+    -> Tạo helper 
