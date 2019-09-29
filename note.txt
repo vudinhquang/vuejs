@@ -1288,3 +1288,24 @@ Cấu trúc ứng dụng và VueX mở rộng
     Tạo thư mục store và các file index, state, actions, mutations, getters và thư mục riêng dành cho module giỏ hàng thư
       mục này cũng có cấu trúc tương tự gồm index, state, actions, mutations, getters
     Import store vào trong main.js
+  
+  Modules: Tách store ra thành nhiều module
+    Mỗi module thì nó cũng bao gồm có các thành phần giống như store: state, mutations, actions, getters. Mỗi module thì
+      nó không nhất thiết phải bao gồm có tất cả các thành phần
+    Để kết nối được các module vào trong store được thì thêm thuộc tính modules vào cho store
+    Thêm 2 module cho project đó là cart và product 
+    Để tránh xảy ra đụng độ giữa các module với nhau trong trường hợp giữa các module có tên của mutations, action hay 
+      getters có tên giống nhau
+      root -> có increment
+        product -> có increment
+        cart
+      -> Giải pháp là truyền thêm 1 thuộc tính là namespaced: true ở trong từng module, như thì khi commit, dispatch, hay 
+        dùng getters thì phải truyền thêm namespace của module:
+        commit('product/increment')
+    Lưu ý: Đối với việc lấy ra từ mapGetters, mapActions hay mapMutations thì truyền namespaced của module vào phía trước,
+      tuy nhiên thì đối với việc lấy state thì khác, state được lấy thông qua state lồng nhau
+        computed: {
+            ...mapState({
+                count: state => state.product.count
+            })
+        }
