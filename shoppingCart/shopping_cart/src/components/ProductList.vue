@@ -7,7 +7,8 @@
             <div class="panel-body" id="list-product">
                 <product-item 
                     v-for="item in products"
-                    v-bind:key="item.id"
+                    :key="item.id"
+                    :product="item"
                 />
             </div>
         </div>

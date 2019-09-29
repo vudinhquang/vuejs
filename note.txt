@@ -1337,3 +1337,9 @@ Xây dựng chức năng hiển thị sản phẩm
     Gán dữ liệu tạm thời cho state productList của product là 1 danh sách sản phẩm
     ProductList Component: Kết nối với state và lấy danh sách product được lưu ở productList -> đưa vào computed của ProductList 
       Component
+
+  Product Item
+    Đối với các chỉ thị thì có 1 số cách viết tắt
+      v-bind:key="item.id" -> :key="item.id"
+      v-on:click="plus" -> @click="plus"
+    template: Thẻ này có thể dùng để gom nhóm biểu thức điều kiện lại với nhau
