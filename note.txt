@@ -1309,3 +1309,15 @@ Cấu trúc ứng dụng và VueX mở rộng
                 count: state => state.product.count
             })
         }
+
+  Strict Mode: Kích hoạt chế độ nghiêm ngặt, không được phép thay đổi state ở bất kỳ đâu ngoại trừ ở trong Mutations
+    strict: true -> kích hoạt là true cho đối tượng store.
+    Nên dùng theo cú pháp: strict: process.env.NODE_ENV !== 'production'
+      Khi đang ở chế độ developer thì strict sẽ được kích hoạt lên, còn khi đang ở chế độ production thì không cần kích
+        hoạt strict lên
+    Khi kích hoạt strict lên là true thì việc thay đổi state ở bên ngoài là không thể
+      methods: {
+          plus() {
+              this.$store.state.product.count++; 
+          }
+      }

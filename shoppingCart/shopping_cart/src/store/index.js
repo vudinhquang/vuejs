@@ -12,6 +12,8 @@ import moduleProduct from './product'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
+    // strict: true,
+    strict: process.env.NODE_ENV !== 'production',
     state,
     getters,
     actions,
