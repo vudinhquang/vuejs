@@ -1263,4 +1263,28 @@ Hệ thống kiến thức
 ========================================== Sử dụng VueX với Project Shopping Online ==========================================
 
 Cấu trúc ứng dụng và VueX mở rộng
-  
+  Cài đặt mã nguồn và tách ra thành các Component nhỏ, tích hợp vuex
+    Tiến hành cài đặt từ đầu mã nguồn vue thông qua webpack từ đầu
+    Keywords: vuejs webpack simple
+    https://github.com/vuejs-templates/webpack-simple
+    vue init webpack-simple shopping_cart để cài đặt mã nguồn vue với tên Project là shopping_cart
+    npm install
+    Phần này mình sử dụng phiên bản bootstrap 3, không giống với bootstrap 4 nó có sẵn kiểu cài đặt npm. Đối với bootstrap 3 thì có thể cài đặt
+      theo cách thông thường đó là sử dụng các mã nguồn js, css, images, fonts
+    output: {
+      path: path.resolve(__dirname, './dist'),
+      publicPath: '/dist/',
+      filename: 'build.js'
+    },
+      Như vậy thì tất cả các tập tin liên quan đến hình ảnh, css ở bên ngoài nếu như muốn cài đặt và bỏ vào trong index.html thì cần phải đưa
+        vào trong thư mục dist
+    Xóa đi phần định dạng mặc định của App.vue
+    index.html chuyển đổi 1 số thông tin liên quan đến css, JavaScript... -> tất cả các file này được lưu trữ ở trong thư mục dist
+    Copy mã nguồn html vào App Component
+    Điều chỉnh lại các đường dẫn của các file hình ảnh -> các file ảnh được lưu trữ trong thư mục images nằm trong thư mục dist
+    Tách ra thành các Component nhỏ hơn
+    npm install vuex --save: Cài đặt vuex vào trong dự án
+    modules: Tách nhỏ store thành các thành phần nhỏ hơn, thường áp dụng trong các dự án lớn 
+    Tạo thư mục store và các file index, state, actions, mutations, getters và thư mục riêng dành cho module giỏ hàng thư
+      mục này cũng có cấu trúc tương tự gồm index, state, actions, mutations, getters
+    Import store vào trong main.js
