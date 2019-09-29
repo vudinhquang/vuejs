@@ -1330,3 +1330,10 @@ Cấu trúc ứng dụng và VueX mở rộng
       subscribe() được gọi lại sau khi mutations làm thay đổi state -> giống như Watchers dùng để lắng nghe sự thay đổi 
         của state
         -> Có thể dùng nó để tương tác với LocalStorage. Khi nào dữ liệu thay đổi thì lưu vào trong LocalStorage
+
+
+Xây dựng chức năng hiển thị sản phẩm
+  State
+    Gán dữ liệu tạm thời cho state productList của product là 1 danh sách sản phẩm
+    ProductList Component: Kết nối với state và lấy danh sách product được lưu ở productList -> đưa vào computed của ProductList 
+      Component
