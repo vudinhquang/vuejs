@@ -1374,4 +1374,7 @@ Xây dựng chức năng Add sản phẩm vào giỏ hàng
       App.js:
         <notifications group="noti" />
       .notifications: Có thể customize lại style
-      
+
+  Logic Add
+    Khi người dùng nhập dữ liệu hợp nệ rồi và nhấn nút mua hàng -> đẩy dữ liệu vào store, mutations sẽ thực hiện thay đổi state của 
+      giỏ hàng

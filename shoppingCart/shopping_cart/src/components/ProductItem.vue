@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import { toCurrency, validateQuantity } from '../helpers'
 import { NOTI_GREATER_THAN_ONE } from '../constants/config'
 export default {
@@ -40,11 +41,17 @@ export default {
         }
     },
     methods: {
+        ...mapActions({
+            'actBuyProduct': 'cart/actBuyProduct'
+        }),
         handleBuyProduct() {
             const check = validateQuantity(this.quantity);
             if (check) {
-                let numQuantity = parseInt(this.quantity);
-                console.log('Hợp nệ, có thể mua hàng', numQuantity);
+                let data = {
+                    product:this.product,
+                    quantity: parseInt(this.quantity)
+                };
+                this.actBuyProduct(data);
             } else {
                 this.$notify(NOTI_GREATER_THAN_ONE);
                 // console.log('dữ liệu không hợp nệ', this.quantity);
