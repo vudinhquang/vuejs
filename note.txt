@@ -1378,3 +1378,7 @@ Xây dựng chức năng Add sản phẩm vào giỏ hàng
   Logic Add
     Khi người dùng nhập dữ liệu hợp nệ rồi và nhấn nút mua hàng -> đẩy dữ liệu vào store, mutations sẽ thực hiện thay đổi state của 
       giỏ hàng
+
+  Duplicate: Giải quyết vấn đề khi người dùng mua liên tiếp nhiều sản phẩm giống nhau thì xảy ra vấn đề Duplicate dữ liệu
+    -> Áp dụng bài toán kiểm tra xem 1 phần tử có tồn tại trong array hay không -> findIndex()
+    javascript spread operator: Dùng để copy mảng hay đối tượng nhưng chỉ copy được 1 cấp
