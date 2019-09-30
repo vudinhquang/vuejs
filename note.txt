@@ -1354,3 +1354,9 @@ Xây dựng chức năng Add sản phẩm vào giỏ hàng
     Nếu giỏ hàng có sản phẩm thì render ra danh sách sản phẩm, nếu giỏ hàng rỗng thì hiển thị ra câu thông báo giỏ hàng rỗng
       -> Tạo constants/config để config các câu thông báo
     Biểu thức điều kiện không nên dùng chung với vòng for -> nên đặt biểu thức điều kiện nằm trong 1 thẻ template bao ngoài
+  
+  Check Quantity
+    Khi nút nhấn là 1 thẻ <a> thì khi click vào mặc định nó sẽ nhảy sang 1 trang mới, href="#" -> dẫn đến hiện tượng nhảy lên trên 
+      đầu trang.
+      Để giải quyết vấn đề này thì có thể dùng e.preventDefault để ngăn chặn sự kiện mặc định của thẻ <a>. Tuy nhiên thì vuejs cung
+        cấp sẵn Event Modifiers là stop hay prevent -> @click.prevent

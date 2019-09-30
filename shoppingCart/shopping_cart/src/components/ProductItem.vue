@@ -9,8 +9,8 @@
             <h4 class="media-heading">{{ product.name }}</h4>
             <p>{{ product.summary }}</p>
             <template v-if="product.canBuy">
-                <input name="quantity-product-1" type="number" value="1" min="1">
-                <a data-product="1" href="#" class="price">{{ formatPrice }}</a>
+                <input v-model="quantity" type="text" value="1" min="1">
+                <a @click.prevent="handleBuyProduct" href="#" class="price">{{ formatPrice }}</a>
             </template>
 
             <span v-else class="price">{{ formatPrice }}</span>
@@ -19,11 +19,16 @@
 </template>
 
 <script>
-import { toCurrency } from '../helpers'
+import { toCurrency, validateQuantity } from '../helpers'
 export default {
     name: 'product-item',
     props: {
         product: { type: Object, default: {} }
+    },
+    data() {
+        return {
+            quantity: 1
+        }
     },
     computed: {
         urlImage() {
@@ -31,6 +36,17 @@ export default {
         },
         formatPrice() {
             return toCurrency(this.product.price, 'USD', 'right');
+        }
+    },
+    methods: {
+        handleBuyProduct() {
+            const check = validateQuantity(this.quantity);
+            if (check) {
+                let numQuantity = parseInt(this.quantity);
+                console.log('Hợp nệ, có thể mua hàng', numQuantity);
+            } else {
+                console.log('dữ liệu không hợp nệ', this.quantity);
+            }
         }
     }
 }
