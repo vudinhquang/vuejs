@@ -9,5 +9,9 @@ export default {
             let quantity = data.quantity;
             commit('changeQuantity', { index, quantity });
         }
+    },
+    actleDeleteCart( { commit, state }, cartDelete ) {
+        var newListCarts = state.listCarts.filter(item => item.product.id !== cartDelete.product.id);
+        commit('changeListCarts', newListCarts);
     }
 }

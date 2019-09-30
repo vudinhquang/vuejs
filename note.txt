@@ -1412,3 +1412,6 @@ Xây dựng chức năng Add sản phẩm vào giỏ hàng
       }, initObjSum);
       -> Kết quả: {countItem: 15, totalPrice: 260}
     Thông tin hiển thị ở phần này được tính toán dựa trên dữ liệu có sẵn ở trong state -> xây dựng getters mới trong cart
+
+Xây dựng chức năng Delete sản phẩm khỏi giỏ hàng
+  -> Áp dụng bài toán xóa 1 phần tử trong mảng theo điều kiện nào đó
