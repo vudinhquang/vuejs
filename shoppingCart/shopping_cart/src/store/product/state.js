@@ -30,7 +30,7 @@ export default {
             image: 'target-leap-frog.jpg',
             summary: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt quas, magnam perferendis ',
             price: 8,
-            canBuy: false
+            canBuy: true
         }
     ]
 }

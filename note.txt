@@ -1382,3 +1382,33 @@ Xây dựng chức năng Add sản phẩm vào giỏ hàng
   Duplicate: Giải quyết vấn đề khi người dùng mua liên tiếp nhiều sản phẩm giống nhau thì xảy ra vấn đề Duplicate dữ liệu
     -> Áp dụng bài toán kiểm tra xem 1 phần tử có tồn tại trong array hay không -> findIndex()
     javascript spread operator: Dùng để copy mảng hay đối tượng nhưng chỉ copy được 1 cấp
+  
+  Table Footer: 
+    Tính tổng Quantity và tổng tiền
+    -> Tính tổng 1 giá trị nào đó thông qua 1 Array có sẵn bằng cách sử dụng hàm reduce()
+    Minh họa xử dụng hàm reduce():
+      var listCart = [
+          {
+          product: {price: 22},
+          quantity: 10
+        },
+          {
+          product: {price: 5},
+          quantity: 2
+        },
+          {
+          product: {price: 10},
+          quantity: 3
+        }
+      ];
+      var initObjSum = {
+        countItem: 0,
+        totalPrice: 0
+      };
+      listCart.reduce(function(objSum, objCart) {
+        let countItem = objSum.countItem + objCart.quantity;
+        let totalPrice = objSum.totalPrice + objCart.product.price*objCart.quantity;
+        return {countItem, totalPrice}
+      }, initObjSum);
+      -> Kết quả: {countItem: 15, totalPrice: 260}
+    Thông tin hiển thị ở phần này được tính toán dựa trên dữ liệu có sẵn ở trong state -> xây dựng getters mới trong cart
