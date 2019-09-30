@@ -6,6 +6,7 @@
 			<product-list />
 			<cart-wrapper />
 		</div>
+		<notifications group="noti" position="bottom right" :duration="2000" />
 	</div>
   </div>
 </template>
@@ -25,10 +26,16 @@ export default {
 		return {
 		
 		}
-	}
+	},
+	mounted() {
+
+	} 
 }
 </script>
 
 <style>
-
+	.notifications {
+		padding-right: 10px;
+		padding-bottom: 10px
+	}
 </style>

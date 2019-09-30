@@ -1360,3 +1360,18 @@ Xây dựng chức năng Add sản phẩm vào giỏ hàng
       đầu trang.
       Để giải quyết vấn đề này thì có thể dùng e.preventDefault để ngăn chặn sự kiện mặc định của thẻ <a>. Tuy nhiên thì vuejs cung
         cấp sẵn Event Modifiers là stop hay prevent -> @click.prevent
+
+  Notifications
+    Thực hiện hệ thống thông báo khi kiểm tra dữ liệu mà người dùng nhập vào
+    Config các câu thông báo ở constants/config.js
+    Plugins: Notifications
+      Keywords: vue Notifications
+      https://www.npmjs.com/package/vue-notification
+      Cài đặt: npm install --save vue-notification
+      Khai báo vào trong main.js: 
+        import Notifications from 'vue-notification'
+        Vue.use(Notifications)
+      App.js:
+        <notifications group="noti" />
+      .notifications: Có thể customize lại style
+      

@@ -20,6 +20,7 @@
 
 <script>
 import { toCurrency, validateQuantity } from '../helpers'
+import { NOTI_GREATER_THAN_ONE } from '../constants/config'
 export default {
     name: 'product-item',
     props: {
@@ -45,7 +46,8 @@ export default {
                 let numQuantity = parseInt(this.quantity);
                 console.log('Hợp nệ, có thể mua hàng', numQuantity);
             } else {
-                console.log('dữ liệu không hợp nệ', this.quantity);
+                this.$notify(NOTI_GREATER_THAN_ONE);
+                // console.log('dữ liệu không hợp nệ', this.quantity);
             }
         }
     }

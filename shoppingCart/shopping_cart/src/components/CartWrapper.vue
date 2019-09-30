@@ -14,7 +14,7 @@
                 </table>
             </div>
         </div>
-        <notify />
+        <!-- <notify /> -->
     </div>
 </template>
 
@@ -22,14 +22,14 @@
 import CartBodyTable from './CartBodyTable';
 import CartHeader from './CartHeader';
 import CartFooter from './CartFooter';
-import Notify from './Notify';
+// import Notify from './Notify';
 export default {
     name: 'cart-wrapper',
     components: {
         CartBodyTable,
         CartHeader,
         CartFooter,
-        Notify
+        // Notify
     }
 }
 </script>
