@@ -4,7 +4,10 @@
         <td>{{ product.name }}</td>
         <td>{{ formatPrice }}</td>
         <td>
-            <input :value="cart.quantity" type="number" min="1">
+            <input 
+                :value="cart.quantity" 
+                @blur="handle_update"
+                type="number" min="1">
         </td>
         <td><strong>{{ formatTotal }}</strong></td>
         <td>
@@ -37,13 +40,22 @@ export default {
     },
     methods: {
         ...mapActions({
-            actleDeleteCart: 'cart/actleDeleteCart'
+            actleDeleteCart: 'cart/actleDeleteCart',
+            set_loading: 'set_loading'
         }),
         handleDelete() {
             if (confirm('Bạn có muốn xóa đơn hàng không?')) {
                 this.actleDeleteCart(this.cart);
                 this.$notify(NOTI_ACT_DELETE);
             }
+        },
+        handle_update(e) {
+            // Bật loading
+            this.set_loading(true);
+            setTimeout(() => { 
+                // Xóa loading
+                this.set_loading(false);
+            }, 1000)
         }
     }
 }

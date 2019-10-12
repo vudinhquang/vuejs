@@ -1415,3 +1415,15 @@ Xây dựng chức năng Add sản phẩm vào giỏ hàng
 
 Xây dựng chức năng Delete sản phẩm khỏi giỏ hàng
   -> Áp dụng bài toán xóa 1 phần tử trong mảng theo điều kiện nào đó
+
+Xây dựng chức năng Update số lượng sản phẩm
+  Loading: Khi nhập để thay đổi giá trị mới thì chưa thực hiện load lại trang, sau khi nhập gia trị mới rồi click chuột ra ngoài trang thì
+    mới thực hiện load trang -> sử dụng sự kiện đó là onblur
+    https://loading.io/
+    Khi có sự kiện blur thì mới thực hiện hiển phần loading, set thời gian chạy loading
+    -> Xác định biến toàn cùng để quản lý phần loading
+      setTimeout(() => { 
+          // Xóa loading
+          this.set_loading(false);
+      }, 1000)
+      ---> Phải khai báo theo kiểu arrow function thì biến this mới được ràng buộc vào bên trong hàm và sử dụng được
