@@ -1437,3 +1437,15 @@ Xây dựng chức năng Update số lượng sản phẩm
     Để lưu dữ liệu vào trong LocalStorage thì sử dụng Plugins, Plugins lắng nghe sự thay đổi, mỗi khi state thay đổi thì sẽ tiến hành lưu dữ 
       liệu vào trong LocalStorage
     Khi load lại trang thì trong state của cart sẽ lấy dữ liệu được lưu trong LocalStorage
+
+========================================== Sử dụng VueX với Project Blog tin tức ==========================================
+
+Tìm hiểu về Vue Router
+  Init: 
+    Sử dụng VueCLI để cài đặt thông qua câu lệnh: 
+      vue init webpack-simple vue-router
+      cd vue-router
+      npm install
+      npm run dev
+      yarn add vue bootstrap-vue bootstrap(Tích hợp Bootstrap 4)
+  
