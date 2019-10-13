@@ -1,6 +1,11 @@
 export default {
-    changeQuantity: (state, { index, quantity }) => {
-        state.listCarts[index].quantity += quantity;
+    changeQuantity: (state, { index, quantity, isReplace = false }) => {
+        console.log("changeQuantity", index, quantity, isReplace);
+        if (isReplace) {
+            state.listCarts[index].quantity = quantity;
+        } else {
+            state.listCarts[index].quantity += quantity;
+        }
     },
     buyProduct: (state, data) => {
         state.listCarts.push(data);

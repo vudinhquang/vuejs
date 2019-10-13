@@ -13,5 +13,16 @@ export default {
     actleDeleteCart( { commit, state }, cartDelete ) {
         var newListCarts = state.listCarts.filter(item => item.product.id !== cartDelete.product.id);
         commit('changeListCarts', newListCarts);
+    },
+    act_update_quantity({ commit, state }, { cartUpdate, quantity}) {
+        const index = state.listCarts.findIndex(cart => cart.product.id === cartUpdate.product.id)
+        if (index !== -1) {
+            let data = {
+                index,
+                quantity,
+                isReplace: true
+            }
+            commit("changeQuantity", data);
+        }
     }
 }

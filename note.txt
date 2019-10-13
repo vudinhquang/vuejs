@@ -1427,3 +1427,7 @@ Xây dựng chức năng Update số lượng sản phẩm
           this.set_loading(false);
       }, 1000)
       ---> Phải khai báo theo kiểu arrow function thì biến this mới được ràng buộc vào bên trong hàm và sử dụng được
+
+  Logic Update: Đưa sự thay đổi giá trị update vào trong phần store để thay đổi trực tiếp cái state của giỏ hàng
+    Khi check lỗi nhập giá trị sai xong thì hiển thị câu thông báo lỗi và đưa về giá trị gốc ở ô input
+    Khi update lại số lượng muốn mua thì cần biết giá trị mới nhập vào là bao nhiêu, sản phẩm đó là sản phẩm nào

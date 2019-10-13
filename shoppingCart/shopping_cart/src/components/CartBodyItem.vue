@@ -11,7 +11,7 @@
         </td>
         <td><strong>{{ formatTotal }}</strong></td>
         <td>
-            <a class="label label-info update-cart-item" href="#">Update</a>
+            <a @click.prevent="" class="label label-info update-cart-item" href="#">Update</a>
             <a @click.prevent="handleDelete" class="label label-danger delete-cart-item" href="#">Delete</a>
         </td>
     </tr>
@@ -19,7 +19,7 @@
 
 <script>
 import { mapActions } from 'vuex'
-import { NOTI_ACT_DELETE } from '../constants/config'
+import { NOTI_ACT_DELETE, NOTI_GREATER_THAN_ONE } from '../constants/config'
 import { toCurrency, validateQuantity } from '../helpers'
 export default {
     name: 'cart-body-item',
@@ -41,6 +41,7 @@ export default {
     methods: {
         ...mapActions({
             actleDeleteCart: 'cart/actleDeleteCart',
+            act_update_quantity: 'cart/act_update_quantity',
             set_loading: 'set_loading'
         }),
         handleDelete() {
@@ -53,7 +54,18 @@ export default {
             // Bật loading
             this.set_loading(true);
             setTimeout(() => { 
-                // Xóa loading
+                let quantity = e.target.value;
+                const check = validateQuantity(quantity);
+                if (check) {
+                    let data = { 
+                        cartUpdate: this.cart, 
+                        quantity: parseInt(quantity)
+                    };
+                    this.act_update_quantity(data);
+                } else {
+                    e.target.value = this.cart.quantity;
+                    this.$notify(NOTI_GREATER_THAN_ONE);
+                }
                 this.set_loading(false);
             }, 1000)
         }
