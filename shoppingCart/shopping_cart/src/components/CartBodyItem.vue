@@ -19,7 +19,7 @@
 
 <script>
 import { mapActions } from 'vuex'
-import { NOTI_ACT_DELETE, NOTI_GREATER_THAN_ONE } from '../constants/config'
+import { NOTI_ACT_DELETE, NOTI_GREATER_THAN_ONE, NOTI_ACT_UPDATE } from '../constants/config'
 import { toCurrency, validateQuantity } from '../helpers'
 export default {
     name: 'cart-body-item',
@@ -62,6 +62,7 @@ export default {
                         quantity: parseInt(quantity)
                     };
                     this.act_update_quantity(data);
+                    this.$notify(NOTI_ACT_UPDATE);
                 } else {
                     e.target.value = this.cart.quantity;
                     this.$notify(NOTI_GREATER_THAN_ONE);

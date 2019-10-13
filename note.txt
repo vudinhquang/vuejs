@@ -1431,3 +1431,9 @@ Xây dựng chức năng Update số lượng sản phẩm
   Logic Update: Đưa sự thay đổi giá trị update vào trong phần store để thay đổi trực tiếp cái state của giỏ hàng
     Khi check lỗi nhập giá trị sai xong thì hiển thị câu thông báo lỗi và đưa về giá trị gốc ở ô input
     Khi update lại số lượng muốn mua thì cần biết giá trị mới nhập vào là bao nhiêu, sản phẩm đó là sản phẩm nào
+
+  LocalStorage
+    Sai khi update xong thì thực hiện hiển thị câu thông báo
+    Để lưu dữ liệu vào trong LocalStorage thì sử dụng Plugins, Plugins lắng nghe sự thay đổi, mỗi khi state thay đổi thì sẽ tiến hành lưu dữ 
+      liệu vào trong LocalStorage
+    Khi load lại trang thì trong state của cart sẽ lấy dữ liệu được lưu trong LocalStorage
