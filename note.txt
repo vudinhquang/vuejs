@@ -1448,4 +1448,14 @@ Tìm hiểu về Vue Router
       npm install
       npm run dev
       yarn add vue bootstrap-vue bootstrap(Tích hợp Bootstrap 4)
-  
+
+  Install Vue Router
+    Tích hợp Bootstrap 4
+    Install:
+      https://router.vuejs.org/installation.html
+      npm install vue-router, cài đặt bằng npm
+      Import:
+        import VueRouter from 'vue-router'
+        Vue.use(VueRouter)
+    Getting Started
+      
