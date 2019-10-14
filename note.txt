@@ -1470,3 +1470,33 @@ Tìm hiểu về Vue Router
       { path: '/about-us', component: AboutUs },
     ]
       -> Được load vào <router-view></router-view>
+
+  Router Link
+    History Mode:
+      Chế độ mode mặc định ban đầu là hash mode:
+        http://localhost:8080/about-us#/ -> Giao diện vẫn giống với http://localhost:8080(Home)
+        http://localhost:8080/#/about-us  -> Giao diện là trang AboutUs
+      Chuyển đổi đường dẫn kiểu hash mode(/#/) sang kiểu history mode(/) 
+        http://localhost:8080/#/about-us -> http://localhost:8080/about-us
+    router-link:
+      Tạo ra các đường link để người dùng có thể click vào để nhảy sang 1 trang bất kỳ đồng thời thực hiện đúng theo kiểu Single Page Application
+        có nghĩa là khi click để chuyển đổi trang thì sẽ không load lại cả trang. Bản thân khi click vào 1 thẻ <a> thì thực hiện chuyển trang và
+        load lại cả trang
+      router-link là 1 Component, nó được render ra giống như 1 thẻ <a> đồng thời nó sẽ sử lý cho mình việc load Component chứ không load lại trang
+        router-link mặc định render ra cho mình 1 thẻ <a> có class là: router-link-active và router-link-exact-active
+          router-link-exact-active: Nếu như đường link khớp với path khi khai báo router { path: '/', component: Home } thì class này sẽ được sinh
+            ra
+        Khi dùng router-link thì mặc định sẽ dùng thẻ <a> nhưng có thể customize lại để dùng các thẻ khác bằng cách truyền props tag bằng 1 giá
+          trị khác
+        Khi kết hợp sử dụng router-link với Bootstrap-Vue thì cũng cần customize lại giá trị của activeClass và exactActiveClass. exactActiveClass
+          là giá trị class khi được active
+        Khi sử dụng router-link nhưng vẫn dùng giao diện của Bootstrap-Vue -> customize props tag bằng thẻ giống như BootstrapVue
+        props:
+          activeClass:undefined
+          append:false
+          event:"click"
+          exact:false
+          exactActiveClass:"active"
+          replace:false
+          tag:"b-nav-item"
+          to:"/"
