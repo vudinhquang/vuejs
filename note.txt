@@ -1458,4 +1458,15 @@ Tìm hiểu về Vue Router
         import VueRouter from 'vue-router'
         Vue.use(VueRouter)
     Getting Started
-      
+
+  Router View
+    Mô phỏng với 2 trang đó là trang Home và trang About Us
+    Phần chung: Header(Menu, Slider)
+    Phần riêng: Mỗi trang có Component
+      Home -> '/'
+      About Us -> '/about-us'
+    const routes = [
+      { path: '/', component: Home },
+      { path: '/about-us', component: AboutUs },
+    ]
+      -> Được load vào <router-view></router-view>
