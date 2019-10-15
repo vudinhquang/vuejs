@@ -1500,3 +1500,20 @@ Tìm hiểu về Vue Router
           replace:false
           tag:"b-nav-item"
           to:"/"
+
+  Nested Routes: Mô tả các router lồng nhau, không nhất thiết là chỉ có 1 router view, có thể sinh ra thành nhiều router view ở bên trong
+    Đối với việc config cho view router thì ngoài việc định nghĩa Component cho router đó thì còn có phần định nghĩa children để định nghĩa
+      những router lồng bên trong
+    Cấu trúc theo cách tư duy ban đầu, có thêm Login
+      App
+        Home -> '/':             Có Header Slider HomePage
+        About Us -> '/about-us': Có Header Slider AboutUs
+        Login -> '/login':       có Header Slider Login Form   
+    Tổ chức lại theo cấu trúc Nested router:
+      App(Dùng chung Menu):
+        HomePage
+          Menu Slider
+                Router view(Home, AboutUs)
+        Login(Không cần Slider)
+          Menu Form
+        -> HomePage có Slider dùng chung, Router View(Home, About Us)
