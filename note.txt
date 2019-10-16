@@ -1517,3 +1517,45 @@ Tìm hiểu về Vue Router
         Login(Không cần Slider)
           Menu Form
         -> HomePage có Slider dùng chung, Router View(Home, About Us)
+
+  Dynamic Route:
+    { path: '/user/:id', component: ListUser }
+    Kết nối phần URL với phần dữ liệu data -> phải lấy được id mình đã truyền trên URL
+    Hiện tại thấy rằng Component ListUser có 2 biến đó là: listUser và $route. 
+    $route là biến toàn cục có chứa tất cả các thông tin liên quan đến URL
+      Đường dẫn path
+      params: Chứa thông số mà mình đã khai báo trong router view
+    Áp dụng Lifecycle thì trong phương thức created() là nơi mình sẽ lấy dữ liệu về
+    Url có 2 trường hợp đó là có truyền id và không truyền id. Trong trường hợp có truyền id thì có 2 trường hợp đó là id hợp lệ hoặc không hợp
+      lệ
+    Để RouterView nhận diện được Component ListUser thì cần khai báo url theo kiểu: { path: '/user/:id?', component: ListUser } tức là id có thể
+      được truyền hoặc không
+      Khi không truyền id lên url thì id:
+      router-link: to được truyền khi có liên quan đến việc dàng buộc dữ liệu(bản chất nó là props)
+        v-bind:to="`/user/${index + 1}`" 
+    created(): Khi truy cập vào trang lần đầu tiên thì sẽ gán được giá trị currentId, còn trong quá trình mình thay đổi url bằng cách click chọn
+      thì mình vẫn đang ở trong Component đó nên Lifecycle không được chạy lại -> created() không chạy lại. Lúc này thì phần data $route vẫn thay
+      đổi nên mình có thể sử dụng watch để lắng nghe sự thay đổi của $route, khi $route thay đổi thì mình sẽ cập nhật lại giá trị currentId
+      created() {
+          this.currentId = this.$route.params.id;
+      }
+      watch: {
+          $route(to, from) {
+              this.currentId = to.params.id;
+          }
+      }
+      to: link đến
+      from: link ban đầu
+
+  Not Found:
+    Khi truy cập vào 1 đường link không hợp lệ, tức là đường dẫn truy cập vào không thỏa mãn bất kỳ 1 đường dẫn nào mình khai báo ở trong main.js
+      nên không có Component nào được load để hiện thị cho RouterView 
+    { path: '*', component: NotFound }
+      Khi nhập bất kỳ 1 đường dẫn nào thì nó cũng thỏa mãn đường dẫn này, nếu như tất cả các đưởng dẫn mà ta khai báo ở phía trên không có cái
+        nào thỏa mãn thì nó sẽ đi vào đường dẫn này
+    Trong Component NOtFound có thể sử dụng RouterView hoặc Programmatic Navigation với phương thức push của $router để sang 1 trang khác 
+      $router != $route
+      $router cũng là 1 biến toàn cục, là 1 đối tượng đã được khai báo bên main.js
+      $route là đối tượng dành riêng cho từng Component
+    Đối với mỗi route thì ngoài đường dẫn path ra thì mình có thể khai báo thêm name
+    v-bind:to="{ name: 'user', params: { id: index+1 }}" <=> v-bind:to="`/user/${index + 1}`"

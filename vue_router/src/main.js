@@ -4,7 +4,9 @@ import App from './App.vue'
 import HomePage from './pages/HomePage.vue'
 import AboutUs from './pages/AboutUs.vue'
 import Home from './pages/Home.vue'
+import NotFound from './pages/NotFound.vue'
 import Login from './pages/Login.vue'
+import ListUser from './pages/ListUser.vue'
 
 import './plugins'
 
@@ -26,7 +28,9 @@ const routes = [
 		]
 	},
 	// { path: '/about-us', component: AboutUs },
-	{ path: '/login', component: Login }
+	{ path: '/login', component: Login },
+	{ path: '/user/:id?', name: 'user', component: ListUser },
+	{ path: '*', component: NotFound }
 ]
 
 const router = new VueRouter({
