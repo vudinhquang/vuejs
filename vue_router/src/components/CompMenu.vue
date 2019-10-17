@@ -8,8 +8,10 @@
 
                 <b-collapse id="nav-collapse" is-nav>
                     <b-navbar-nav>
-                        <router-link to="/" tag="b-nav-item" exactActiveClass="active">Go to Home</router-link>
-                        <router-link to="/about-us" tag="b-nav-item" exactActiveClass="active">Go to AboutUs</router-link>
+                        <router-link to="/" tag="b-nav-item" exactActiveClass="active">Home</router-link>
+                        <router-link to="/about-us" tag="b-nav-item" exactActiveClass="active">AboutUs</router-link>
+                        <router-link to="/user" tag="b-nav-item" exactActiveClass="active">User</router-link>
+                        <router-link to="/login" tag="b-nav-item" exactActiveClass="active">Login</router-link>
                     </b-navbar-nav>
 
                     <!-- Right aligned nav items -->

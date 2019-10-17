@@ -1559,3 +1559,13 @@ Tìm hiểu về Vue Router
       $route là đối tượng dành riêng cho từng Component
     Đối với mỗi route thì ngoài đường dẫn path ra thì mình có thể khai báo thêm name
     v-bind:to="{ name: 'user', params: { id: index+1 }}" <=> v-bind:to="`/user/${index + 1}`"
+
+  Navigation Guards: Liên quan đến việc giới hạn 1 vùng truy cập nào đó của user, hay có nghĩa là mình sẽ quyết định xem có cho phép người dùng truy cập
+    vào url đó hay chưa dựa vào các vấn đề như login...
+    Cấp global:
+      Tất cả các URL đều chạy theo hàm này
+      VueRouter cung cấp cho mình 1 hàm xử lý trước khi truy cập vào 1 url bất kỳ nào đó là beforeEach(to, from, next), hàm này được chạy trước 
+        khi mình truy cập vào 1 url bất kỳ. Hàm này nhận vào 3 thông số là to, from và next, trong đó to và from là 1 object Route, còn next là 
+        1 function, function này là công cụ để mình quyết định xem mình có cho phép truy cập vào url đó hay không nếu gọi đến hàm next() thì url
+        sẽ redirect -> cho phép truy cập vào đường link của to
+    Per-Route Guard: Dành cho từng route, có thể giới hạn 1 số url cần chạy -> beforeEnter

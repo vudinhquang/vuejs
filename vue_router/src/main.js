@@ -12,6 +12,8 @@ import './plugins'
 
 Vue.use(VueRouter)
 
+let isLogin = false;
+
 const routes = [
 	{ 
 		path: '/', 
@@ -29,13 +31,31 @@ const routes = [
 	},
 	// { path: '/about-us', component: AboutUs },
 	{ path: '/login', component: Login },
-	{ path: '/user/:id?', name: 'user', component: ListUser },
+	{ 
+		path: '/user/:id?', 
+		name: 'user', 
+		component: ListUser,
+		beforeEnter (to, from, next) {
+			if (isLogin) next();
+			else {
+				// next('/login');
+				next({ path: '/login', query: { redirect: 'user' } });
+			}
+		}
+	},
 	{ path: '*', component: NotFound }
 ]
 
 const router = new VueRouter({
 	mode: 'history',
 	routes
+});
+
+router.beforeEach((to, from, next) => {
+	console.log("to=", to);
+	console.log("from=", from);
+	console.log("next=", next);
+	next();
 })
 
 new Vue({
