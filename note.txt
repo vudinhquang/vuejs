@@ -1569,3 +1569,6 @@ Tìm hiểu về Vue Router
         1 function, function này là công cụ để mình quyết định xem mình có cho phép truy cập vào url đó hay không nếu gọi đến hàm next() thì url
         sẽ redirect -> cho phép truy cập vào đường link của to
     Per-Route Guard: Dành cho từng route, có thể giới hạn 1 số url cần chạy -> beforeEnter
+
+  Split File
+    Cũng giống như store, mình sẽ tách 1 file riêng để quản lý router để khai báo tất cả các thông tin liên quan đến view router
