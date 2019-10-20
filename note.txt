@@ -1587,3 +1587,7 @@ Xây dựng cấu trúc ứng dụng
     Cài đặt Vue Router vào project
       npm install vue-router
     Cài VueX vào project
+  
+  Component: Tách component
+    Trang có 4 pages: about, contact, index, post -> Coi mỗi 1 page là 1 thư mục lớn và lưu trong 1 thư mục riêng là pages
+    Thư mục components để chứa các components dùng chung như Header, Footer...
