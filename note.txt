@@ -1591,3 +1591,6 @@ Xây dựng cấu trúc ứng dụng
   Component: Tách component
     Trang có 4 pages: about, contact, index, post -> Coi mỗi 1 page là 1 thư mục lớn và lưu trong 1 thư mục riêng là pages
     Thư mục components để chứa các components dùng chung như Header, Footer...
+    Coppy nội dung link trên thẻ head và nội dung trong script, đây chủ yếu là những phần khai báo sử dụng Css và JavaScript
+    Tách ra thành các Component(Component dùng chung và riêng)
+      Dùng chung có: Navigation, Page Header, Footer
