@@ -1583,3 +1583,7 @@ Xây dựng cấu trúc ứng dụng
       cd project_blog_vue
       npm install
       npm run dev
+    Áp dụng cả các kiến thức liên quan đến VueRouter và vueX để sinh ra 1 số dữ liệu cơ bản dành cho 1 bài viết 1 blog tin tức
+    Cài đặt Vue Router vào project
+      npm install vue-router
+    Cài VueX vào project
