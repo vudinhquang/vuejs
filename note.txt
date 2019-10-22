@@ -1630,3 +1630,8 @@ Xây dựng Page Blog và cấu hình router
 
   Page Header:
     Khai báo 1 số props thay đổi như tấm ảnh hình nền, tiêu đề
+
+  Faker:
+    Keywords: npm faker
+    Mục đích là để tạo ra dữ liệu mẫu
+    Lệnh cài đặt: npm i faker
