@@ -1635,3 +1635,8 @@ Xây dựng Page Blog và cấu hình router
     Keywords: npm faker
     Mục đích là để tạo ra dữ liệu mẫu
     Lệnh cài đặt: npm i faker
+
+  Blog List: Render dữ liệu listBlogs ra giao diện
+    Tiến hành render listBlogs ra giao diện
+    Kết hợp sử dụng vuex
+    Keywords: date format javascript
