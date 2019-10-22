@@ -1570,6 +1570,35 @@ Tìm hiểu về Vue Router
         sẽ redirect -> cho phép truy cập vào đường link của to
     Per-Route Guard: Dành cho từng route, có thể giới hạn 1 số url cần chạy -> beforeEnter
 
+  Transition:
+    Là công cụ giúp ta làm giao diện đẹp hơn, nó kết hợp với CSS để xây dựng hiệu ứng chuyển đổi giữa 2 Router với nhau
+    Là kiến thức nằm trong Vuejs
+    Transition cung cấp cho mình 6 class để xay dựng hiệu ứng được phân làm 2 nhóm: enter, leave
+      enter: Khi 1 Component được gắn vào trong cấu trúc DOM
+      leave: Khi 1 Component được remove khỏi cấu trúc DOM
+    6 Class: 
+      v-enter: Starting state for enter. Added before element is inserted, removed one frame after element is inserted.
+      v-enter-active: Active state for enter. Applied during the entire entering phase. Added before element is inserted, removed 
+        when transition/animation finishes. This class can be used to define the duration, delay and easing curve for the entering transition.
+      v-enter-to: Only available in versions 2.1.8+. Ending state for enter. Added one frame after element is inserted (at the same time 
+        v-enter is removed), removed when transition/animation finishes.
+      v-leave: Starting state for leave. Added immediately when a leaving transition is triggered, removed after one frame.
+      v-leave-active: Active state for leave. Applied during the entire leaving phase. Added immediately when leave transition is triggered, 
+        removed when the transition/animation finishes. This class can be used to define the duration, delay and easing curve for the 
+        leaving transition.
+      v-leave-to: Only available in versions 2.1.8+. Ending state for leave. Added one frame after a leaving transition is triggered (at 
+        the same time v-leave is removed), removed when the transition/animation finishes.
+      v-enter-active và v-leave-active nó được sinh ra trong suốt quá trình và nó thường dùng để khai báo transition/animation
+      v-enter/v-leave và v-enter-to/v-leave-to dùng để chuyển đổi trạng thái
+    Transition Modes: Đối với Transition thì có 1 vấn đề đó là vấn đề enter và leave cùng diễn ra đồng thời -> để khắc phục vấn đề này thì
+      có 2 chế độ mode đó là: in-out và out-in:
+        in-out: New element transitions in first, then when complete, the current element transitions out.
+        out-in: Current element transitions out first, then when complete, the new element transitions in. Được sử dụng nhiều, khi remove Kết
+          thúc thì sẽ bắt đầu insert
+    Name: Each of these classes will be prefixed with the name of the transition. Here the v- prefix is the default when you use 
+      a <transition> element with no name. If you use <transition name="my-transition"> for example, then the v-enter class would instead 
+      be my-transition-enter.
+
   Split File
     Cũng giống như store, mình sẽ tách 1 file riêng để quản lý router để khai báo tất cả các thông tin liên quan đến view router
 
