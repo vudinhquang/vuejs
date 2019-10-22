@@ -1640,3 +1640,6 @@ Xây dựng Page Blog và cấu hình router
     Tiến hành render listBlogs ra giao diện
     Kết hợp sử dụng vuex
     Keywords: date format javascript
+
+Xây dựng Menu và Custom Link
+  
