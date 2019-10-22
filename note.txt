@@ -1627,3 +1627,6 @@ Xây dựng cấu trúc ứng dụng
 Xây dựng Page Blog và cấu hình router
   Config Router:
     slot dùng để truyền thêm 1 dữ liệu mới
+
+  Page Header:
+    Khai báo 1 số props thay đổi như tấm ảnh hình nền, tiêu đề
