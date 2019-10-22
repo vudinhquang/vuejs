@@ -1642,4 +1642,8 @@ Xây dựng Page Blog và cấu hình router
     Keywords: date format javascript
 
 Xây dựng Menu và Custom Link
-  
+
+Xây dựng Page Login và giới hạn vùng truy cập
+  Page Login:
+    Phần html mình kế thừa lại từ contact
+    Form login: Email và Password

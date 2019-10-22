@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 
 import HomePage from './pages/HomePage.vue'
 import Contact from './pages/Contact.vue'
+import Login from './pages/Login.vue'
 import AboutUs from './pages/AboutUs.vue'
 import BlogDetail from './pages/BlogDetail.vue'
 
@@ -28,7 +29,12 @@ const routes = [
     path: '/blog-detail/:title/:id',
     name: 'blog-detail',
 		component: BlogDetail
-	}
+  },
+	{ 
+    path: '/login', 
+    name: 'login',
+		component: Login
+  },
 ]
 
 const router = new VueRouter({
