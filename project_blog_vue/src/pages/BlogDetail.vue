@@ -1,6 +1,10 @@
 <template>
     <div>
-        <page-header />s
+        <page-header>
+            <span class="meta">Posted by
+            <a href="#">Start Bootstrap</a>
+            on August 24, 2019</span>
+        </page-header>
         <article>
             <div class="container">
                 <div class="row">

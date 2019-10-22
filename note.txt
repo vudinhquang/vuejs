@@ -1623,3 +1623,7 @@ Xây dựng cấu trúc ứng dụng
     Coppy nội dung link trên thẻ head và nội dung trong script, đây chủ yếu là những phần khai báo sử dụng Css và JavaScript
     Tách ra thành các Component(Component dùng chung và riêng)
       Dùng chung có: Navigation, Page Header, Footer
+
+Xây dựng Page Blog và cấu hình router
+  Config Router:
+    slot dùng để truyền thêm 1 dữ liệu mới
