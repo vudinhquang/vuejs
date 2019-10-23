@@ -1657,3 +1657,28 @@ Xây dựng Page Login và giới hạn vùng truy cập
       Programmatic Navigation: this.$router.push({ path: '/' })
 
   Not Found: Xử lý trường hợp khi người dùng nhập vào 1 đường link ảo không tồn tại
+
+==================================== Sử dụng API kết nối với Server Back End  ====================================
+
+Xây dựng cấu trúc dự án
+  Init Project
+    vue init webpack-simple api_project
+    cd api_project
+    npm install
+    npm run dev
+
+    Store
+    Vue Router
+    Component
+    
+  Có header:
+    Trang chủ
+    Profile
+    Thay đổi Password
+    User
+    Đăng ảnh
+    Bài viết chi tiết
+
+  Không có header:
+    Trang đăng nhập
+    Trang đăng ký
