@@ -1671,14 +1671,37 @@ Xây dựng cấu trúc dự án
     Vue Router
     Component
     
-  Có header:
-    Trang chủ
-    Profile
-    Thay đổi Password
-    User
-    Đăng ảnh
-    Bài viết chi tiết
+    Có header:
+      Trang chủ
+      Profile
+      Thay đổi Password
+      User
+      Đăng ảnh
+      Bài viết chi tiết
 
-  Không có header:
-    Trang đăng nhập
-    Trang đăng ký
+    Không có header:
+      Trang đăng nhập
+      Trang đăng ký
+
+    Không có footer:
+      Trang chủ
+      Trang bài viết chi tiết
+
+  Components: Tiến hành tách thành các component nhỏ từ mã nguồn html
+    npm install vue-router
+    npm install vuex --save
+    Đối với Nested Routes thì mình chỉ tổ chức theo cấu trúc lồng nhau trong trường hợp mà chúng ta có sự kế thừa giao diện
+      do đó thì mình sẽ tách hẳn luôn user-page và user-profile
+    Một số vấn đề
+      1.Cách import bootstrap đúng phiên bản(có thêm @4.0.0 ở phía sau)
+        npm install vue bootstrap-vue bootstrap@4.0.0
+      2.Vị trí đặt file style.css
+        Sau khi di chuyển bootstrap vào trong có nghĩa là import trong main.js bằng cách import './plugins' thì lúc này sẽ
+          không khai báo style.css ở trên index.html nữa mà sẽ đưa vào trong import trong main.js giống như import bootstrap
+          để đảm bảo vấn đề style.css phải được load sau bootstrap
+      3.Điều chỉnh lại toàn bộ background url trong style.css
+        background-image: url('/dist/images/menu-bg.jpg');
+    Import jQuery
+      Keywords: jQuery npm
+      Chỉ dùng jQuery ở AppHeader nên chỉ cần import vào AppHeader
+    mounted(): Đảm bảo mã nguồn html đã load thành công, từ đó có thể dùng được mã nguồn jQuery để truy xuất các phần tử
