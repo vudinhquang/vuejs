@@ -1655,3 +1655,5 @@ Xây dựng Page Login và giới hạn vùng truy cập
     Per-Route Guard: beforeEnter
     Khi đăng nhập thành công thì tự động đẩy sang trang chủ
       Programmatic Navigation: this.$router.push({ path: '/' })
+
+  Not Found: Xử lý trường hợp khi người dùng nhập vào 1 đường link ảo không tồn tại

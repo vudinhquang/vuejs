@@ -6,6 +6,7 @@ import Contact from './pages/Contact.vue'
 import Login from './pages/Login.vue'
 import AboutUs from './pages/AboutUs.vue'
 import BlogDetail from './pages/BlogDetail.vue'
+import PageNotFound from './pages/PageNotFound.vue'
 
 import store from './store'
 
@@ -44,6 +45,11 @@ const routes = [
     name: 'login',
 		component: Login
   },
+  {
+    path: '*',
+    name: 'not-found',
+    component: PageNotFound
+  }
 ]
 
 const router = new VueRouter({
