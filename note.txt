@@ -1647,3 +1647,11 @@ Xây dựng Page Login và giới hạn vùng truy cập
   Page Login:
     Phần html mình kế thừa lại từ contact
     Form login: Email và Password
+
+  Config Router:
+    Sau khi người dùng đã login thành công thì mình sẽ ẩn Form login đi và thay thế vào đó là hiển thị lời chào và kèm theo 1
+      nút nhấn, nút nhấn này có chức năng là logout
+    Giới hạn vùng truy cập. Khi người dùng truy cập vào 1 bài viết bất kỳ nào đó thì bắt buộc người dùng phải đăng nhập
+    Per-Route Guard: beforeEnter
+    Khi đăng nhập thành công thì tự động đẩy sang trang chủ
+      Programmatic Navigation: this.$router.push({ path: '/' })

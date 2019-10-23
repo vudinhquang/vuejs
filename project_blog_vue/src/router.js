@@ -7,6 +7,8 @@ import Login from './pages/Login.vue'
 import AboutUs from './pages/AboutUs.vue'
 import BlogDetail from './pages/BlogDetail.vue'
 
+import store from './store'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -28,7 +30,14 @@ const routes = [
 	{ 
     path: '/blog-detail/:title/:id',
     name: 'blog-detail',
-		component: BlogDetail
+    component: BlogDetail,
+    beforeEnter: (to, from, next) => {
+      if (store.state.isLogin) {
+        next();
+      } else {
+        next({ path: '/login', query: { redirect: 'blog-detail' } });
+      }
+    }
   },
 	{ 
     path: '/login', 
