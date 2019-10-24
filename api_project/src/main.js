@@ -6,7 +6,7 @@ import App from './App.vue'
 import store from './store';
 import router from './router';
 
-import './demoAsyc/demo4'
+import './demoAsyc/demo6'
 
 new Vue({
   el: '#app',
