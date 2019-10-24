@@ -1705,3 +1705,23 @@ Xây dựng cấu trúc dự án
       Keywords: jQuery npm
       Chỉ dùng jQuery ở AppHeader nên chỉ cần import vào AppHeader
     mounted(): Đảm bảo mã nguồn html đã load thành công, từ đó có thể dùng được mã nguồn jQuery để truy xuất các phần tử
+
+Tìm hiểu Asynchronous trong Javascript và API
+  Asynchronous: Tìm hiểu về bất đồng bộ và cách xử lý bất đồng bộ ở trong JavaScript
+    synchronous: Đồng bộ
+    asynchronous: Bất đồng bộ
+    Javascript thực thi đúng với thứ tự mình khai báo trong code thì đó là chạy đồng bộ
+    Javascript hỗ trợ sẵn cho mình 1 số hàm liên quan đến bất đồng bộ như: setTimeout()
+    promise: 
+      https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+      Đối với Promise được truyền vào 2 tham số: resolve và reject
+    Một Promise có 1 trong 3 trạng thái:
+      pending: Trạng thái chờ. Chưa thành công cũng không có lỗi gì cả, đây là trạng thái chờ Server xử lý
+      fulfilled: Hoạt động đã thành công
+      rejected: Trong quá trình xử lý xảy ra lỗi(có thể do server hoặc cú pháp...)
+    then() và catch() là 2 hàm để lắng nghe khi nào thì Promise chạy xong
+    then(): Chạy được khi Promise thành công
+    catch(): Chạy được khi trạng thái của Promise là lỗi
+    Giả sử như là có nhiều công việc liên quan đến nhau: login, getPostByUserId
+      Sau khi đăng nhập thành công server trả về userId của user đó, sau khi có userId của user đó thì tiến hành thực hiện getPostByUserId(Lấy
+        các bài viết của user đó)
