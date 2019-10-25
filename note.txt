@@ -1754,3 +1754,51 @@ Tìm hiểu Asynchronous trong Javascript và API
             publicPath: '/dist/',
             filename: 'build.js'
           },
+
+  API - Postman - Fetch API
+    API: Application Programming Interface, là công cụ hỗ trợ cho 2 máy tương tác với nhau
+    API chẳng qua nó là 1 đường dẫn, từ đường dẫn đó có thể gửi yêu cầu lên server để yêu cầu tài nguyên nào dó bên phía server
+    Import Collection vào trong Postman
+    Cách cài đặt biến môi trường trong Postman:
+      Environment Name: vuejs
+      VARIABLE: base_url
+      INITIAL VALUE: http://api-meme-zendvn-01.herokuapp.com/api
+      CURRENT VALUE: http://api-meme-zendvn-01.herokuapp.com/api
+    {{base_url}}/post/getListPagination.php?pagesize=3&currPage=1
+      {
+        "status": 200,
+        "message": "Thanh cong",
+        "posts": [
+            {
+                "USERID": "3",
+                "profilepicture": "http://api-meme-zendvn-01.herokuapp.com/public/user/3/32294391_163827007620829_994025092092526592_n.jpg",
+                "fullname": "Huỳnh Thị Minh Trúc",
+                "PID": "55",
+                "url_image": "https://i.memeful.com/media/post/WdNWP7w_700wa_0.gif",
+                "post_content": "Demo đăng bài viết 03 :2 ",
+                "time_added": "2019-08-12 13:05:20",
+                "status": "1",
+                "count": null
+            },
+            {
+                "USERID": "2",
+                "profilepicture": "",
+                "fullname": "Trần Công Lực",
+                "PID": "53",
+                "url_image": "https://i.memeful.com/media/post/BRkm0vw_700wa_0.gif",
+                "post_content": "Demo",
+                "time_added": "2019-08-12 10:38:42",
+                "status": "1",
+                "count": "1"
+            }
+        ]
+      }
+    Khi gọi API thì có thể cấu hình lại Headers, Body
+    Fetch API javascript
+      Để tương tác được với API thì dùng javascript
+      Keywords: Fetch API JavaScript
+      https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
+      https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch
+      https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+      Tham số truyền vào fetch() là 1 yêu cầu mà ở đây thì mình truyền vào URL, giá trị trả về là 1 promise
+      Lấy dữ liệu trả về khi dùng API: response.json()
