@@ -1802,3 +1802,19 @@ Tìm hiểu Asynchronous trong Javascript và API
       https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
       Tham số truyền vào fetch() là 1 yêu cầu mà ở đây thì mình truyền vào URL, giá trị trả về là 1 promise
       Lấy dữ liệu trả về khi dùng API: response.json()
+
+  Chức năng hiển thị danh sách bài viết 
+    Axios - Call API
+      Trong thực tế người ta ít khi dùng hàm mặc định fetch() của javascript để gọi API mà sẽ dùng thư viện khá phổ biến trong các dự án thực tế
+        đó là axios. Axios có chức năng tương tự như hàm fetch() của JavaScript nhưng Axios nó hỗ trợ hẵn việc chuyển đổi về Json mà không cần
+        chuyển đổi giống như hàm fetch
+      https://www.npmjs.com/package/axios
+      Những phần liên quan đến việc gọi API thì đặt trong phần action
+        try {
+          var result = await axiosInstance.get(`/post/getListPagination.php?pagesizee=${pagesize}&currPage=${currPage}`);
+          console.log("result=", result); 
+        } catch (error) {
+          console.error("error", error);
+        }
+        Có 2 lỗi đó là lỗi hệ thống và lỗi kiểu server. Lỗi kiểu server có nghĩa là server vẫn sử lý được nhưng mà nó sử lý khi mình gửi lên sai ->
+          server vẫn sử lý thành công
