@@ -1,7 +1,7 @@
 import axiosInstance from '../../plugins/axios'
 
 export default {    
-    async getListPostHasPaging({ commit }, { pagesize=3, currPage=1 }) {
+    async getListPostHasPaging({ commit }, { pagesize=6, currPage=1 }) {
         try {
             var config = {
                     params: {

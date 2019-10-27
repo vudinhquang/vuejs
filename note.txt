@@ -1833,3 +1833,11 @@ Tìm hiểu Asynchronous trong Javascript và API
                 </router-link >
             </div>
         </div>
+
+    Moment - Post Head
+      Vấn đề liên quan đến hiển thị time thì mình dùng plugin đó là Moment
+      Moment npm
+      https://momentjs.com/
+      https://www.npmjs.com/package/moment
+      https://momentjs.com/docs/#/i18n/changing-locale/
+      moment.locale('vi');
