@@ -1,14 +1,20 @@
 import axiosInstance from '../../plugins/axios'
 
-export default {
-    // increment ({ commit }) {
-    //     commit('increment')
-    // }
+export default {    
     async getListPostHasPaging({ commit }, { pagesize=3, currPage=1 }) {
-        console.log("getListPostHasPaging run");
         try {
-            var result = await axiosInstance.get(`/post/getListPagination.php?pagesize=${pagesize}&currPage=${currPage}`);
-            console.log("result=", result); 
+            var config = {
+                    params: {
+                        pagesize,
+                        currPage
+                    }
+                };
+            var result = await axiosInstance.get('/post/getListPagination.php', config);
+            if (result.data.status === 200) {
+                commit('setListPosts', result.data.posts);
+            } else {
+                console.log("result=", result.data.error);  
+            }
         } catch (error) {
             console.error("error", error);
         }

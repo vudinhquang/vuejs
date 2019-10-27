@@ -13,6 +13,9 @@
 
 export default {
     name: 'post-item-head',
+    props: {
+        post: { type: Object, default: null }
+    }
 }
 </script>
 

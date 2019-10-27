@@ -14,6 +14,9 @@
 
 export default {
     name: 'post-item-content',
+    props: {
+        post: { type: Object, default: null }
+    }
 }
 </script>
 

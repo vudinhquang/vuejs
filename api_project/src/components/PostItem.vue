@@ -1,11 +1,17 @@
 <template>
     <div class="ass1-section__item">
         <div class="ass1-section">
-            <post-item-head />
+            <post-item-head 
+                v-bind:post="post" 
+            />
             
-            <post-item-content />
+            <post-item-content 
+                v-bind:post="post" 
+            />
             
-            <post-item-footer />
+            <post-item-footer 
+                v-bind:post="post" 
+            />
         </div>
     </div>
 </template>
@@ -21,6 +27,9 @@ export default {
         PostItemContent,
         PostItemFooter
     },
+    props: {
+        post: { type: Object, default: null }
+    }
 }
 </script>
 

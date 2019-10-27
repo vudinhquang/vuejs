@@ -1818,3 +1818,6 @@ Tìm hiểu Asynchronous trong Javascript và API
         }
         Có 2 lỗi đó là lỗi hệ thống và lỗi kiểu server. Lỗi kiểu server có nghĩa là server vẫn sử lý được nhưng mà nó sử lý khi mình gửi lên sai ->
           server vẫn sử lý thành công
+
+    Post List API
+      
