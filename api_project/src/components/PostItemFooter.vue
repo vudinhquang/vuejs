@@ -1,5 +1,5 @@
 <template>
-    <div class="ass1-section__footer">
+    <div class="ass1-section__footer" v-if="post">
         <!-- <a href="#" class="ass1-section__btn-upvote ass1-btn-icon"><i class="icon-Upvote"></i></a> -->
         <!-- <a href="#" class="ass1-section__btn-downvote ass1-btn-icon"><i class="icon-Downvote"></i></a> -->
         <!-- <a href="#" class="ass1-section__btn-repost ass1-btn-icon"><i class="icon-Repost"></i></a> -->

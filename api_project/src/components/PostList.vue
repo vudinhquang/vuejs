@@ -5,7 +5,7 @@
             v-bind:key="item.PID" 
             v-bind:post="item"
         />
-        <button class="load-more ass1-btn"><span>Xem thêm</span></button>
+        <button v-if="getListPosts && getListPosts.length" class="load-more ass1-btn"><span>Xem thêm</span></button>
     </div>
 </template>
 

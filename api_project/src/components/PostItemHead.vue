@@ -1,5 +1,5 @@
 <template>
-    <div class="ass1-section__head">
+    <div class="ass1-section__head" v-if="post">
         <router-link v-bind:to="getUserLink" class="ass1-section__avatar ass1-avatar">
             <img v-bind:src="getAvatar" v-bind:alt="post.fullname">
         </router-link>

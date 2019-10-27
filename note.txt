@@ -1841,3 +1841,15 @@ Tìm hiểu Asynchronous trong Javascript và API
       https://www.npmjs.com/package/moment
       https://momentjs.com/docs/#/i18n/changing-locale/
       moment.locale('vi');
+
+    Filter Category
+      Hiển thị các bài viết theo 1 danh mục bất kỳ nào đó
+      API: getListByCategory.php?pagesize=3&currPage=1&tagIndex=7
+      Để phần định dạng style nó chỉ được định dạng trong Component hiện thời của mình thì thêm từ khóa scoped vào cho thẻ style
+        <style scoped>
+      Khi click vào 1 Category nào đó thì nó sẽ nhảy tiếp sang trang chủ nhưng truyền thêm id và slug tên của Category đó
+        Keywords: vietnamese to url javascript -> tạo 1 helper
+      Dynamic Route Matching: Lắng nghe sự thay đổi của URL, phần lắng nghe này chỉ chạy khi mà ta tương tác trên cùng 1 Component
+      Không phải lúc nào mình cũng nhận được gia trị query vì có cả trường hợp giá trị query là rỗng. Kiểm tra giá trị id có giá
+        trị hay không:
+        Có giá trị thì gọi đến API getListPostByCategory, còn không có giá trị thì gọi đến getListPostHasPaging
