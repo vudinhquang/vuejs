@@ -1820,4 +1820,16 @@ Tìm hiểu Asynchronous trong Javascript và API
           server vẫn sử lý thành công
 
     Post List API
-      
+
+    Post Item Content
+      Trong quá trình gọi API thì sẽ bị chuyển đổi giữa 2 trạng thái là trạng thái chờ và trạng thái thành công. Ở trạng thái chờ thì chưa có 
+        dữ liệu nên khi render ra nó sẽ là null nên khi render ra dữ liệu sẽ bị lỗi -> để tránh được lỗi này thì mình sẽ kiểm tra điều kiện
+        v-if="post", để khi no chuyển đổi giữa 2 trạng thái với nhau thì nó sẽ không render ra khi post có trạng thái là null
+        <div class="ass1-section__content" v-if="post">
+            <p>{{ post.post_content }}</p>
+            <div class="ass1-section__image">
+                <router-link v-bind:to="{ name: 'post-detail', params: { id: post.PID } }">
+                    <img v-bind:src="post.url_image" v-bind:alt="post.post_content">
+                </router-link >
+            </div>
+        </div>
