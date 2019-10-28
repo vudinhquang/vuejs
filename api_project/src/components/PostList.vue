@@ -6,6 +6,7 @@
             v-bind:post="item"
         />
         <button v-if="getListPosts && getListPosts.length" class="load-more ass1-btn"><span>Xem thêm</span></button>
+        <h3 v-else>Danh sách rỗng</h3>
     </div>
 </template>
 

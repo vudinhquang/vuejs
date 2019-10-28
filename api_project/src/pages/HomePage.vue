@@ -1,10 +1,7 @@
 <template>
     <div class="row">
         <div class="col-lg-8">
-            <post-list v-if="getListPosts.length" />
-            <div v-else class="ass1-section__list">
-                <h3>Danh sách rỗng</h3>
-            </div>
+            <post-list />
         </div>
         <div class="col-lg-4">
             <sidebar />
@@ -13,7 +10,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import { mapActions } from 'vuex';
 import PostList from '../components/PostList';
 import Sidebar from '../components/Sidebar';
 export default {
@@ -28,22 +25,16 @@ export default {
             console.log('Home', to);
             if (tagIndex) {
                 // dispatch action by category
-                this.getListPostByCategory({ tagIndex: tagIndex });
+                this.getListPostHasPaging({ tagIndex });
             } else {
                 // dispatch action by paging
                 this.getListPostHasPaging({});
             }
         }
     },
-    computed: {
-        ...mapGetters({
-            getListPosts: 'post/getListPosts'
-        })
-    },
     methods: {
         ...mapActions({
-            getListPostHasPaging: 'post/getListPostHasPaging',
-            getListPostByCategory: 'post/getListPostByCategory'
+            getListPostHasPaging: 'post/getListPostHasPaging'
         })
     }  
 }
