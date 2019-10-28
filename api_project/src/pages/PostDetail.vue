@@ -26,15 +26,48 @@ import PostFeeling from '../components/PostFeeling'
 import PostComments from '../components/PostComments'
 import PostCommentAdd from '../components/PostCommentAdd'
 
+import { mapActions } from 'vuex'
+
 export default {
     name: 'post-detail',
-
+    data() {
+        return {
+            postId: this.$route.params.id
+        }
+    },
     components: {
         Sidebar,
         PostItem,
         PostFeeling,
         PostComments,
         PostCommentAdd
+    },
+    watch: {
+        $route(to, from) {
+            this.postId = to.params.id;
+            this.getPostDetailById(this.postId).then(res => {
+                // console.log(res);
+                if (!res.ok) {
+                    // Đẩy qua trang chủ
+                    this.$router.push('/');
+                }
+            });
+        }
+    },
+    created() {
+        // Load lại trang lần đầu tiên
+        this.getPostDetailById(this.postId).then(res => {
+            // console.log(res);
+            if (!res.ok) {
+                // Đẩy qua trang chủ
+                this.$router.push('/');
+            }
+        });
+    },
+    methods: {
+        ...mapActions({
+            'getPostDetailById': 'post/getPostDetailById'
+        })
     }
 }
 </script>

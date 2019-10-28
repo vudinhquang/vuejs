@@ -1879,3 +1879,16 @@ Tìm hiểu Asynchronous trong Javascript và API
       this.getListPostHasPaging({ tagIndex });
         Nếu nhảy ra homepage thì tagIndex là undefined
         Nếu nhảy ra homepage mà có query thì tagIndex có giá trị
+
+  Chức năng hiển thị bài viết chi tiết
+    Post API
+      API: GET Post Detail By postID -> Lấy thông tin chi tiết bài viết dựa vào id của nó
+      Khi thay đổi lại URL -> phải dùng watch để lắng nghe sự thay đổi của Router
+      var result = await axiosInstance.get('/post/post.php?postid=' + postId);
+        Trong trường hợp này đường dẫn là đơn giản nên không cần phải tạo thêm biến params trong config của axios mà có thể
+          tạo đường dẫn bằng cách nối chuỗi
+      created(): Trường hợp ban đầu mới vào trang
+      watch(): Trường hợp thay đổi url
+      Khi gọi đến API GET Post Detail By postID mà gặp lỗi thì tiến hành đẩy về trang chủ. Kết quả trả về luôn là 1 Promise
+        Redirect qua trang khác bằng code: this.$router.push.      
+        Lỗi: GET http://api-meme-zendvn-01.herokuapp.com/api/post/post.php?postid=55a 500 (Internal Server Error)
