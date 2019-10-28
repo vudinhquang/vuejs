@@ -39,10 +39,6 @@ export default {
       if (arrRouter.indexOf(routerName) !== -1) return false;
       return true;
     }
-  },
-  created() {
-    console.log(this.$store);
-    this.$store.dispatch('post/getListPostHasPaging', { });
   }
 }
 </script>

@@ -19,18 +19,17 @@ export default {
         PostList,
         Sidebar
     },
+    // wath $route chỉ chạy khi có sự thay đổi router
+    // Lần load đầu tiên -> không chạy
     watch: {
         $route(to, from) {
             var tagIndex = to.query.tagIndex;
-            console.log('Home', to);
-            if (tagIndex) {
-                // dispatch action by category
-                this.getListPostHasPaging({ tagIndex });
-            } else {
-                // dispatch action by paging
-                this.getListPostHasPaging({});
-            }
+            this.getListPostHasPaging({ tagIndex });
         }
+    },
+    created() {
+        var tagIndex = this.$route.query.tagIndex;
+        this.getListPostHasPaging({ tagIndex });
     },
     methods: {
         ...mapActions({

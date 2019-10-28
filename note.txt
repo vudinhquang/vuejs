@@ -1855,4 +1855,27 @@ Tìm hiểu Asynchronous trong Javascript và API
         Có giá trị thì gọi đến API getListPostByCategory, còn không có giá trị thì gọi đến getListPostHasPaging
 
     Optimize - Loading
-      
+
+    LoadMore Post
+      Giống như trường hợp phân trang, khi load lần đầu tiên thì chỉ load 1 số lượng bài viết nhất định
+      TH nếu current = 1 -> thay thế array listPosts mới
+      TH nếu current = 2, 3, 4 -> đẩy thêm dữ liệu vào array listPosts( nối 2 array lại với nhau)
+      if(NaN), if(null), if(undefined) đều trả về giá trị false
+      Mỗi khi có sự thay đổi của router thì sẽ tiến hành thay đổi lại giá trị của tagIndex đồng thời reset currPage = 1
+        watch: {
+            $route(to, from) {
+                this.tagIndex = to.query.tagIndex;
+                this.currPage = 1;
+            }
+        },
+      wath $route chỉ chạy khi có sự thay đổi router
+        Lần load đầu tiên -> $route không chạy
+        Ở lần laod đầu tiên:
+          created() {
+              var tagIndex = this.$route.query.tagIndex;
+              this.$store.dispatch('post/getListPostHasPaging', { tagIndex });
+          }
+      Khi chuyển đổi qua lại giữa các router thì gọi đến api khác nên phải reset lại current page là 1
+      this.getListPostHasPaging({ tagIndex });
+        Nếu nhảy ra homepage thì tagIndex là undefined
+        Nếu nhảy ra homepage mà có query thì tagIndex có giá trị
