@@ -7,5 +7,8 @@ export default {
     },
     push_list_posts(state, data) {
         state.listPosts = [...state.listPosts, ...data];
+    },
+    set_post_detail(state, data) {
+        state.postDetail = data;
     }
 }

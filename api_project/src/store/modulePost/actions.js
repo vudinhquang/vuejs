@@ -26,13 +26,15 @@ export default {
             console.error("error", error);
         }
     },
-    async getPostDetailById({ commit }, postId) {
+    async getPostDetailById({ commit, dispatch }, postId) {
         commit('set_loading', true, { root: true });
         try {
             var result = await axiosInstance.get('/post/post.php?postid=' + postId);
-            commit('set_loading', false, { root: true });
             if (result.data.status === 200) {
-                console.log('result=', result.data);
+                // Gọi tiếp sang API user
+                var resultUser = await dispatch('user/getUserById', result.data.data.post.USERID, {root: true});
+                commit('set_loading', false, { root: true });
+                commit('set_post_detail', result.data.data);
                 return {
                     ok: true,
                     data: result.data.data,

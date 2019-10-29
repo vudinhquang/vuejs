@@ -1892,3 +1892,31 @@ Tìm hiểu Asynchronous trong Javascript và API
       Khi gọi đến API GET Post Detail By postID mà gặp lỗi thì tiến hành đẩy về trang chủ. Kết quả trả về luôn là 1 Promise
         Redirect qua trang khác bằng code: this.$router.push.      
         Lỗi: GET http://api-meme-zendvn-01.herokuapp.com/api/post/post.php?postid=55a 500 (Internal Server Error)
+
+  Post Detail
+    Từ actions post/getPostDetailById -> mutations post/set_post_detail
+    Tạo getters post/getDataPostDetail để truy xuất của thông tin chi tiết bài viết
+    Khi gọi API getPostDetailById để hiện thị trang chi tiết bài viết thì từ kết quả API getPostDetailById trả về thì có được userId,
+      từ đó tiếp tục gọi đến API Get user by Id để lấy đầy đủ thông tin của userId để hiển thị lên trang chi tiết bài viết
+    API: Có 2 dạng API
+      API public: là loại APi ai cũng gọi được, ai cũng vào được, ai cũng xem được mà không cần đăng nhập
+      API private: bắt buộc phải đăng nhập thì mới gọi được
+    User/state:
+      export default {
+          currentUser: null,  // Login -> Thông tin của user hiện thời(đăng nhập)
+          users: {}  -> Thông tin chi tiết của user, hiển thị trên trang chi tiết bài viết
+      }
+    Tạo mutations user/set_user_info:
+      set_user_info(state, user) {
+          console.log(state, user);
+          Vue.set(state.users, user.USERID, user)
+      }
+      -> Dùng Vue.set() cho 1 đối tượng chứ không phải là 1 mảng
+    Sau lấy được thông tin của user thông qua USERID lấy được từ getDataPostDetail vào 1 phần dữ liệu để render ra trang post
+      detail
+    Dữ liệu thông tin user và post detail được lưu ở 2 nơi, do đó thì mình cần phải tạo 1 getters để kết hợp thông tin đó lại
+      để hiển thị trên trang post detail
+    Nhu cầu cần giải quyết đó là kết nối state giữa các module lại với nhau -> dùng đến rootState
+      Từ bên post có thể kết nối sang state của user theo cú pháp: rootState.user.users[USERID];
+      Từ rootState có thể lấy được user, trong user lấy được users nằm trong state của user -> từ USERID có thể lấy được thông
+        tin của user        
