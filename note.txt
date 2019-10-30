@@ -1920,3 +1920,67 @@ Tìm hiểu Asynchronous trong Javascript và API
       Từ bên post có thể kết nối sang state của user theo cú pháp: rootState.user.users[USERID];
       Từ rootState có thể lấy được user, trong user lấy được users nằm trong state của user -> từ USERID có thể lấy được thông
         tin của user        
+
+  Chức năng xác thực người dùng(Chức năng đăng nhập, đăng xuất và chức năng đăng ký)
+    Token Based Auth
+      Khi user bấm nút login, thông tin đăng nhập được gửi lên phía server, server sẽ xử lý phần data đó -> tìm kiếm trong cơ
+        sở dữ liệu coi thông tin đăng nhập có đúng hay không. Nếu xác thực thành công thì server sẽ trả về 1 Token -> tiến hành
+        lưu Token này lại trên LocalStorage hoặc COOKIE trên trình duyệt
+      Token này có chức năng như 1 chìa khóa, trong trường hợp login xong, sau đó mình có nhiều cơ chế khác, các API khác để 
+        tiếp tục tương tác với server. Có các loại API private thì cần có Token này mà mình không cần đăng nhập lại mà chỉ Cần
+        gửi lên server đính kèm theo key này là được -> Server sẽ xác minh giá trị Token đó có đúng là Token của server đã gửi
+        về hay không. Nếu xác thực thành công thì server sẽ trả về những tài nguyên liên quan đến API private đã gọi
+      API Login:
+        {{base_url}}/member/login.php
+        Method: Post
+        Body:
+          {
+            "email": "admin@gmail.com",
+            "password": "123456"
+            
+          }
+        Kết quả trả về:
+          {
+              "status": 200,
+              "message": "Success!",
+              "user": {
+                  "USERID": "2",
+                  "email": "admin@gmail.com",
+                  "username": "",
+                  "password": "",
+                  "fullname": "Trần Công Lực",
+                  "gender": "nam",
+                  ....
+                  "profilepicture": "",
+                  "permission": "admin"
+              },
+              "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjIiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSJ9.XUJH4iGD9GYlY2Xl8iLAv6qQM8LR5mVwKcOx_OJNpVE"
+          }
+      Hoạt động của Token
+        JSON Wen Tokens(Jwt) là cơ chế xác thực cơ bản
+        Cấu trúc của JSON Web Token: có 3 phần là header , phần payload và phần signature được ngăn bằng dấu “.”
+        Header:
+          {
+              "typ": "JWT",
+              "alg": "HS256"
+          }
+          “typ” (type) chỉ ra rằng đối tượng là một JWT
+          “alg” (algorithm) xác định thuật toán mã hóa cho chuỗi là HS256
+        Payload: Chứa dữ liệu
+          Phần payload sẽ chứa các thông tin mình muốn đặt trong chuỗi  Token như username , userId , author , … 
+          ví dụ:
+          {
+            "user_name": "admin",
+            "user_id": "1513717410",
+            "authorities": "ADMIN_USER",
+            "jti": "474cb37f-2c9c-44e4-8f5c-1ea5e4cc4d18"
+          }
+        Signature:
+          Phần chử ký này sẽ được tạo ra bằng cách mã hóa phần header , payload kèm theo một chuỗi secret (khóa bí mật) , 
+          ví dụ:
+          data = base64urlEncode( header ) + "." + base64urlEncode( payload )
+          signature = Hash( data, secret );
+          Đoạn code trên sau khi mã hóa header và payload bằng thuật toán base64UrlEncode 
+          Sau đó mã hóa 2 chuỗi trên kèm theo secret (khóa bí mật) bằng thuật toán HS256
+        Kết hợp 3 chuỗi trên lại ta sẽ có được một chuỗi JWT hoàn chỉnh
+        https://jwt.io/
