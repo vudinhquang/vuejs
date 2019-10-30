@@ -1984,3 +1984,16 @@ Tìm hiểu Asynchronous trong Javascript và API
           Sau đó mã hóa 2 chuỗi trên kèm theo secret (khóa bí mật) bằng thuật toán HS256
         Kết hợp 3 chuỗi trên lại ta sẽ có được một chuỗi JWT hoàn chỉnh
         https://jwt.io/
+
+    Login API:
+      Khi nhập thông tin đăng nhập rồi nhấn nút đăng nhập -> tạo 1 action để kết nối với server để gọi API login
+      Phương thức gọi API là phương thức POST, lúc này thì không truyền thông tin thông qua URL nữa mà sẽ truyền thông qua tham số thứ 2(config) 
+        khi goi API bằng axiosInstance
+      Khi hiển thị lỗi, giá trị lỗi từ server trả về có thể là 1 mảng hoặc 1 chuỗi, nếu là mảng thì có thể dùng hàm join() để hiển thị thành 1 chuỗi
+        if (typeof res.error === 'string') {
+            alert(res.error);
+        } else {
+            alert(res.error.join(' '));
+        }
+      Khi đăng nhập thành công thì server trả về giá trị 1 token, giá trị này mình sẽ lưu vào trong localStorage, đồng thời lưu giá tị Token và 
+        thông tin đăng nhập của người dùng vào trong state
