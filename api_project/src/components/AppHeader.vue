@@ -12,6 +12,16 @@
 					<i class="icon-Upvote"></i> Upload
 				</a>
 				<router-link to="/login" class="ass1-header__btn-upload ass1-btn">Login</router-link>
+
+				<div class="wrapper-user">
+					<a href="" class="user-header">
+						<span class="avatar">
+							<img src="dist/images/default-avatar.png" alt="avatar">
+						</span>
+						<span class="email">demo@gmail.com</span>
+					</a>
+					<div v-on:click="handleLogout" class="logout">Logout</div>
+				</div>
 			</div>
 		</div>
 	</header>
@@ -35,6 +45,11 @@ export default {
 		$(".ass1-header__nav ul li > a").click(function(e) {
 			$(this).parents(".ass1-header__nav").slideUp(300, 'swing');
 		})
+	},
+	methods: {
+		handleLogout() {
+			
+		}
 	}
 }
 </script>

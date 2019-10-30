@@ -1997,3 +1997,15 @@ Tìm hiểu Asynchronous trong Javascript và API
         }
       Khi đăng nhập thành công thì server trả về giá trị 1 token, giá trị này mình sẽ lưu vào trong localStorage, đồng thời lưu giá tị Token và 
         thông tin đăng nhập của người dùng vào trong state
+
+    Keep Login:
+      Để duy trì trạng thái đăng nhập thì mình phải kiểm tra giá trị ACCESS_TOKEN có rỗng hay không trong trường hợp load lại
+        trang lần đầu tiên
+      Component luôn chạy đầu tiên là Component App, App không cần quan tâm router là gì cả mà nó luôn được chạy đầu tiên
+      Action checkLogin, truy cập vào localStorage kiểm tra xem giá trị ACCESS_TOKEN có hợp nệ hay không
+      Thực hiện giải mã ACCESS_TOKEN đã được lưu ở localStorage để lấy dữ liệu
+      Keywords: convert jwt to json by javascript
+        helper: parseJwt
+      Sau khi giải mã ACCESS_TOKEN này có được id của user -> Gọi đến getPostByUserId để lấy thông tin người dùng, nếu có thông
+        tin user được trả về thì thực hiện kích hoạt mutations set_login_info để thay đổi dữ liệu trong state để giúp duy trì trạng
+        thái đăng nhập

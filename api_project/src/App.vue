@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 import AppHeader from './components/AppHeader';
 import AppFooter from './components/AppFooter';
 import Loading from './components/Loading';
@@ -39,6 +39,15 @@ export default {
       if (arrRouter.indexOf(routerName) !== -1) return false;
       return true;
     }
+  },
+  created() {
+    this.checkLogin();
+  },
+  
+  methods: {
+    ...mapActions({
+      checkLogin: 'user/checkLogin'
+    })
   }
 }
 </script>
