@@ -14,5 +14,12 @@ export default {
     },
     currentUser: state => {
         return state.currentUser;
+    },
+    getListPostOfCurrentUser: state => {
+        if (state.currentUser) {
+            let userCurrentId = state.currentUser.USERID;
+            return state.posts[userCurrentId];
+        }
+        return null;
     }
 }

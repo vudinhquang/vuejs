@@ -7,6 +7,9 @@ export default {
         console.log(state, user);
         Vue.set(state.users, user.USERID, user)
     },
+    set_user_posts(state, { posts, userid }) {
+        Vue.set(state.posts, userid, posts)
+    },
     set_logout(state) {
         state.ACCESS_TOKEN = '';
         state.currentUser = null;

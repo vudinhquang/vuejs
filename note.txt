@@ -2012,9 +2012,37 @@ Tìm hiểu Asynchronous trong Javascript và API
 
     Login Info:
       Tài khoản login:
-        test01@gmail.com; admin@gmail.com
+        test01@gmail.com; test02@gmail.com; admin@gmail.com
         password: 123456
       user/getters -> isLogin: Từ giá trị state.ACCESS_TOKEN dùng hàm parseJwt() để parse, nếu có thể parse ra thông tin user thì có 
         nghĩa là đã login
       Hiển thị các thông tin user lên AppHeader khi người đó đăng nhập 
       Logout: Thực hiện xóa dữ liệu mình đã set ở set_login_info()
+
+    Sidebar - Header Config
+      Phần Sidebar này chỉ hiển thị các bài viết của chính người đang đăng nhập thôi
+      API: {{base_url}}/post/getListPostUserID.php?userid=3
+        Đây là 1 API private, muốn gọi được API này thì cần phải cung cấp key cho server, hay nói cách khác là mình phải gửi lại
+          ACCESS_TOKEN cho server nó xác minh xem đúng là mình đã đăng nhập hay không, phần đó mình sẽ truyền vào trong header
+          Authorization: Bearer {{ACCESS_TOKEN}}
+        Đây là 1 kỹ thuật để gửi lên server
+        Keywords: Authorization Bearer
+          Authorization: Bearer
+      {{base_url}}/member/login.php
+        {
+          "email": "test01@gmail.com",
+          "password": "123456"
+        }
+         "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjMiLCJlbWFpbCI6InRlc3QwMUBnbWFpbC5jb20ifQ==.AaR-6xZVRkaIx-ISL8NlggUe_Ag0LlK22r7j9zgDZcU"
+      {{base_url}}/post/getListPostUserID.php?userid=3
+        Header: 
+          Authorization: Bearer {{ACCESS_TOKEN}}
+      Giống như Login thì API getListPostsByUserId sẽ được gọi khi:
+        User vừa login xong -> login()
+        Load lại trang đầu tiên -> App.vue -> created()
+      Promise.all():
+        Khi gọi liên tiếp đến các API mà ở đây các API này đều trả về Promise
+          Các API không dùng đến kết quả của API trước thì không cần chạy lần lượt
+          API sau cần dùng đến kết quả của API trước thì mới cần chạy lần lượt -> có thể chạy độc lập với nhau
+        Promise.all() là công cụ giúp chúng ta chạy tất cả các Promise cùng 1 lúc trong cùng 1 khoảng thời gian
+      API getListPostsByUserId được gọi sau khi đã set TOKEN xong rồi -> set_login_info xong mới gọi được API
