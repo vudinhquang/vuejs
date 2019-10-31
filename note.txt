@@ -2009,3 +2009,12 @@ Tìm hiểu Asynchronous trong Javascript và API
       Sau khi giải mã ACCESS_TOKEN này có được id của user -> Gọi đến getPostByUserId để lấy thông tin người dùng, nếu có thông
         tin user được trả về thì thực hiện kích hoạt mutations set_login_info để thay đổi dữ liệu trong state để giúp duy trì trạng
         thái đăng nhập
+
+    Login Info:
+      Tài khoản login:
+        test01@gmail.com; admin@gmail.com
+        password: 123456
+      user/getters -> isLogin: Từ giá trị state.ACCESS_TOKEN dùng hàm parseJwt() để parse, nếu có thể parse ra thông tin user thì có 
+        nghĩa là đã login
+      Hiển thị các thông tin user lên AppHeader khi người đó đăng nhập 
+      Logout: Thực hiện xóa dữ liệu mình đã set ở set_login_info()

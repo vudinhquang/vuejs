@@ -11,14 +11,14 @@
 				<a href="#" class="ass1-header__btn-upload ass1-btn">
 					<i class="icon-Upvote"></i> Upload
 				</a>
-				<router-link to="/login" class="ass1-header__btn-upload ass1-btn">Login</router-link>
+				<router-link v-if="!isLogin" to="/login" class="ass1-header__btn-upload ass1-btn">Login</router-link>
 
-				<div class="wrapper-user">
+				<div v-else class="wrapper-user">
 					<a href="" class="user-header">
 						<span class="avatar">
-							<img src="dist/images/default-avatar.png" alt="avatar">
+							<img v-bind:src="getAvatar" alt="avatar">
 						</span>
-						<span class="email">demo@gmail.com</span>
+						<span class="email">{{ getEmail }}</span>
 					</a>
 					<div v-on:click="handleLogout" class="logout">Logout</div>
 				</div>
@@ -31,6 +31,9 @@
 import $ from "jquery";
 import AppHeaderSearch from './AppHeaderSearch';
 import AppNavigation from './AppNavigation';
+
+import { mapGetters, mapActions } from 'vuex';
+
 export default {
 	name: 'app-header',
 	components: {
@@ -46,9 +49,34 @@ export default {
 			$(this).parents(".ass1-header__nav").slideUp(300, 'swing');
 		})
 	},
-	methods: {
-		handleLogout() {
+	computed: {
+		...mapGetters({
+			isLogin: 'user/isLogin',
+			currentUser: 'user/currentUser'
+		}),
+		getAvatar() {
+			if (this.currentUser.profilepicture) return this.currentUser.profilepicture;
 			
+			return 'dist/images/default-avatar.png';
+		},
+
+		getEmail() {
+			if (this.currentUser.email) return this.currentUser.email;
+			
+			return '';
+		}
+	},
+	methods: {
+		...mapActions({
+			logout: 'user/logout'
+		}),
+		handleLogout() {
+			var check = confirm('Bạn có thật sự muốn đăng xuất?');
+			if (check) {
+				this.logout().then(res => {
+					this.$router.push('/login');
+				});
+			}
 		}
 	}
 }

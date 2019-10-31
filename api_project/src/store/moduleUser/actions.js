@@ -56,6 +56,10 @@ export default {
         }
     },
 
+    async logout({ commit }) {
+        commit('set_logout');
+    },
+
     async checkLogin({ commit, dispatch }) {
         try {
             let tokenLocal = localStorage.getItem('ACCESS_TOKEN');
@@ -65,7 +69,7 @@ export default {
                 let resultUser = await dispatch('getUserById', userObj.id);
                 if (resultUser.ok) {
                     let data = {
-                        user: resultUser.data.user,
+                        user: resultUser.data,
                         token: tokenLocal
                     };
                     commit('set_login_info', data);
