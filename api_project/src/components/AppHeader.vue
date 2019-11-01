@@ -55,13 +55,13 @@ export default {
 			currentUser: 'user/currentUser'
 		}),
 		getAvatar() {
-			if (this.currentUser.profilepicture) return this.currentUser.profilepicture;
+			if (this.currentUser && this.currentUser.profilepicture) return this.currentUser.profilepicture;
 			
 			return 'dist/images/default-avatar.png';
 		},
 
 		getEmail() {
-			if (this.currentUser.email) return this.currentUser.email;
+			if (this.currentUser && this.currentUser.email) return this.currentUser.email;
 			
 			return '';
 		}

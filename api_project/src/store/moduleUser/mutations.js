@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import { CONFIG_ACCESS_TOKEN } from '../../constants'
 export default {
     // increment (state) {
     //     state.count++
@@ -11,13 +12,13 @@ export default {
         Vue.set(state.posts, userid, posts)
     },
     set_logout(state) {
-        state.ACCESS_TOKEN = '';
+        state[CONFIG_ACCESS_TOKEN] = '';
         state.currentUser = null;
-        localStorage.removeItem('ACCESS_TOKEN');
+        localStorage.removeItem(CONFIG_ACCESS_TOKEN);
     },
     set_login_info(state, {user = null, token = ''}) {
-        localStorage.setItem('ACCESS_TOKEN', token);
-        state.ACCESS_TOKEN = token;
+        localStorage.setItem(CONFIG_ACCESS_TOKEN, token);
+        state[CONFIG_ACCESS_TOKEN] = token;
         state.currentUser = user
     }
 }

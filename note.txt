@@ -2046,3 +2046,17 @@ Tìm hiểu Asynchronous trong Javascript và API
           API sau cần dùng đến kết quả của API trước thì mới cần chạy lần lượt -> có thể chạy độc lập với nhau
         Promise.all() là công cụ giúp chúng ta chạy tất cả các Promise cùng 1 lúc trong cùng 1 khoảng thời gian
       API getListPostsByUserId được gọi sau khi đã set TOKEN xong rồi -> set_login_info xong mới gọi được API
+
+    Config Router Auth
+      Có rất nhiều dạng router:
+        1. Router chỉ cho phép vào khi mà chưa đăng nhập(Login, Register) -> ifNotAuthenticated
+        2. Router chỉ cho phép vào khi đã đăng nhập -> ifAuthenticated -> trường hợp này gặp nhiều
+        3. Router cho phép vào thoải mái, ai cũng có thể vào được
+      Cấu hình giá trị ACCESS_TOKEN là 1 giá trị const
+        export default {
+            // ACCESS_TOKEN: '',
+            [CONFIG_ACCESS_TOKEN]: localStorage.getItem(CONFIG_ACCESS_TOKEN),
+            currentUser: null,  // Login
+            users: {},
+            posts: {}
+        }
