@@ -2087,3 +2087,11 @@ Tìm hiểu Asynchronous trong Javascript và API
         created() {
           this.checkLogin();
         },
+    
+    User Detail API
+      Gọi API để render dữ liệu ra phần user detail, gồm có 2 phần:
+        Thông tin chi tiết của 1 user
+        Danh sách bài viết mà user đó đã đăng
+      Thực hiện gọi API trong 2 trường hợp đó là load lại trang hoặc có sự thay đổi của router
+
+      posts: result.data.posts || [] -> Nếu result.data.posts là null thì gán giá trị cho posts là []

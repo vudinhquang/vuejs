@@ -1,5 +1,5 @@
 <template>
-    <div class="ass1-head-user">
+    <div class="ass1-head-user" v-if="userInfo">
         <div class="ass1-head-user__content">
             <div class="ass1-head-user__image"><a href="#"><img src="/dist/images/cat-1634369_1920.jpg" alt=""></a></div>
             <div class="ass1-head-user__info">
@@ -31,7 +31,10 @@
 import { mapGetters } from 'vuex';
 
 export default {
-    name: 'user-page-info'
+    name: 'user-page-info',
+    props: {
+        userInfo: { type:Object, default: null }
+    }
 }
 </script>
 

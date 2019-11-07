@@ -121,6 +121,7 @@ export default {
                 commit('set_user_posts', objData);
                 return {
                     ok: true,
+                    posts: result.data.posts || [],
                     error: null
                 }
             }
