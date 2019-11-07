@@ -2060,3 +2060,17 @@ Tìm hiểu Asynchronous trong Javascript và API
             users: {},
             posts: {}
         }
+
+    Register API
+      API: {{base_url}}/member/register.php(post)
+      Sử dụng phương thức Post và gửi lên server 4 thông tin: email, fullname, password, repassword
+      Body:
+        {
+          "email": "test08@gmail.com",
+          "fullname": "test08",
+          "password": "123456",
+          "repassword": "123456"
+        }
+      Trong trường hợp đăng ký thành công thì thông tin API trả về mình có giá trị của token và thông tin user đã
+        đăng ký -> thực hiện làm công việc giống như login, có nghĩa là cho người đó vào luôn chứ không cần login lại nữa
+        -> set_user_info, set_login_info, getListPostsByUserId

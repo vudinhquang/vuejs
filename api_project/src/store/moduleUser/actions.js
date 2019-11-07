@@ -134,5 +134,41 @@ export default {
                 error: error.message
             }
         }
+    },
+
+    async register({ commit, dispatch }, data) {
+        commit('set_loading', true, { root: true });
+        try {
+            let result = await axiosInstance.post('/member/register.php', data);
+            commit('set_loading', false, { root: true });
+            if (result.data.code === 200) {
+                let objLoginInfo = {
+                    user: result.data.user,
+                    token: result.data.token
+                };
+                let promiseUserInfo  = commit('set_user_info', result.data.user);
+                let promiseLoginInfo = commit('set_login_info', objLoginInfo);
+                let [resultUser, resultPostUser] = await Promise.all([promiseUserInfo, promiseLoginInfo]);
+                
+                await dispatch('getListPostsByUserId', result.data.user.USERID);
+
+                return {
+                    ok: true,
+                    error: null
+                }
+            } else {
+                return {
+                    ok: false,
+                    data: result.data,
+                    error: result.data.error
+                }
+            }
+        } catch (error) {
+            commit('set_loading', false, { root: true });
+            return {
+                ok: false,
+                error: error.message
+            }
+        }
     }
 }
