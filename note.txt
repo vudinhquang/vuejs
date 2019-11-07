@@ -2074,3 +2074,16 @@ Tìm hiểu Asynchronous trong Javascript và API
       Trong trường hợp đăng ký thành công thì thông tin API trả về mình có giá trị của token và thông tin user đã
         đăng ký -> thực hiện làm công việc giống như login, có nghĩa là cho người đó vào luôn chứ không cần login lại nữa
         -> set_user_info, set_login_info, getListPostsByUserId
+
+  Chức năng hiển thị và thay đổi thông tin Profile
+    Vue Masonry:
+      Keywords: Masonry plugin, vue masonry
+      Site: https://masonry.desandro.com/
+      Install: npm i vue-masonry
+      Phần hiển thị Profile của user này được đi từ trang của 1 user bất kỳ
+      Trang của 1 user bất kỳ có hiển thị các bài viết của người đó được hiển thị so le với nhau -> sử dụng Vue Masonry để hỗ
+        trợ vấn đề làm giao diện
+      Xử lý vấn đề bất đồng bộ: Khi ở 1 trang bất kỳ mà load lại trang đó thì checkLogin() được chạy đầu tiên
+        created() {
+          this.checkLogin();
+        },

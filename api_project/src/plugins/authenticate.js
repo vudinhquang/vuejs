@@ -16,7 +16,7 @@ const ifNotAuthenticated = (to, from, next) => {
 
 const ifAuthenticated = (to, from, next) => {
     // 2.Router chỉ cho phép vào khi đã đăng nhập
-    if (store.getters.isLogin) {
+    if (store.getters['user/isLogin']) {
         next(); // Cho phép vào
     } else {
         next({

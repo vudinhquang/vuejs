@@ -13,13 +13,15 @@
 				</a>
 				<router-link v-if="!isLogin" to="/login" class="ass1-header__btn-upload ass1-btn">Login</router-link>
 
-				<div v-else class="wrapper-user">
-					<a href="" class="user-header">
+				<div v-else-if="currentUser" class="wrapper-user">
+					<router-link
+						v-bind:to="{ name: 'user-page', params: { id: currentUser.USERID } }"
+						class="user-header">
 						<span class="avatar">
 							<img v-bind:src="getAvatar" alt="avatar">
 						</span>
 						<span class="email">{{ getEmail }}</span>
-					</a>
+					</router-link>
 					<div v-on:click="handleLogout" class="logout">Logout</div>
 				</div>
 			</div>
