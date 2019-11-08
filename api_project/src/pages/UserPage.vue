@@ -1,6 +1,8 @@
 <template>
     <div>
-        <user-page-infor v-bind:userInfo="userInfo" />
+        <user-page-infor 
+            v-bind:countPost="countPost"
+            v-bind:userInfo="userInfo" />
         <div 
             v-if="listPostOfUser && listPostOfUser.length"
             v-masonry
@@ -45,6 +47,12 @@ export default {
         $route(to, from) {
             this.userid = to.params.id;
             this.fetchAllData();
+        }
+    },
+    computed: {
+        countPost() {
+            if (this.listPostOfUser && this.listPostOfUser.length) return this.listPostOfUser.length;
+            return 0;
         }
     },
     created() {

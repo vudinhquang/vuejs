@@ -2110,3 +2110,11 @@ Tìm hiểu Asynchronous trong Javascript và API
         Vuex có currentUser để lưu thông tin của người đang đăng nhập
         -> Dùng giá trị USERID của 2 thông tin này để so sánh -> biết được mình đang xem trang cá nhân của mình hay đang xem
           trang của người khác
+
+    Show Profile
+      Phần hiển thị user page info để hiển thị số lượng bài viết của user đó thì mình sẽ tạo thêm 1 computed countPost để tính 
+        toán lại số bài viết để đề phòng trường hợp gọi API bị lỗi
+      Phần chỉnh sửa profile:
+        Render cho người dùng toàn bộ thông tin cũ
+        Chỉ khi đăng nhập thì mới vào được
+        Chỉ vào được khi id trên URL chính là id của người đang đăng nhập(Current user)
