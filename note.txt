@@ -2095,3 +2095,9 @@ Tìm hiểu Asynchronous trong Javascript và API
       Thực hiện gọi API trong 2 trường hợp đó là load lại trang hoặc có sự thay đổi của router
 
       posts: result.data.posts || [] -> Nếu result.data.posts là null thì gán giá trị cho posts là []
+
+    Fix Bug Masonry
+      Khi truy cập vào các user khác nhau -> nội dung các bài viết của user đó thay đổi
+      Nếu trong trường hợp redraw lại giao diện trong trường hợp data thay đổi
+        this.$redrawVueMasonry(), thực hiện ngọi hàm toàn cục này khi có sự thay đổi dữ liệu, có nghĩa là sau khi gọi
+        API

@@ -68,6 +68,11 @@ export default {
             if (resultUser.ok && resultPostUser.ok) {
                 this.userInfo       = resultUser.data;
                 this.listPostOfUser = resultPostUser.posts;
+
+                // Data changed
+                if (typeof this.$redrawVueMasonry === 'function') {
+                    this.$redrawVueMasonry()
+                }
             } else {
                 this.$router.push('/');
             }
