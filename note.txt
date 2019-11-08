@@ -2101,3 +2101,12 @@ Tìm hiểu Asynchronous trong Javascript và API
       Nếu trong trường hợp redraw lại giao diện trong trường hợp data thay đổi
         this.$redrawVueMasonry(), thực hiện ngọi hàm toàn cục này khi có sự thay đổi dữ liệu, có nghĩa là sau khi gọi
         API
+    
+    User Infor
+      Khi mình vào xem trang cá nhân của mình: Hiển thị nút nhấn Đổi mật khẩu và Profile
+      Khi mình vào xem trang cá nhân của người khác: Hiển thị nút theo dõi
+      Thực hiện dựa trên phần dữ liệu của mình lưu trong Store:
+        UserPage Component: Có thông dữ liệu userInfo
+        Vuex có currentUser để lưu thông tin của người đang đăng nhập
+        -> Dùng giá trị USERID của 2 thông tin này để so sánh -> biết được mình đang xem trang cá nhân của mình hay đang xem
+          trang của người khác
