@@ -5,7 +5,7 @@
 
             <div class="ass1-login__form">
                 <div class="avatar">
-                    <img src="https://bodiezpro.com/wp-content/uploads/2015/09/medium-default-avatar.png" alt="">
+                    <img v-bind:src="getAvatar" alt="">
                 </div>
                 <form action="#" v-if="currentUser" v-on:submit.prevent="handleEditProfile">
                     <input 
@@ -22,7 +22,7 @@
                         <option value="nu">Nữ</option>
                     </select>
                     <input 
-
+                        v-on:change="uploadAvatar"
                         type="file" name="avatar"  placeholder="Ảnh đại diện" class="form-control">
 
                     <textarea 
@@ -50,7 +50,10 @@ export default {
             fullname: '',
             description: '',
             gender: '',
-            objectFile: null,
+            avatar: {
+                objFile: null,
+                base64URL: ''
+            },
             userid: this.$route.params.id,
             currentUser: null
         }
@@ -65,7 +68,13 @@ export default {
         this.checkIsCurrentUser();
     },
     computed: {
-
+        getAvatar() {
+            if (!this.avatar.base64URL && this.currentUser) {
+                return this.currentUser.profilepicture;
+            } else {
+                return this.avatar.base64URL;
+            }
+        }
     },
     methods: {
         ...mapActions({
@@ -86,6 +95,25 @@ export default {
             console.log(this.fullname);
             console.log(this.description);
             console.log(this.gender);
+        },
+        uploadAvatar(e) {
+            console.log(e.target.files);
+            if (e.target.files && e.target.files.length) {
+                const fileAvatar = e.target.files[0];
+                console.log(fileAvatar);
+
+                let reader  = new FileReader();
+
+                reader.addEventListener("load", () => {
+                    let previewSrc = reader.result;
+                    this.avatar.base64URL = previewSrc;
+                    this.avatar.objFile = fileAvatar;
+                }, false);
+
+                if (fileAvatar) {
+                    reader.readAsDataURL(fileAvatar);
+                }
+            }
         }
     }
 }

@@ -2118,3 +2118,13 @@ Tìm hiểu Asynchronous trong Javascript và API
         Render cho người dùng toàn bộ thông tin cũ
         Chỉ khi đăng nhập thì mới vào được
         Chỉ vào được khi id trên URL chính là id của người đang đăng nhập(Current user)
+    
+    Handle Avatar Upload
+      Đối với file thì không sử dựng được v-model
+      Đối với file thì có thể upload lên nhiều file nhưng chỉ lấy file đầu tiên thôi
+      Đối với avatar thì cũng tương tự như facebook đó là khi truy cập vào lần đầu tiên, load lại trang thì sẽ hiện thị avatar gốc,
+        khi tải 1 avatar thì phải lấy ra được url tạm thời(preview) để cho user có thể xem trước đã rồi sau đó mới thực hiện đẩy lên
+        server(nhấn vào nút submit)
+      Keywords: File Reader javascript
+      File Reader là object có sẵn của javascript dùng để tương tác với các file object
+      FileReader.readAsDataURL(): Đọc 1 object file nó sẽ chuyển về cho mình 1 đường dẫn xem tamk ở phía local ở dạng base64
