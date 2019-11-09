@@ -20,5 +20,8 @@ export default {
         localStorage.setItem(CONFIG_ACCESS_TOKEN, token);
         state[CONFIG_ACCESS_TOKEN] = token;
         state.currentUser = user
+    },
+    set_current_user(state, user) {
+        state.currentUser = user;
     }
 }

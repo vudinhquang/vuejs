@@ -9,12 +9,12 @@
                 </div>
                 <form action="#" v-if="currentUser" v-on:submit.prevent="handleEditProfile">
                     <input 
-                        v-bind:value="currentUser.fullname"
+                        v-bind:value="getFullname"
                         v-on:input="fullname = $event.target.value"
-                        type="text" class="form-control" placeholder="Tên ..." required="">
+                        type="text" class="form-control" placeholder="Tên ..." required="" />
                     
                     <select  
-                        v-bind:value="currentUser.gender"
+                        v-bind:value="getGender"
                         v-on:change="gender = $event.target.value"
                         class="form-control">
                         <option value="">Giới tính</option>
@@ -23,10 +23,10 @@
                     </select>
                     <input 
                         v-on:change="uploadAvatar"
-                        type="file" name="avatar"  placeholder="Ảnh đại diện" class="form-control">
+                        type="file" name="avatar"  placeholder="Ảnh đại diện" class="form-control" />
 
                     <textarea 
-                        v-bind:value="currentUser.description"
+                        v-bind:value="getDescription"
                         v-on:input="description = $event.target.value"
                         class="form-control" cols="30" rows="5" placeholder="Mô tả ngắn ..."></textarea>
 
@@ -74,11 +74,24 @@ export default {
             } else {
                 return this.avatar.base64URL;
             }
+        },
+        getFullname() {
+            if (!this.fullname && this.currentUser) return this.currentUser.fullname;
+            return this.fullname; 
+        },
+        getDescription() {
+            if (!this.description && this.currentUser) return this.currentUser.description;
+            return this.description; 
+        },
+        getGender() {
+            if (!this.gender && this.currentUser) return this.currentUser.gender;
+            return this.gender; 
         }
     },
     methods: {
         ...mapActions({
-            getUserById: 'user/getUserById'
+            getUserById: 'user/getUserById',
+            updateProfile: 'user/updateProfile'
         }),
         async checkIsCurrentUser() {
             let tokenLocal = localStorage.getItem(CONFIG_ACCESS_TOKEN);
@@ -92,16 +105,33 @@ export default {
             }
         },
         handleEditProfile(e) {
-            console.log(this.fullname);
-            console.log(this.description);
-            console.log(this.gender);
+            this.fullname = this.getFullname;
+            this.gender = this.getGender;
+            this.description = this.getDescription;
+
+            if (this.fullname && this.description && this.gender) {
+                let data = {
+                    fullname: this.fullname,
+                    description: this.description,
+                    gender: this.gender
+                };
+
+                if (this.avatar.objFile) {
+                    data.objFile = this.avatar.objFile;
+                }
+
+                this.updateProfile(data).then(res => {
+                    if (res.ok) {
+                        alert('Update thông tin Profile thành công');
+                    } else {
+                        alert(res.error);
+                    }
+                });
+            }
         },
         uploadAvatar(e) {
-            console.log(e.target.files);
             if (e.target.files && e.target.files.length) {
                 const fileAvatar = e.target.files[0];
-                console.log(fileAvatar);
-
                 let reader  = new FileReader();
 
                 reader.addEventListener("load", () => {

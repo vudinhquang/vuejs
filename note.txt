@@ -2128,3 +2128,29 @@ Tìm hiểu Asynchronous trong Javascript và API
       Keywords: File Reader javascript
       File Reader là object có sẵn của javascript dùng để tương tác với các file object
       FileReader.readAsDataURL(): Đọc 1 object file nó sẽ chuyển về cho mình 1 đường dẫn xem tamk ở phía local ở dạng base64
+
+    Update Profile API
+      API: {{base_url}}/member/update.php
+      API này tương tác lên server theo kiểu sử dụng file có nghĩa là gửi lên server 1 object file nào đó thì bắt buộc phải gửi theo
+        kiểu form-data
+      Headers có 1 cái đó là 
+        Authorization: Bearer {{ACCESS_TOKEN}}
+        Content-Type: multipart/form-data
+      Keywords: form data axios post
+        https://stackoverflow.com/questions/47630163/axios-post-request-to-send-form-data
+      Sử dụng thêm đối tượng nữa của javascript đó là FormData
+        let bodyFormData = new FormData();
+        bodyFormData.append('fullname', fullname); 
+        bodyFormData.append('description', description); 
+        bodyFormData.append('gender', gender); 
+        // For avatar
+        if (objFile) {
+            bodyFormData.append('avatar', objFile); 
+        }
+        let config = {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+                'Authorization': 'Bearer ' + localStorage.getItem(CONFIG_ACCESS_TOKEN)
+            }
+        };
+        let result = await axiosInstance.post('/member/update.php', bodyFormData, config);
