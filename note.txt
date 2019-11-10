@@ -2157,3 +2157,10 @@ Tìm hiểu Asynchronous trong Javascript và API
 
   Chức năng thay đổi mật khẩu
     Thực hiện logic giống như profile, đầu tiên là kiểm tra xem id trên url có đúng hay không
+
+  Chức năng tìm kiếm bài viết
+    Search API
+      Công việc của mình là đẩy Keywords lên để server làm nhiệm vụ tìm kiếm kết quả
+      Hiển thị danh sách bài viết
+      Hiển câu thông báo là tìm kiếm được bao nhiêu bài viết, từ khóa tìm kiếm
+      API: {{base_url}}/post/search.php?query=th

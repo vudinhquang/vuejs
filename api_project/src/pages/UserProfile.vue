@@ -123,6 +123,7 @@ export default {
                 this.updateProfile(data).then(res => {
                     if (res.ok) {
                         alert('Update thông tin Profile thành công');
+                        this.$router.push('/');
                     } else {
                         alert(res.error);
                     }

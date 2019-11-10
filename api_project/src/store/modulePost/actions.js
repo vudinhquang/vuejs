@@ -48,5 +48,28 @@ export default {
                 error: error.message
             }
         }
+    },
+    async getListPostSearch({ commit }, searchStr) {
+        commit('set_loading', true, { root: true });
+        try {
+            var result = await axiosInstance.get('/post/search.php?query=' + searchStr);
+            commit('set_loading', false, { root: true });
+            if (result.data.status === 200) {
+                return {
+                    ok: true,
+                    posts: result.data.posts
+                }
+            } else {
+                return {
+                    ok: false,
+                }
+            }
+        } catch (error) {
+            commit('set_loading', false, { root: true });
+            return {
+                ok: false,
+                error: error.message
+            }
+        }
     }
 }
