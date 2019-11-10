@@ -214,5 +214,35 @@ export default {
                 error: error.message
             }
         }
+    },
+
+    async changePassword({ commit }, data) {
+        commit('set_loading', true, { root: true });
+        try {
+            let config = {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + localStorage.getItem(CONFIG_ACCESS_TOKEN)
+                }
+            };
+            let result = await axiosInstance.post('/member/password.php', data, config);
+            commit('set_loading', false, { root: true });
+            if (result.data.status === 200) {
+                return {
+                    ok: true,
+                    message: result.data.message,
+                }
+            }
+            return {
+                ok: false,
+                error: result.data.error
+            }
+        } catch (error) {
+            commit('set_loading', false, { root: true });
+            return {
+                ok: false,
+                error: error.message
+            }
+        }
     }
 }

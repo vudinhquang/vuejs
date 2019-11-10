@@ -2154,3 +2154,6 @@ Tìm hiểu Asynchronous trong Javascript và API
             }
         };
         let result = await axiosInstance.post('/member/update.php', bodyFormData, config);
+
+  Chức năng thay đổi mật khẩu
+    Thực hiện logic giống như profile, đầu tiên là kiểm tra xem id trên url có đúng hay không
