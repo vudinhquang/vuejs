@@ -6,19 +6,31 @@
                 <div class="ass1-section__content">
                     <form action="#">
                         <div class="form-group">
-                            <input type="text" class="form-control ttg-border-none" placeholder="https://">
+                            <input 
+                                v-model="url_image"
+                                type="text" class="form-control ttg-border-none" placeholder="https://">
                         </div>
                         <div class="form-group">
-                            <textarea type="text" class="form-control ttg-border-none"
+                            <textarea 
+                                v-model="post_content"
+                                type="text" class="form-control ttg-border-none"
                                 placeholder="Mô tả ..."></textarea>
                         </div>
                     </form>
-                    <div class="ass1-section__image">
-                        <a href="#"><img src="/dist/images/no_image_available.jpg" alt="default"></a>
+                    <div class="ass1-section__image" v-on:click="uploadImage">
+                        <img v-bind:src="renderImage" alt="default">
                     </div>
                     <a href="https://memeful.com/" target="_blank" class="ass1-btn ass1-btn-meme">Chế ảnh từ
                         meme</a>
-                    <a href="#" class="ass1-btn ass1-btn-meme">Đăng ảnh từ máy tính</a>
+                    <button 
+                        v-on:click="uploadImage"
+                        class="ass1-btn ass1-btn-meme">Đăng ảnh từ máy tính</button>
+                    <!-- ref -->
+                    <input
+                        v-on:change="hanleUploadImage"
+                        style="display: none"
+                        ref="imageUpload"
+                        type="file" name="images" class="form-control" />
                 </div>
             </div>
         </div>
@@ -29,45 +41,13 @@
                 </div>
                 <div class="ass1-aside__edit-post-head">
                     <span style="display: block; width: 100%; margin-bottom: 10px;">Chọn danh mục</span>
-                    <label class="ass1-checkbox">
-                        <input type="radio" name="state-post" checked="checked">
+                    <label class="ass1-checkbox" v-for="item in Allcategories" v-bind:key="item.id">
+                        <input 
+                            v-bind:value="item.id"
+                            v-model="categories"
+                            type="checkbox" name="state-post">
                         <span></span>
-                        <p>Ảnh troll</p>
-                    </label>
-                    <label class="ass1-checkbox">
-                        <input type="radio" name="state-post">
-                        <span></span>
-                        <p>FapTV</p>
-                    </label>
-                    <label class="ass1-checkbox">
-                        <input type="radio" name="state-post" checked="checked">
-                        <span></span>
-                        <p>Ảnh troll</p>
-                    </label>
-                    <label class="ass1-checkbox">
-                        <input type="radio" name="state-post">
-                        <span></span>
-                        <p>FapTV</p>
-                    </label>
-                    <label class="ass1-checkbox">
-                        <input type="radio" name="state-post" checked="checked">
-                        <span></span>
-                        <p>Ảnh troll</p>
-                    </label>
-                    <label class="ass1-checkbox">
-                        <input type="radio" name="state-post">
-                        <span></span>
-                        <p>FapTV</p>
-                    </label>
-                    <label class="ass1-checkbox">
-                        <input type="radio" name="state-post" checked="checked">
-                        <span></span>
-                        <p>Ảnh troll</p>
-                    </label>
-                    <label class="ass1-checkbox">
-                        <input type="radio" name="state-post">
-                        <span></span>
-                        <p>FapTV</p>
+                        <p>{{ item.text }}</p>
                     </label>
                 </div>
                 <div class="ass1-aside__get-code">
@@ -89,7 +69,51 @@
 
 <script>
 export default {
-    name: 'post-upload'
+    name: 'post-upload',
+    data() {
+        return {
+            post_content: '',
+            url_image: '',
+            obj_image: {
+                objFile: null,
+                base64URL: ''
+            },
+            categories: []
+        }
+    },
+    computed: {
+        Allcategories() {
+            return this.$store.state.post.categories;
+        },
+        renderImage() {
+            if (this.url_image) return this.url_image;
+            else if (this.obj_image.base64URL) return this.obj_image.base64URL;
+
+            return '/dist/images/no_image_available.jpg';
+        }
+    },
+    methods: {
+        uploadImage() {
+            this.$refs.imageUpload.click()
+        },
+        hanleUploadImage(e) {
+            if (e.target.files && e.target.files.length) {
+                const imageUpload = e.target.files[0];
+                let reader  = new FileReader();
+
+                // Check xem đuôi ảnh png, gif, jpg
+                reader.addEventListener("load", () => {
+                    let previewSrc = reader.result;
+                    this.obj_image.base64URL = previewSrc;
+                    this.obj_image.objFile = imageUpload;
+                }, false);
+
+                if (imageUpload) {
+                    reader.readAsDataURL(imageUpload);
+                }
+            }
+        }
+    }
 }
 </script>
 

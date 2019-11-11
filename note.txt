@@ -2170,3 +2170,15 @@ Tìm hiểu Asynchronous trong Javascript và API
       Đối với hàm replace trong javascript thì chỉ có thể replace được 1 vị trí mà thôi
       Chỉ ở trong router là search thì mới thực hiện replace, còn khi hiển thị postItem ở các nơi khác thì không cần hiển thị
       Có 2 thông tin cần xử lý đó là full name và post content
+
+  Chức năng đăng mới bài viết
+    Handle Data
+      Bắt buộc đăng nhập thì mới được upload
+      Việc upload hình ảnh có 2 dạng đó là có thể upload trực tiếp link hoặc upload ảnh từ máy tính lên. Trong trường hợp khi 
+       người dùng chọn cả 2 phương thức thì ưu tiên sử dụng url_image được load từ máy tính
+      Chọn danh mục thì có thể chọn nhiều danh mục cùng lúc
+      refs: 
+        Tạo input file ở dạng ẩn
+        Trên giao diện khi click vào button thì sẽ kích hoạt sự kiện click cho input file ẩn này, input ẩn này được gọi thông
+          qua ref
+      Khi người dùng có upload file thì send file đó lên server

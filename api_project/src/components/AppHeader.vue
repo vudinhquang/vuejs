@@ -8,9 +8,9 @@
 
 				<app-header-search />
 
-				<a href="#" class="ass1-header__btn-upload ass1-btn">
+				<router-link to="/upload" class="ass1-header__btn-upload ass1-btn">
 					<i class="icon-Upvote"></i> Upload
-				</a>
+				</router-link>
 				<router-link v-if="!isLogin" to="/login" class="ass1-header__btn-upload ass1-btn">Login</router-link>
 
 				<div v-else-if="currentUser" class="wrapper-user">
