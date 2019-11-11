@@ -36,7 +36,13 @@ const parseJwt = (token) => {
     }
 };
 
+const replaceAll = (originStr, search, replacement) => {
+    var target = originStr;
+    return target.replace(new RegExp(search, 'gi'), replacement);
+};
+
 export {
     removeVietnameseFromString,
+    replaceAll,
     parseJwt
 }

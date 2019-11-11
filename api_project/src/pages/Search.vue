@@ -83,8 +83,12 @@ export default {
 <style>
     .search-page {
         margin-top: 45px;
-    };
+    }
     .search-info {
         padding-bottom: 30px
+    }
+    mark, .mark {
+        background-color: yellow !important;
+        padding: 0px !important;
     }
 </style>

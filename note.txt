@@ -2164,3 +2164,9 @@ Tìm hiểu Asynchronous trong Javascript và API
       Hiển thị danh sách bài viết
       Hiển câu thông báo là tìm kiếm được bao nhiêu bài viết, từ khóa tìm kiếm
       API: {{base_url}}/post/search.php?query=th
+
+    Highlight Search
+      Keywords: how to replace all string in javascript
+      Đối với hàm replace trong javascript thì chỉ có thể replace được 1 vị trí mà thôi
+      Chỉ ở trong router là search thì mới thực hiện replace, còn khi hiển thị postItem ở các nơi khác thì không cần hiển thị
+      Có 2 thông tin cần xử lý đó là full name và post content
