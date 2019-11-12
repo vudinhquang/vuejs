@@ -2175,10 +2175,26 @@ Tìm hiểu Asynchronous trong Javascript và API
     Handle Data
       Bắt buộc đăng nhập thì mới được upload
       Việc upload hình ảnh có 2 dạng đó là có thể upload trực tiếp link hoặc upload ảnh từ máy tính lên. Trong trường hợp khi 
-       người dùng chọn cả 2 phương thức thì ưu tiên sử dụng url_image được load từ máy tính
+        người dùng chọn cả 2 phương thức thì ưu tiên sử dụng url_image được load từ máy tính
+        https://memeful.com/
       Chọn danh mục thì có thể chọn nhiều danh mục cùng lúc
       refs: 
         Tạo input file ở dạng ẩn
         Trên giao diện khi click vào button thì sẽ kích hoạt sự kiện click cho input file ẩn này, input ẩn này được gọi thông
           qua ref
       Khi người dùng có upload file thì send file đó lên server
+
+    Create Post API
+      async createNewPost({ commit }, { post_contenta = '', category = '', url_image = '', obj_image = null })
+      Keywords: axiosinstance get error message
+        https://gist.github.com/fgilio/230ccd514e9381fafa51608fcf137253
+      Khi cố tình truyền sai tham số post_content thành post_contenta sẽ phát sinh ra lỗi hệ thống
+        } catch (error) {
+            commit('set_loading', false, { root: true });
+            return {
+                ok: false,
+                error: error.message
+            }
+        }
+      helper checkImageFile() dùng để check file hình ảnh
+      Sau khi đăng bài viết thành công thì sẽ reset lại data: post_content, categories, url_image và objFile

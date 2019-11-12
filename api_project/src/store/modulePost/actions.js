@@ -1,5 +1,5 @@
 import axiosInstance from '../../plugins/axios'
-import { PAGE_SIZE, CURRENT_PAGE } from '../../constants'
+import { PAGE_SIZE, CURRENT_PAGE, CONFIG_ACCESS_TOKEN } from '../../constants'
 
 export default {    
     async getListPostHasPaging({ commit }, { pagesize=PAGE_SIZE, currPage=CURRENT_PAGE, tagIndex = null }) {
@@ -63,6 +63,47 @@ export default {
                 return {
                     ok: false,
                 }
+            }
+        } catch (error) {
+            commit('set_loading', false, { root: true });
+            return {
+                ok: false,
+                error: error.message
+            }
+        }
+    },
+    async createNewPost({ commit }, { post_content = '', category = '', url_image = '', obj_image = null }) {
+        commit('set_loading', true, { root: true });
+        try {
+            let bodyFormData = new FormData();
+            bodyFormData.append('post_content', post_content); 
+            bodyFormData.append('category', category); 
+            bodyFormData.append('url_image', url_image); 
+
+            if (obj_image) {
+                bodyFormData.append('obj_image', obj_image);  
+            }
+
+            let config = {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    'Authorization': 'Bearer ' + localStorage.getItem(CONFIG_ACCESS_TOKEN)
+                }
+            };
+
+            var result = await axiosInstance.post('/post/addNew.php', bodyFormData, config);
+            commit('set_loading', false, { root: true });
+
+            if (result.data.status === 200) {
+                return {
+                    ok: true,
+                    data: result.data.data,
+                    error: null
+                }
+            }
+            return {
+                ok: false,
+                error: result.data.error
             }
         } catch (error) {
             commit('set_loading', false, { root: true });

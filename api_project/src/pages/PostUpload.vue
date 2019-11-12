@@ -37,7 +37,7 @@
         <div class="col-lg-4">
             <aside class="ass1-aside ass1-aside__edit-post">
                 <div>
-                    <a href="#" class="ass1-btn">Đăng bài</a>
+                    <button v-on:click='hanleUploadPost' class="ass1-btn">Đăng bài</button>
                 </div>
                 <div class="ass1-aside__edit-post-head">
                     <span style="display: block; width: 100%; margin-bottom: 10px;">Chọn danh mục</span>
@@ -68,6 +68,8 @@
 </template>
 
 <script>
+import { checkImageURL, checkImageFile } from '../helpers';
+import { mapActions } from 'vuex';
 export default {
     name: 'post-upload',
     data() {
@@ -93,15 +95,25 @@ export default {
         }
     },
     methods: {
+        ...mapActions({
+            createNewPost: 'post/createNewPost'
+        }),
         uploadImage() {
             this.$refs.imageUpload.click()
         },
         hanleUploadImage(e) {
             if (e.target.files && e.target.files.length) {
                 const imageUpload = e.target.files[0];
-                let reader  = new FileReader();
 
                 // Check xem đuôi ảnh png, gif, jpg
+                let check = checkImageFile(imageUpload);
+                if (!check) {
+                    alert('File up lên không hợp lệ!');
+                    return;
+                }
+
+                let reader  = new FileReader();
+
                 reader.addEventListener("load", () => {
                     let previewSrc = reader.result;
                     this.obj_image.base64URL = previewSrc;
@@ -111,6 +123,44 @@ export default {
                 if (imageUpload) {
                     reader.readAsDataURL(imageUpload);
                 }
+            }
+        },
+        resetData() {
+            this.post_content = '';
+            this.categories = [];
+            this.url_image = '';
+            this.objFile = {
+                base64URL: '',
+                objFile: null
+            }
+        },
+        hanleUploadPost(e) {
+            let { post_content, url_image, categories, obj_image } = this;
+
+            if (post_content && categories.length) {
+                if (url_image || obj_image.objFile) {
+                    let data = {
+                        post_content,
+                        url_image,
+                        category: categories
+                    };
+
+                    if (obj_image.objFile) data.obj_image = obj_image.objFile;
+
+                    this.createNewPost(data).then(res => {
+                        if (res.ok) {
+                            // Reset lại toàn bộ data cũ
+                            this.resetData();
+                            alert('Đăng bài viết thành công');
+                        } else {
+                            alert(res.error);
+                        }
+                    });
+                } else {
+                    alert('Vui lòng upload hình ảnh bài viết!');
+                }
+            } else {
+                alert('Vui lòng nhập đầy đủ nội dung');
             }
         }
     }

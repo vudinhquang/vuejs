@@ -41,8 +41,34 @@ const replaceAll = (originStr, search, replacement) => {
     return target.replace(new RegExp(search, 'gi'), replacement);
 };
 
+const checkImageURL = (imageURL) => {
+    if(!imageURL.match(/^(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)$/i)) {
+        return false;
+    }
+    return true;
+};
+
+const checkImageFile = (file) => {
+    let filename = file.name;
+    let type = file.type;
+
+    if(filename.lastIndexOf(".") == -1) {
+        return false
+    }
+    
+    if( type.lastIndexOf('png') != -1 || type.lastIndexOf('jpeg') != -1 || 
+        type.lastIndexOf('jpg') != -1 || type.lastIndexOf('gif') != -1 ) {
+        return true
+    }
+
+    return false;
+}
+
+
 export {
     removeVietnameseFromString,
     replaceAll,
+    checkImageURL,
+    checkImageFile,
     parseJwt
 }
