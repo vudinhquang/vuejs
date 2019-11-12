@@ -32,9 +32,21 @@ export default {
             var result = await axiosInstance.get('/post/post.php?postid=' + postId);
             if (result.data.status === 200) {
                 // Gọi tiếp sang API user
-                var resultUser = await dispatch('user/getUserById', result.data.data.post.USERID, {root: true});
+                var promiseUser = dispatch('user/getUserById', result.data.data.post.USERID, {root: true});
+                var promiseComments = dispatch('getListCommentByPostId', postId);
+
+                let [resultUser, resultComments] = await Promise.all([promiseUser, promiseComments]);
+
+                let dataPostDetail = {
+                    ...result.data.data,
+                    comments: []
+                };
+                if (resultComments.ok) {
+                    dataPostDetail.comments = resultComments.comments;
+                }
+
                 commit('set_loading', false, { root: true });
-                commit('set_post_detail', result.data.data);
+                commit('set_post_detail', dataPostDetail);
                 return {
                     ok: true,
                     data: result.data.data,
@@ -107,6 +119,27 @@ export default {
             }
         } catch (error) {
             commit('set_loading', false, { root: true });
+            return {
+                ok: false,
+                error: error.message
+            }
+        }
+    },
+    async getListCommentByPostId({ commit }, postid) {
+        try {
+            var result = await axiosInstance.get('/comment/comments.php?postid=' + postid);
+            if (result.data.status === 200) {
+                return {
+                    ok: true,
+                    comments: result.data.comments
+                }
+            } else {
+                return {
+                    ok: false,
+                    // error: result.data.error
+                }
+            }
+        } catch (error) {
             return {
                 ok: false,
                 error: error.message

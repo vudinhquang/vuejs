@@ -2198,3 +2198,13 @@ Tìm hiểu Asynchronous trong Javascript và API
         }
       helper checkImageFile() dùng để check file hình ảnh
       Sau khi đăng bài viết thành công thì sẽ reset lại data: post_content, categories, url_image và objFile
+
+  Chức năng bình luận
+    List Comment API
+      var result = await axiosInstance.get('/comment/comments.php?postid=' + postid);
+      Lấy ra danh sách bình luận dựa vào 1 bài viết nào đó
+      Thực hiện gọi API này khi thực hiện hiển thị chi tiết 1 bài viết nào đó, có nghĩa là khi gọi đến API getPostDetailById
+      state.postDetail: Sau khi gọi API để biết được các comment của bài viết đó thì thực hiện lưu thêm thông tin comment 
+        của bài viết đó
+      Tương tự như vậy trong getters khi thực hiện lấy thông tin chi tiết của bài viết thì lấy thêm cả comments đã được 
+        lưu trong state
