@@ -145,5 +145,45 @@ export default {
                 error: error.message
             }
         }
+    },
+    async addNewComment({ commit, rootState }, { comment = '', postid = '' }) {
+        commit('set_loading', true, { root: true });
+        try {
+            let data = {
+                comment,
+                postid
+            };
+            let config = {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + localStorage.getItem(CONFIG_ACCESS_TOKEN)
+                }
+            };
+            var result = await axiosInstance.post('/comment/add_new.php', data, config);
+            commit('set_loading', false, { root: true });
+            if (result.data.status === 200) {
+                let comment = {
+                    ...result.data.body,
+                    fullname: rootState.user.currentUser.fullname,
+                    profilepicture: rootState.user.currentUser.profilepicture
+                };
+                commit('push_list_comments', comment);
+                return {
+                    ok: true,
+                    comment
+                }
+            } else {
+                return {
+                    ok: false,
+                    error: result.data.error
+                }
+            }
+        } catch (error) {
+            commit('set_loading', false, { root: true });
+            return {
+                ok: false,
+                error: error.message
+            }
+        }
     }
 }

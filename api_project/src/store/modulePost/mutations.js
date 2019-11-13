@@ -10,5 +10,8 @@ export default {
     },
     set_post_detail(state, data) {
         state.postDetail = data;
+    },
+    push_list_comments(state, comment) {
+        state.postDetail.comments.push(comment);
     }
 }

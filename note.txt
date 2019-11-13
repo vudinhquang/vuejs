@@ -2208,3 +2208,14 @@ Tìm hiểu Asynchronous trong Javascript và API
         của bài viết đó
       Tương tự như vậy trong getters khi thực hiện lấy thông tin chi tiết của bài viết thì lấy thêm cả comments đã được 
         lưu trong state
+
+    Post Comment API
+      Chức năng đăng 1 bình luận mới
+      API: post('/comment/add_new.php', data, config)
+      Cần đăng lên 2 thông tin đó là nội dung bình luận là gì và bình luận cho bài viết nào. Server sẽ tự động nhận diện mình
+        ai thông qua ACCESS_TOKEN
+      Sau khi thêm được comment thành công thì tiến hành push comment đó vào trong state.postDetail của bài viết đó nhưng trước 
+        khi thực hiện thì cần phải thêm thông tin fullname và profilepicture của người bình luận vào cho comment đó.
+        Mình đang ở action của module post, để có thể lấy được thông tin của người bình luận thì truy cập vào rootState, rootState
+         này giúp có thể truy cập được vào module toàn cục
+      function async sẽ return về 1 Promise -> sử dụng then() để xử lý tiếp
