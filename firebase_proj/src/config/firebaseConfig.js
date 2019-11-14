@@ -1,5 +1,5 @@
 // Firebase App (the core Firebase SDK) is always required and must be listed first
-import * as firebase from "firebase/app";
+import firebase from "firebase";
 
 const firebaseConfig = {
     apiKey: "AIzaSyBxsjbi8nauxxj9Tll4M6HJe0JoTYwb0qg",
@@ -14,3 +14,13 @@ const firebaseConfig = {
   
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+
+const database = firebase.database();
+
+firebase.database().ref('task').set({
+    username: 'name',
+    email: 'email',
+    profile_picture : 'imageurl'
+});
+
+export default database;

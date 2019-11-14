@@ -4,6 +4,8 @@ import router from './router'
 
 import './assets/style.css'
 
+import database from './config/firebaseConfig';
+
 new Vue({
   el: '#app',
   router,

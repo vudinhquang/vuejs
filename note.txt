@@ -2252,3 +2252,25 @@ Cấu hình Project & Firebase
       Sau khi đăng ký xong ta có được các thông số cấu hình
     npm install --save firebase
     Tạo file cấu hình cho firebase: firebaseConfig.js  
+  
+  Explore Firebase
+    Vào trong app mà mình đã tạo trên firebase
+    Authentication: Là dạng xác thực người dùng, vào đây để đăng ký 1 phương thức để xác thực(Email/password)
+    Database: Hỗ trợ việc lưu dữ liệu
+      Có 2 dạng dữ liệu đó là dạng dữ liệu thông thường và dạng dữ liệu thời gian thực
+      Khi tạo Database thì có 2 chế độ đó là:
+        Start in locked mode(Khóa)
+          Rules:
+            "rules": {
+              ".read": false,
+              ".write": false
+            }
+        Start in test mode
+          Rules:
+            "rules": {
+              ".read": true,
+              ".write": true
+            }
+    Storage: Là nơi dùng để lưu các tài nguyên khác như video, audio
+    Realtime Database: https://firebase.google.com/docs/database/web/start
+      
