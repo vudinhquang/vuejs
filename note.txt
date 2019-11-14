@@ -2273,4 +2273,10 @@ Cấu hình Project & Firebase
             }
     Storage: Là nơi dùng để lưu các tài nguyên khác như video, audio
     Realtime Database: https://firebase.google.com/docs/database/web/start
-      
+
+  Fix Warning
+    import * as firebase from "firebase/app";
+    Add the Firebase products that you want to use
+      import "firebase/database";
+    // Get a reference to the database service
+      const database = firebase.database();
