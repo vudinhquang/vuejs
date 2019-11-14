@@ -2219,3 +2219,22 @@ Tìm hiểu Asynchronous trong Javascript và API
         Mình đang ở action của module post, để có thể lấy được thông tin của người bình luận thì truy cập vào rootState, rootState
          này giúp có thể truy cập được vào module toàn cục
       function async sẽ return về 1 Promise -> sử dụng then() để xử lý tiếp
+
+==================================== Xây dựng Project Task Manager với Firebase  ====================================
+
+Cấu hình Project & Firebase
+  Components
+    vue init webpack-simple firebase_proj
+    cd firebase_proj
+    npm install
+    npm run dev
+    Store
+    Vue Router
+    Tiến hành tách thành các component nhỏ từ mã nguồn html
+    npm install vue-router
+    npm install vuex --save
+    style.css: Được đặt ở src/assets/style.css
+
+    FireBase: https://firebase.google.com/docs/web/setup
+      Dùng javascript để kết nối với FireBase thông qua API
+      FireBase cung cấp cho mình các API để tương tác với server
