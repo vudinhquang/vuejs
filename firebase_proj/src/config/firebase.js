@@ -8,10 +8,20 @@ firebase.initializeApp(firebaseConfig);
 
 const database = firebase.database();
 
-database.ref('task').set({
-    username: 'edit test',
-    email: 'email',
-    profile_picture : 'imageurl'
+// database.ref('tasks/sdfrrgthththj').set({
+//     username: 'edit test',
+//     email: 'email',
+//     profile_picture : 'imageurl'
+// });
+
+database.ref('tasks/my-id').set({
+    abc: 'test 3'
 });
+
+// const taskRef = database.ref('tasks');
+// taskRef.push({
+//     title: 'tieu de',
+//     name: 'dsdf'
+// });
 
 export default database;

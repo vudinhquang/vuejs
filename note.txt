@@ -2280,3 +2280,9 @@ Cấu hình Project & Firebase
       import "firebase/database";
     // Get a reference to the database service
       const database = firebase.database();
+
+Chức năng Create Task
+  Push Data
+    push() dùng để thêm phần tử dữ liệu mới, nó sẽ render ra cho mình key bất kỳ
+    set() set cụ thể cho 1 object, trong trường hợp set mà truyền vào tham số key thì không hợp lệ(chưa có) thì coi như
+      tạo ra phần tử mới. Nếu key trùng với dữ liệu cũ -> sẽ thực hiện ghi đè
