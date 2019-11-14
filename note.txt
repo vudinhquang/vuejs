@@ -2238,3 +2238,17 @@ Cấu hình Project & Firebase
     FireBase: https://firebase.google.com/docs/web/setup
       Dùng javascript để kết nối với FireBase thông qua API
       FireBase cung cấp cho mình các API để tương tác với server
+
+  Install Firbase
+    Cài đặt FireBase vào trong Project
+    Add Firebase to JavaScript project: https://firebase.google.com/docs/web/setup
+    Name: vuejs
+    Step 1: Create a Firebase project
+      Để có thể tạo được FireBase project thì đầu tiên phải login tài khoản của GG(gmail)
+      FireBase sẽ tiến hành cài đặt project, nó sẽ đưa ra cho mình các thông số để cấu hình và kết nối nó vào mã nguồn của
+        vuejs
+    Step 2: Register your app
+      click the Web icon (code)
+      Sau khi đăng ký xong ta có được các thông số cấu hình
+    npm install --save firebase
+    Tạo file cấu hình cho firebase: firebaseConfig.js  
