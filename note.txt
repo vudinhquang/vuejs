@@ -2286,3 +2286,14 @@ Chức năng Create Task
     push() dùng để thêm phần tử dữ liệu mới, nó sẽ render ra cho mình key bất kỳ
     set() set cụ thể cho 1 object, trong trường hợp set mà truyền vào tham số key thì không hợp lệ(chưa có) thì coi như
       tạo ra phần tử mới. Nếu key trùng với dữ liệu cũ -> sẽ thực hiện ghi đè
+
+  Data Task
+    Config cho phần liên quan đến select box
+    Sử dụng plugin để chọn thời gian(ngày, tháng, giờ và phút)
+      https://mariomka.github.io/vue-datetime/
+    Keywords: Vue datetime(vue-datetime), uuid
+      yarn add luxon vue-datetime weekstart
+      npm i uuid
+    Sau khi đã cài đặt, config và hiển thị datetime thành công thì mình sẽ tiến hành config để hiển thị datetime sử dụng 
+      bootstrap giống như ở html tĩnh -> css ô input, ô input này là do thư viện datetime nó tự sinh ra cấu trúc html. Cần 
+      phải customize lại giao diện này bằng css
