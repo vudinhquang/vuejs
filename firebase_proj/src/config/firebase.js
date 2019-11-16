@@ -14,9 +14,9 @@ const database = firebase.database();
 //     profile_picture : 'imageurl'
 // });
 
-database.ref('tasks/my-id').set({
-    abc: 'test 3'
-});
+// database.ref('tasks/my-id').set({
+//     abc: 'test 3'
+// });
 
 // const taskRef = database.ref('tasks');
 // taskRef.push({

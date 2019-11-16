@@ -2297,3 +2297,7 @@ Chức năng Create Task
     Sau khi đã cài đặt, config và hiển thị datetime thành công thì mình sẽ tiến hành config để hiển thị datetime sử dụng 
       bootstrap giống như ở html tĩnh -> css ô input, ô input này là do thư viện datetime nó tự sinh ra cấu trúc html. Cần 
       phải customize lại giao diện này bằng css
+
+  Action
+    Sử dụng set() để thực hiện thêm data vào FireBase, hàm này return về 1 Promise
+    auth: 'quang@gmail.com', do chưa có chức năng đăng nhập đăng xuất nên tạm thời hard code

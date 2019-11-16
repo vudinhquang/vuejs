@@ -61,7 +61,9 @@
                     </select>
                 </div>
                 <div class="col-xs-12 btn-submit-create">
-                    <button class="btn btn-success" type="submit">Tạo mới một BackLog</button>
+                    <button 
+                        v-on:click="handleCreateTask"
+                        class="btn btn-success" type="submit">Tạo mới một BackLog</button>
                 </div>
             </div>
         </div>
@@ -69,6 +71,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import { STATUS_CONFIG, PRIORITY_CONFIG, TEAM_CONFIG } from '../config/const';
 import PageTitle from '../components/PageTitle';
 export default {
@@ -90,6 +93,25 @@ export default {
             STATUS_CONFIG,
             PRIORITY_CONFIG,
             TEAM_CONFIG
+        }
+    },
+    methods: {
+        ...mapActions([
+            'createTask'
+        ]),
+        handleCreateTask() {
+            let objData = {
+                auth: 'quang@gmail.com',
+                title: this.title,
+                description: this.description,
+                name: this.name,
+                start_at: this.start_at,
+                end_at: this.end_at,
+                status: this.status,
+                priority: this.priority,
+                email_member: this.email_member,
+            };
+            this.createTask(objData);
         }
     }
 }
