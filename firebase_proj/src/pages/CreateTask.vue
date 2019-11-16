@@ -54,10 +54,10 @@
                 <div class="col-xs-6 input-group">
                     <label>Thành viên đảm nhận</label>
                     <select class="input-group input-select" v-model="email_member">
-                        <option value="luctc">@luctc</option>
-                        <option value="khang">@khang</option>
-                        <option value="nam">@nam</option>
-                        <option value="tam">@tam</option>
+                        <option value="quang@gmail.com">@quang</option>
+                        <option value="khang@gmail.com">@khang</option>
+                        <option value="nam@gmail.com">@nam</option>
+                        <option value="tam@gmail.com">@tam</option>
                     </select>
                 </div>
                 <div class="col-xs-12 btn-submit-create">

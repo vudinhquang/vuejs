@@ -2338,6 +2338,10 @@ Chức năng Create Task
     Lấy danh sách dữ liệu về và render lên view
     Keywords: get list in firebase by javascript
       https://firebase.google.com/docs/database/web/lists-of-data
+      https://firebase.google.com/docs/reference/js/firebase.database.DataSnapshot#forEach
     On Change Value: Lắng nghe sự thay đổi của database Realtime
       var tasksRef = database.ref('tasks');
       tasksRef.on('value', function(snapshot))
+
+  Render Task
+    Sau khi lấy thành công phần dữ liệu về thì sẽ tạo getters để tách ra làm 4 dạng: Todo, In Process, Bugs, Done

@@ -1,10 +1,10 @@
 <template>
-    <div class="backlogs-item">
-        <div class="project">Landmark 81 Website</div>
-        <div class="title">Phân tich dự án</div>
-        <div class="due-date">Deadline: <span>30/09/2018</span></div>
-        <div class="phase">Giai đoạn: <span>Front End</span></div>
-        <div class="assign">@luctc - </div>
+    <div class="backlogs-item" v-if="task">
+        <div class="project">{{ task.name }}</div>
+        <div class="title">{{ task.title }}</div>
+        <div class="due-date">Deadline: <span>{{ dateFormat }}</span></div>
+        <div class="phase">Giai đoạn: <span>{{ task.team }}</span></div>
+        <div class="assign">@{{ task.email_member.split('@')[0] }} </div>
     </div>
 </template>
 
@@ -12,9 +12,22 @@
 
 export default {
     name: 'task-item',
+    props: {
+        task: { type: Object, default: null }
+    },
     data() {
         return {
 
+        }
+    },
+    computed: {
+        dateFormat() {
+            if (this.task) {
+                let d = new Date(this.task.end_at);
+                var datestring =  d.getFullYear() + "-" + ("0"+(d.getMonth()+1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2) + " " + ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2);
+                return datestring;
+            }
+            return '';
         }
     }
 }

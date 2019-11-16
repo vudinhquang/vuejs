@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import uuidv4 from 'uuid/v4'
 import database from '../config/firebase'
+import { STATUS_CONFIG } from '../config/const'
 
 Vue.use(Vuex);
 
@@ -11,7 +12,38 @@ const store = new Vuex.Store({
         isLoading: false
     },
     getters: {
+        getListTaskFilter: (state) => {
+            if (state.listTasks) {
+                let listTasks = state.listTasks;
+                let todo = [], inProcess = [], toVerify = [], done = [];
+                for (let key in listTasks) {
+                    let value = listTasks[key];
+                    let data = {
+                        id: key,
+                        ...value
+                    };
 
+                    switch (data.status) {
+                        case STATUS_CONFIG.TODO.value:
+                            todo.push(data)
+                            break;
+                        case STATUS_CONFIG.IN_PROGRESS.value:
+                            inProcess.push(data)
+                            break;
+                        case STATUS_CONFIG.TO_VERIFY.value:
+                            toVerify.push(data)
+                            break;
+                        case STATUS_CONFIG.DONE.value:
+                            done.push(data)
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+                return { todo, inProcess, toVerify, done };
+            }
+        }
     },
     mutations: {
         setLoading: (state, loading = false) => {
@@ -29,7 +61,7 @@ const store = new Vuex.Store({
             commit('setLoading', true);
             try {
                 let taskId = uuidv4();
-                await database.ref('tasks/' + taskId).set({ data });
+                await database.ref('tasks/' + taskId).set( data );
                 commit('setLoading', false);
                 return {
                     ok: true,
