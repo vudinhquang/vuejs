@@ -2,8 +2,8 @@
     <header>
         <div class="container">
             <ul>
-                <li><a href="/">Trang Chủ</a></li>
-                <li><a href="/">Dự án</a></li>
+                <li><router-link to="/">Trang Chủ</router-link></li>
+                <li><router-link to="/create">Tạo Task</router-link></li>
             </ul>
             <ul class="right">
                 <li>Đăng nhập với <a href="/">example@gmail.com</a></li>

@@ -44,7 +44,7 @@
                 </div>
                 <div class="col-xs-6 input-group">
                     <label>Giai đoạn</label>
-                    <select class="input-group input-select">
+                    <select class="input-group input-select" v-model="team">
                         <option 
                             v-for="el in TEAM_CONFIG"
                             v-bind:key="el.value + el.text"
@@ -88,6 +88,7 @@ export default {
             end_at: null,
             status: 1,
             priority: 1,
+            team: 1,
             email_member: '',
 
             STATUS_CONFIG,
@@ -109,9 +110,26 @@ export default {
                 end_at: this.end_at,
                 status: this.status,
                 priority: this.priority,
+                team: this.team,
                 email_member: this.email_member,
             };
-            this.createTask(objData);
+            this.createTask(objData).then(res => {
+                if (res.ok) {
+                    alert("Tạo thành công!");
+                    this.resetData();
+                }
+            });
+        },
+        resetData() {
+            this.description = ''
+            this.title = '';
+            this.name = '';
+            this.start_at = '';
+            this.end_at = '';
+            this.status = this.STATUS_CONFIG.TODO.value;
+            this.priority = this.PRIORITY_CONFIG.LOW.value;
+            this.team = this.TEAM_CONFIG.FRONT_END.value;
+            this.email_member = '';
         }
     }
 }

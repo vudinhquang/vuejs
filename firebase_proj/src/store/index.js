@@ -14,7 +14,7 @@ const store = new Vuex.Store({
 
     },
     mutations: {
-        SET_LOADING: (state, loading = false) => {
+        setLoading: (state, loading = false) => {
             state.isLoading = loading;
         }
     },
@@ -23,13 +23,19 @@ const store = new Vuex.Store({
             commit('SET_LOADING', loading)
         },
         async createTask({ commit }, data) {
+            commit('setLoading', true);
             try {
                 let taskId = uuidv4();
-                const tasksRef = await database.ref('tasks/' + taskId).set({ data });
-
-                console.log(tasksRef);
-            } catch (error) {
+                await database.ref('tasks/' + taskId).set({ data });
+                commit('setLoading', false);
                 return {
+                    ok: true,
+                    error: null
+                }
+            } catch (error) {
+                commit('setLoading', false);
+                return {
+                    ok: false,
                     error: error.message
                 }
             }
