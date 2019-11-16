@@ -2333,3 +2333,11 @@ Chức năng Create Task
               filename: 'build.js'
             },
     Sau khi cấu hình xong npm run dev để chạy lại server
+
+  Chức năng Render List Task
+    Lấy danh sách dữ liệu về và render lên view
+    Keywords: get list in firebase by javascript
+      https://firebase.google.com/docs/database/web/lists-of-data
+    On Change Value: Lắng nghe sự thay đổi của database Realtime
+      var tasksRef = database.ref('tasks');
+      tasksRef.on('value', function(snapshot))

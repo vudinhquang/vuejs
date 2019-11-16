@@ -8,6 +8,19 @@ firebase.initializeApp(firebaseConfig);
 
 const database = firebase.database();
 
+// get list
+// var tasksRef = database.ref('tasks');
+// tasksRef.on('value', function(snapshot) {
+//     console.log("snapshot",snapshot.toJSON());
+//     console.log("snapshot",snapshot);
+//     snapshot.forEach(function(childSnapshot) {
+//         console.log('childSnapshot', childSnapshot);
+//         var childData = childSnapshot.val();
+//         console.log(childData);
+//     });
+// });
+
+// set data
 // database.ref('tasks/sdfrrgthththj').set({
 //     username: 'edit test',
 //     email: 'email',
