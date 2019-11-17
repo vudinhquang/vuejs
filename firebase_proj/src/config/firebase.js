@@ -2,11 +2,13 @@
 import * as firebase from "firebase/app";
 import firebaseConfig from  "./firebaseConfig";
 import "firebase/database";
+import "firebase/auth";
   
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-const database = firebase.database();
+export const auth = firebase.auth();
+export const database = firebase.database();
 
 // get list
 // var tasksRef = database.ref('tasks');
@@ -39,4 +41,4 @@ const database = firebase.database();
 
 export const tasksRef = database.ref('tasks');
 
-export default database;
+// export default database;

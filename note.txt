@@ -2351,3 +2351,8 @@ Chức năng Authentication
     Việc tương tác với firebase được thực hiện nhiều lần nên có thể export từ trong config firebase
       export const tasksRef = database.ref('tasks');
     Sử dụng phương thức child(): tasksRef.child(taskId) để Edit hoặc Create... 1 phần tử nào đó
+
+  Register UI
+    https://firebase.google.com/docs/auth/web/start
+    import "firebase/auth";
+    export const auth = firebase.auth();

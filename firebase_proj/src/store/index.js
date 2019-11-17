@@ -85,6 +85,9 @@ const store = new Vuex.Store({
                     error: error.message
                 }
             }
+        },
+        async register({ commit }, { email = "", password = "" }) {
+            console.log("register", email, password);
         }
     }
 });
