@@ -6,13 +6,6 @@ import Datetime from 'vue-datetime'
 import 'vue-datetime/dist/vue-datetime.css'
 import './assets/style.css'
 
-import database from './config/firebase';
-
-var tasksRef = database.ref('tasks');
-tasksRef.on('value', function(snapshot) {
-  store.commit('set_list_tasks', snapshot.toJSON());
-});
-
 Vue.use(Datetime)
 
 new Vue({

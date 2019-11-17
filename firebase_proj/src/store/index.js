@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import uuidv4 from 'uuid/v4'
-import database from '../config/firebase'
+import { tasksRef } from '../config/firebase'
 import { STATUS_CONFIG } from '../config/const'
 
 Vue.use(Vuex);
@@ -57,11 +57,22 @@ const store = new Vuex.Store({
         setLoading({ commit }, loading = false) {
             commit('setLoading', loading)
         },
+        onListenerTasks({ commit }) {
+            let flag = false;
+            commit('setLoading', true);
+            tasksRef.on('value', function(snapshot) {
+                commit('set_list_tasks', snapshot.toJSON());
+                if (!flag) {
+                    flag = true;
+                    commit('setLoading', false);
+                }
+            });
+        },
         async createTask({ commit }, data) {
             commit('setLoading', true);
             try {
                 let taskId = uuidv4();
-                await database.ref('tasks/' + taskId).set( data );
+                await tasksRef.child(taskId).set(data);
                 commit('setLoading', false);
                 return {
                     ok: true,

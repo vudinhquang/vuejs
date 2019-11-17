@@ -37,4 +37,6 @@ const database = firebase.database();
 //     name: 'dsdf'
 // });
 
+export const tasksRef = database.ref('tasks');
+
 export default database;

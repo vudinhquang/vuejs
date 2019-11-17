@@ -2345,3 +2345,9 @@ Chức năng Create Task
 
   Render Task
     Sau khi lấy thành công phần dữ liệu về thì sẽ tạo getters để tách ra làm 4 dạng: Todo, In Process, Bugs, Done
+
+Chức năng Authentication
+  Refactor Code
+    Việc tương tác với firebase được thực hiện nhiều lần nên có thể export từ trong config firebase
+      export const tasksRef = database.ref('tasks');
+    Sử dụng phương thức child(): tasksRef.child(taskId) để Edit hoặc Create... 1 phần tử nào đó
