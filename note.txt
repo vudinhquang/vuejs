@@ -2356,3 +2356,6 @@ Chức năng Authentication
     https://firebase.google.com/docs/auth/web/start
     import "firebase/auth";
     export const auth = firebase.auth();
+
+  Register Firebase
+    

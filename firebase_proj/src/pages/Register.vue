@@ -11,7 +11,7 @@
                         <!-- <label>Email</label> -->
                         <input 
                             v-model="email"
-                            type="email" class="form-control" placeholder="Địa chỉ email" />
+                            type="text" class="form-control" placeholder="Địa chỉ email" />
                     </div>
                     <div class="form-group">
                         <!-- <label>Mật khẩu</label> -->
@@ -55,7 +55,13 @@ export default {
                         email: this.email,
                         password: this.password
                     }
-                    this.register(data);
+                    this.register(data).then(res => {
+                        if (res.ok) {
+                            // Đẩy qua trang chủ
+                        } else {
+                            alert(res.error);
+                        }
+                    });
                 } else {
                     alert("Mật khẩu nhập lại không khớp");
                 }
