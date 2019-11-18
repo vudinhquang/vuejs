@@ -2372,3 +2372,8 @@ Chức năng Authentication
     Hiển thị danh sách thành viên
     Thêm dữ liệu users và database Realtime để lưu thông tin người dùng đăng ký
     Cứ mỗi lần mà người dùng đăng ký thì gọi tiếp đến store để thêm vào 1 trường dữ liệu thông tin người dùng đó
+
+Chức năng Edit Task
+  Api:
+    tasksRef.child(id).once('value') Lấy dữ liệu dựa vào id
+    tasksRef.child(data.id).update(data.task) Update dữ liệu dựa vào id

@@ -163,7 +163,46 @@ const store = new Vuex.Store({
                     error: error.message
                 }
             }
-        }
+        },
+        async getTaskById({ commit }, id) {
+            try {
+                let result = await tasksRef.child(id).once('value');
+                if (result.val()) {
+                    return {
+                        ok: true,
+                        task: result.val()
+                    }
+                }
+                return {
+                    ok: false,
+                    task: null,
+                    error: null
+                }
+            } catch (error) {
+                return {
+                    ok: false,
+                    error: error.message
+                }
+            }
+        },
+
+        async updateTask({ commit }, data) {
+            commit('setLoading', true);
+            try {
+                await tasksRef.child(data.id).update(data.task);
+                commit('setLoading', false);
+                return {
+                    ok: true,
+                    error: null
+                }
+            } catch (error) {
+                commit('setLoading', false);
+                return {
+                    ok: false,
+                    error: error.message
+                }
+            }
+        },
     }
 });
 

@@ -1,12 +1,13 @@
 <template>
     <div class="page-title">
-        <span>Create New Backlog Item</span>
+        <span>{{ title }}</span>
     </div>
 </template>
 
 <script>
 export default {
     name: 'page-title',
+    props: [ 'title' ],
     data() {
         return {
 
