@@ -2362,3 +2362,7 @@ Chức năng Authentication
   
   Login
     Api: firebase.auth().signInWithEmailAndPassword(email, password)
+
+  Keep Login
+    Sau khi người dùng đã đăng nhập rồi thì cần giải quyết vấn đề liên quan đến router để duy trì trạng thái đăng nhập
+      dựa và các api của firebase nó cung cấp cho mình
