@@ -16,6 +16,10 @@ const store = new Vuex.Store({
         isLoading: false
     },
     getters: {
+        isLogin: state => {
+            if (state.currentUser.email && state.currentUser.uid) return true;
+            return false;
+        },
         getListTaskFilter: (state) => {
             if (state.listTasks) {
                 let listTasks = state.listTasks;
@@ -84,6 +88,28 @@ const store = new Vuex.Store({
                 return {
                     ok: true,
                     error: null
+                }
+            } catch (error) {
+                commit('setLoading', false);
+                return {
+                    ok: false,
+                    error: error.message
+                }
+            }
+        },
+        async login({ commit }, { email = "", password = "" }) {
+            commit('setLoading', true);
+            try {
+                let result = await auth.signInWithEmailAndPassword(email, password);
+                let user = {
+                    email: email,
+                    uid: result.user.uid
+                };
+                commit('set_current_user', user);
+                commit('setLoading', false);
+                return {
+                    ok: true,
+                    error: ''
                 }
             } catch (error) {
                 commit('setLoading', false);

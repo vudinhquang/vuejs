@@ -2358,4 +2358,7 @@ Chức năng Authentication
     export const auth = firebase.auth();
 
   Register Firebase
-    
+    Api: firebase.auth().createUserWithEmailAndPassword(email, password)
+  
+  Login
+    Api: firebase.auth().signInWithEmailAndPassword(email, password)
