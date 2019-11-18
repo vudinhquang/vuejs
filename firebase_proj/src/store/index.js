@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import uuidv4 from 'uuid/v4'
-import { auth, tasksRef } from '../config/firebase'
+import { auth, tasksRef, usersRef } from '../config/firebase'
 import { STATUS_CONFIG } from '../config/const'
 
 Vue.use(Vuex);
@@ -12,6 +12,7 @@ const store = new Vuex.Store({
             email: '',
             uid: ''
         },
+        listUsers: {},
         listTasks: {},
         isLoading: false
     },
@@ -21,9 +22,9 @@ const store = new Vuex.Store({
             return false;
         },
         getListTaskFilter: (state) => {
+            let todo = [], inProcess = [], toVerify = [], done = [];
             if (state.listTasks) {
                 let listTasks = state.listTasks;
-                let todo = [], inProcess = [], toVerify = [], done = [];
                 for (let key in listTasks) {
                     let value = listTasks[key];
                     let data = {
@@ -48,9 +49,19 @@ const store = new Vuex.Store({
                             break;
                     }
                 }
-
-                return { todo, inProcess, toVerify, done };
             }
+            return { todo, inProcess, toVerify, done };
+        },
+        getListEmailUser: (state) => {
+            let arrEmails = [];
+            if (state.listUsers) {
+                let listUsers = state.listUsers;
+                for (let key in listUsers) {
+                    let value = listUsers[key];
+                    arrEmails.push(value.email);
+                }
+            }
+            return arrEmails;
         }
     },
     mutations: {
@@ -59,6 +70,9 @@ const store = new Vuex.Store({
         },
         set_list_tasks: (state, data = null ) => {
             state.listTasks = data;
+        },
+        set_list_users: (state, data = null ) => {
+            state.listUsers = data;
         },
         set_current_user: (state, user = null) => {
             state.currentUser = user;
@@ -77,6 +91,11 @@ const store = new Vuex.Store({
                     flag = true;
                     commit('setLoading', false);
                 }
+            });
+        },
+        onListenerUsers({ commit }) {
+            usersRef.on('value', function(snapshot) {
+                commit('set_list_users', snapshot.toJSON());
             });
         },
         async createTask({ commit }, data) {
@@ -123,6 +142,10 @@ const store = new Vuex.Store({
             commit('setLoading', true);
             try {
                 let result = await auth.createUserWithEmailAndPassword(email, password);
+                await usersRef.child(result.user.uid).set({
+                    email: email,
+                    role: 'member'
+                });
                 let user = {
                     email: email,
                     uid: result.user.uid

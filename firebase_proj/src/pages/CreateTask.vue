@@ -54,10 +54,10 @@
                 <div class="col-xs-6 input-group">
                     <label>Thành viên đảm nhận</label>
                     <select class="input-group input-select" v-model="email_member">
-                        <option value="quang@gmail.com">@quang</option>
-                        <option value="khang@gmail.com">@khang</option>
-                        <option value="nam@gmail.com">@nam</option>
-                        <option value="tam@gmail.com">@tam</option>
+                        <option 
+                            v-for="email in getListEmailUser"
+                            v-bind:key="email"
+                            v-bind:value="email">{{ email.split('@')[0] }}</option>
                     </select>
                 </div>
                 <div class="col-xs-12 btn-submit-create">
@@ -71,13 +71,16 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 import { STATUS_CONFIG, PRIORITY_CONFIG, TEAM_CONFIG } from '../config/const';
 import PageTitle from '../components/PageTitle';
 export default {
     name: 'create-task',
     components: {
         PageTitle
+    },
+    computed: {
+        ...mapGetters(['getListEmailUser'])
     },
     data() {
         return {

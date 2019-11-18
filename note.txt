@@ -2366,3 +2366,9 @@ Chức năng Authentication
   Keep Login
     Sau khi người dùng đã đăng nhập rồi thì cần giải quyết vấn đề liên quan đến router để duy trì trạng thái đăng nhập
       dựa và các api của firebase nó cung cấp cho mình
+
+  Custom Field User
+    Get list user in firebase by javascript
+    Hiển thị danh sách thành viên
+    Thêm dữ liệu users và database Realtime để lưu thông tin người dùng đăng ký
+    Cứ mỗi lần mà người dùng đăng ký thì gọi tiếp đến store để thêm vào 1 trường dữ liệu thông tin người dùng đó

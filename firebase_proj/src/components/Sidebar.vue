@@ -4,13 +4,17 @@
             <span>Thành viên</span>
         </div>
         <ul class="list-members">
-            <li>luctc</li>
+            <li v-for="email in getListEmailUser" v-bind:key="email">{{ email }}</li>
         </ul>
     </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
-    name: 'sidebar'
+    name: 'sidebar',
+    computed: {
+        ...mapGetters(['getListEmailUser'])
+    }
 }
 </script>

@@ -21,9 +21,10 @@ export default {
   computed: mapState([ 'isLoading' ]),
   created() {
     this.onListenerTasks();
+    this.onListenerUsers();
   },
   methods: {
-    ...mapActions(['onListenerTasks'])
+    ...mapActions(['onListenerTasks', 'onListenerUsers'])
   }
 }
 </script>

@@ -40,5 +40,6 @@ export const database = firebase.database();
 // });
 
 export const tasksRef = database.ref('tasks');
+export const usersRef = database.ref('users');
 
 // export default database;
