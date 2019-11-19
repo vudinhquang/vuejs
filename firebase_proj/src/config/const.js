@@ -18,8 +18,15 @@ const TEAM_CONFIG = {
     DESIGNER: { text: 'Designer', value: 3 },
 }
 
+// key = 1 -> value = text
+const HASH_TEAM_CONFIG = {};
+for (const key in TEAM_CONFIG) {
+    HASH_TEAM_CONFIG[TEAM_CONFIG[key].value] = TEAM_CONFIG[key].text
+}
+
 export {
     STATUS_CONFIG,
     PRIORITY_CONFIG,
-    TEAM_CONFIG
+    TEAM_CONFIG,
+    HASH_TEAM_CONFIG
 }

@@ -10,7 +10,8 @@ const store = new Vuex.Store({
     state: {
         currentUser: {
             email: '',
-            uid: ''
+            uid: '',
+            role: ''
         },
         listUsers: {},
         listTasks: {},
@@ -20,6 +21,9 @@ const store = new Vuex.Store({
         isLogin: state => {
             if (state.currentUser.email && state.currentUser.uid) return true;
             return false;
+        },
+        isAdmin: state => {
+            return state.currentUser.role === 'admin';
         },
         getListTaskFilter: (state) => {
             let todo = [], inProcess = [], toVerify = [], done = [];
@@ -52,6 +56,9 @@ const store = new Vuex.Store({
             }
             return { todo, inProcess, toVerify, done };
         },
+        getCurrentUser: (state) => {
+            return state.currentUser;
+        },
         getListEmailUser: (state) => {
             let arrEmails = [];
             if (state.listUsers) {
@@ -76,7 +83,13 @@ const store = new Vuex.Store({
         },
         set_current_user: (state, user = null) => {
             state.currentUser = user;
-        }
+        },
+        set_role: (state, data = null) => {
+            state.currentUser = {
+                ...state.currentUser,
+                role: data.role
+            }
+        },
     },
     actions: {
         setLoading({ commit }, loading = false) {
@@ -190,6 +203,45 @@ const store = new Vuex.Store({
             commit('setLoading', true);
             try {
                 await tasksRef.child(data.id).update(data.task);
+                commit('setLoading', false);
+                return {
+                    ok: true,
+                    error: null
+                }
+            } catch (error) {
+                commit('setLoading', false);
+                return {
+                    ok: false,
+                    error: error.message
+                }
+            }
+        },
+        async getUserCustomField({ commit, state }) {
+            let uid = state.currentUser.uid;
+            try {
+                let result = await usersRef.child(uid).once('value');
+                if (result.val()) {
+                    commit('set_role', result.val());
+                    return {
+                        ok: true,
+                        data: result.val()
+                    }
+                }
+                return {
+                    ok: false,
+                    data: null,
+                }
+            } catch (error) {
+                return {
+                    ok: false,
+                    error: error.message
+                }
+            }
+        },
+        async deleteTask({ commit }, id) {
+            commit('setLoading', true);
+            try {
+                await tasksRef.child(id).remove();
                 commit('setLoading', false);
                 return {
                     ok: true,

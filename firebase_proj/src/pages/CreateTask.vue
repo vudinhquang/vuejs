@@ -80,7 +80,7 @@ export default {
         PageTitle
     },
     computed: {
-        ...mapGetters(['getListEmailUser'])
+        ...mapGetters(['getListEmailUser', 'getCurrentUser'])
     },
     data() {
         return {
@@ -105,7 +105,7 @@ export default {
         ]),
         handleCreateTask() {
             let objData = {
-                auth: 'quang@gmail.com',
+                auth: this.getCurrentUser.email,
                 title: this.title,
                 description: this.description,
                 name: this.name,

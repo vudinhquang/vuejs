@@ -2377,3 +2377,9 @@ Chức năng Edit Task
   Api:
     tasksRef.child(id).once('value') Lấy dữ liệu dựa vào id
     tasksRef.child(data.id).update(data.task) Update dữ liệu dựa vào id
+
+Chức năng Delete
+  Ở trang home, phần hiển thị giai đoạn của các task thì mình sẽ hiển thị text
+  Khi tạo 1 task vụ thì auth là email của người đang đăng nhập
+  Chỉ thực hiện xóa ở phần Done, chỉ admin mới được xóa
+  Xóa: tasksRef.child(id).remove()
